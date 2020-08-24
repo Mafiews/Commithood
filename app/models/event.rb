@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  belongs_to :association
+  belongs_to :ngo
   has_many :participations
   has_many :users, through: :participations
 
