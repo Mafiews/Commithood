@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AssociationCauseTest < ActiveSupport::TestCase
+class NgoCauseTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

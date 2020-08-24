@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :address
       t.float :lat
       t.float :lng
-      t.references :association, null: false, foreign_key: true
+      t.references :ngo, null: false, foreign_key: true
 
       t.timestamps
     end
