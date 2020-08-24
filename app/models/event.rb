@@ -2,4 +2,6 @@ class Event < ApplicationRecord
   belongs_to :association
   has_many :participations
   has_many :users, through: :participations
+
+  validates :name, :start_date, :end_date, :description, :seats, :address, presence: true
 end
