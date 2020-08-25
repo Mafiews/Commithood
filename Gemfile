@@ -36,6 +36,9 @@ gem 'simple_form'
 
 #pundit gem for authorizations
 gem 'pundit'
+gem 'cloudinary', '~> 1.12.0'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 
 group :development, :test do
   gem 'pry-byebug'
