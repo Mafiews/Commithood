@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :events, through: :participations
 
   validates :first_name, :last_name, :phone_number, presence: true
+  has_one_attached :photo
 end
