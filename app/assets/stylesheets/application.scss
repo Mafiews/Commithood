@@ -11,5 +11,20 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// to change to sub-index, not here
 @import "components/banner-show";
 @import "pages/show";
+
+
+h1, h2 {
+  font-family: $headers-font;
+}
+
+p {
+  font-family:$body-font;
+}
+
+h3, h4, h5, h6 {
+  font-family: $title-font;
+}

@@ -29,6 +29,19 @@ volunteer_user = User.create!(
 
 puts "User #{volunteer_user.first_name} created"
 
+admin_user = User.create!(
+  email: "admin@admin.com",
+  password: "test12345",
+  first_name: "Admin",
+  last_name: "Hood",
+  address: "245 Rue Oberkampf, 75011 Paris",
+  phone_number: "0612850678",
+  description: "Je suis admin du monde entier"
+  admin: true
+  )
+
+puts "User #{admin_user.first_name} created"
+
 ngo_user = User.create!(
   email: "ngo@hood.com",
   password: "test12345",

@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    current_user
     # @my_events = current_user.events
   end
 end
