@@ -2,9 +2,12 @@
 <!-- yizhu: banner part -->
 <div class="banner-hood" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1525026198548-4baa812f1183?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1533&q=80')">
 
-  <div class="search-bar">
+<div class="app-title">
+  <h1>Commit Hood</h1>
+</div>
+  <div class="search-bar form-inline">
   <%= form_tag events_path, method: "get" do %>
-    <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Type your address" %>
+    <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse", class: 'form-control event-address mt-3' %>
     <%= select_tag 'user-cause', options_for_select(Cause::CAUSES), class: 'form-control event-address mt-3' %>
     <%= submit_tag "Go", class: "btn btn-success text-white ml-2 mt-3" %>
   <% end %>
@@ -13,16 +16,16 @@
 
 
 <!-- yizhu create 3 cards to show the lastest 3 events registed under the banner, in form of card -->
-<div class="container">
+<div class="container event-cards">
   <h1>Popular events is happing now</h1>
-  <div class="row justify-content-rounded">
+  <div class="row justify-content-around">
     <% @events.each do |event| %>
-      <div class="card" style="width: 18rem;">
+      <div class="card card-event-home" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="event image">
         <div class="card-body">
           <h5 class="card-title"><%= event.name %></h5>
-          <p class="card-text"><%= event.description %></p>
-          <%= link_to "Paticiper", event_path(event), class:"btn btn-success" %>
+          <p class="card-text "><%= event.description.truncate_words(50) %></p>
+          <%= link_to "Paticiper", event_path(event), class:"btn btn-success btn-green" %>
         </div>
       </div>
     <% end %>

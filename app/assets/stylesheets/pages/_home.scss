@@ -1,5 +1,43 @@
-// Specific CSS for your home-page
+// yizhu: css for homepage
+
+// banner image setting
 .banner-hood {
-  height: 400px;
-  background-position: cover;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+// Commit Hood title setting, relative position
+.app-title {
+  position: absolute;
+  top: 50px; left: 50px;
+  h1{
+    color: $orange;
+    font-weight: 600;
+    font-size: 48px;
+    text-shadow: 0px 3px 10px $dark-green;
+  }
+}
+
+// search bar setting with abusolute position comparing with banner
+.search-bar {
+  position: absolute;
+  bottom: 150px; right: 50px;
+}
+
+// card text relative position
+.card-text {
+  position:relative;
+}
+
+.btn-green {
+  position:absolute;
+  bottom: -10px;right:10px;
+}
+
+.card-event-home {
+  border-radius: 5px;
+  border:none;
+  box-shadow: 0px 0px 10px $gray;
 }
