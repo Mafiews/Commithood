@@ -1,9 +1,19 @@
 <!-- yizhu: add a container to all elements, with a row to display two sections -->
-<div class="container">
-  <div class="row">
-    <!-- yizhu: section of cards for events show, 50% of the larger -->
+<div class="container justify-content-center">
+
+  <!-- add result filter and text search function -->
+  <div class="search-bar-index form-inline">
+    <%= form_tag events_path, method: "get" do %>
+      <%= select_tag 'user-cause', options_for_select(Cause::CAUSES), class: 'form-control event-address mt-3' %>
+      <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse", class: 'form-control mt-3' %>
+      <%= text_field_tag :keyword, "", required: false, id: "keyword", label: false, placeholder: "Le mot clé", class: 'form-control mt-3' %>
+      <%= submit_tag "Recherche", class: "btn btn-warning text-white ml-2 mt-3" %>
+    <% end %>
+  </div>
+
+  <!-- yizhu: section of cards for events show, 50% of the larger -->
+  <div class="row mt-3">
     <div class="col-6">
-      <h3>event card will be here</h3>
       <!-- yizhu: insert events cards here -->
       <% @events.each do |event| %>
         <div class="card-event-index m-3">
@@ -11,18 +21,22 @@
           <div class="card-event-index-infos">
             <div>
               <h2><%= event.name %></h2>
-              <p><%= event.description.truncate_words(20) %></p>
+              <p><%= event.description.truncate_words(18) %></p>
+              <p class="card-event-index-date">Date d'evenement: <%= event.start_date %></p>
             </div>
-            <h2 class="card-event-index-date">date begin -- date end</h2>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-index-user avatar-bordered" />
+            <%= link_to "Paticiper", event_path(event), class:"btn btn-success btn-join" %>
           </div>
         </div>
       <% end %>
     </div>
 
+
     <!-- section of map, 50% of the larger -->
     <div class="col-6">
       <h3>here will be the map</h3>
     </div>
+
+
   </div>
 </div>

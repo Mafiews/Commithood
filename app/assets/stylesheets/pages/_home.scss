@@ -10,23 +10,32 @@
 
 // Commit Hood title setting, relative position
 .app-title {
-  position: absolute;
-  top: 50px; left: 50px;
-  h1{
+  h1 {
+    position: absolute;
+    top: 100px; left: 150px;
     color: $orange;
     font-weight: 600;
     font-size: 48px;
-    text-shadow: 0px 3px 10px $dark-green;
+    text-shadow: 0px 3px 10px black;
+  };
+  h3 {
+    position: absolute;
+    top: 180px; left: 200px;
+    color: white;
+    text-shadow: 0px 3px 10px black;
   }
 }
 
 // search bar setting with abusolute position comparing with banner
 .search-bar {
   position: absolute;
-  bottom: 150px; right: 50px;
+  bottom: 150px; right: 150px;
+  #event-address { width: 24rem;
+
+  }
 }
 
-// card text relative position
+// card design in the following:
 .card-text {
   position:relative;
 }
@@ -39,5 +48,12 @@
 .card-event-home {
   border-radius: 5px;
   border:none;
-  box-shadow: 0px 0px 10px $gray;
+  box-shadow: 0px 0px 6px $gray;
+}
+
+.card-date {
+  font-size:12px;
+  opacity: 0.8;
+  position:absolute;
+  bottom: -5px; left: 15px;
 }
