@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   # yizhu: add index controler to show all events
   def index
-    @events = Events.all
+    @events = Event.all
     # authorize @Events             #Matt for pundit ?
     # @events = policy_scope(Event) #same
   end
