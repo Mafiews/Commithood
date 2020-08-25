@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'dotenv-rails', groups: [:development, :test]
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -36,6 +36,9 @@ gem 'simple_form'
 
 # pundit gem for authorizations
 gem 'pundit'
+gem 'cloudinary', '~> 1.12.0'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 
 group :development, :test do
   gem 'pry-byebug'

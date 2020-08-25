@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 
   private
 
+
   # ilana
   def set_event
     @event = Event.find(params[:id])

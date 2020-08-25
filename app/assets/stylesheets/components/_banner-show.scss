@@ -1,9 +1,10 @@
-.banner-event {
+.banner-show {
+  height: 350px;
   background-size: cover;
   padding: 350px 0;
 }
 
-.banner-event h1 {
+.banner-show h1 {
   margin: 0;
   color: #eaeff3;
   text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
@@ -11,7 +12,7 @@
   font-weight: bold;
 }
 
-.banner-event p {
+.banner-show p {
   font-size: 24px;
   color: white;
   opacity: .7;
