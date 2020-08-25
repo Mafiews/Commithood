@@ -10,7 +10,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    update?
   end
 
   def show?
