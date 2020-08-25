@@ -4,18 +4,19 @@ class EventsController < ApplicationController
 
   # yizhu: add index controler to show all events
   def index
-    authorize @events
-    # @events = Events.all
-    @events = policy_scope(Event)
-  end  
-  
-  #Ilana 
+    @events = Events.all
+    # authorize @Events             #Matt for pundit ?
+    # @events = policy_scope(Event) #same
+  end
+
+  # Ilana
   def show
     set_event
   end
 
   private
-  #ilana
+
+  # ilana
   def set_event
     @event = Event.find(params[:id])
   end
