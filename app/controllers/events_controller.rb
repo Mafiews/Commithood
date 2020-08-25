@@ -1,23 +1,23 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_event, only: [:show, :destroy]
-  
+
   # yizhu: add index controler to show all events
   def index
-    @events = Event.all
-    # authorize @events
-     # @events = policy_scope(Event)
+    @events = Events.all
+    # authorize @Events             #Matt for pundit ?
+    # @events = policy_scope(Event) #same
   end
-  
-  #Ilana 
+
+  # Ilana
   def show
     set_event
   end
 
   private
-  #ilana
+
+  # ilana
   def set_event
     @event = Event.find(params[:id])
   end
-
 end
