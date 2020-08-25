@@ -1,9 +1,23 @@
 <!-- yizhu: add a container to all elements, with a row to display two sections -->
 <div class="container">
   <div class="row">
-    <!-- section of cards for events show, 50% of the larger -->
+    <!-- yizhu: section of cards for events show, 50% of the larger -->
     <div class="col-6">
       <h3>event card will be here</h3>
+      <!-- yizhu: insert events cards here -->
+      <% @events.each do |event| %>
+        <div class="card-event-index m-3">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <div class="card-event-index-infos">
+            <div>
+              <h2><%= event.name %></h2>
+              <p><%= event.description.truncate_words(20) %></p>
+            </div>
+            <h2 class="card-event-index-date">date begin -- date end</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-index-user avatar-bordered" />
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <!-- section of map, 50% of the larger -->

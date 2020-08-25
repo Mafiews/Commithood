@@ -34,7 +34,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
-#pundit gem for authorizations
+# pundit gem for authorizations
 gem 'pundit'
 
 group :development, :test do
