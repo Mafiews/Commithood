@@ -4,6 +4,6 @@ class Cause < ApplicationRecord
   has_many :users, through: :user_causes
   has_many :ngos, through: :ngo_causes
 
-  CAUSES = ["Environnement", "Jeunesse", "Cause animale", "Précarité", "Isolement", "Personnes âgées", "Santé", "Culture", "Sport"]
+  CAUSES = ["Environnement", "Jeunesse", "Bien-être animal", "Précarité", "Isolement", "Personnes âgées", "Santé", "Culture", "Sport"]
   validates :name, inclusion: { in: CAUSES, allow_nil: false }
 end
