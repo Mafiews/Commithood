@@ -32,7 +32,7 @@ admin_user = User.create!(
   last_name: "Hood",
   address: "245 Rue Oberkampf, 75011 Paris",
   phone_number: "0612850678",
-  description: "Je suis admin du monde entier"
+  description: "Je suis admin du monde entier",
   admin: true
   )
 
