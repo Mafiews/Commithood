@@ -1,10 +1,33 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-
-      <div class="banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://d3926qxcw0e1bh.cloudfront.net/post_photos/9e/e9/9ee9ec850f5efffdbbe0544d3e6c0349.jpg.max578.jpg')">
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered">
-
-
-      </div>
+<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://d3926qxcw0e1bh.cloudfront.net/post_photos/9e/e9/9ee9ec850f5efffdbbe0544d3e6c0349.jpg.max578.jpg')">
+  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" id="avatar-ngo">
+</div>
+ <div class="d-flex" id="events-details">
+  <div class="col-8 ">
+    <h1 class="bold">
+      <%= @event.name %>
+    </h1>
+    <p> <%= @event.description %></p>
+  </div>
+    <div class="card-event col-4">
+      <h2>
+        by Revempers
+      </h2>
+      <button class="btn-outlight"> Follow</button>
+      <h3>Event date</h3>
+        <ol style="list-style-type:none;" id="ol-details">
+           <li><%= @event.start_date%></li>
+           <li><%= @event.end_date%></li>
+           <li><%= @event.address%></li>
+           <li><%= @event.seats%></li>
+         </ol>
+         <button class="btn-success">JOIN</button>
+    <!--      <#%= link_to ,  afficher le modal de levent%> -->
     </div>
   </div>
+
+
+
+
+
+
+
