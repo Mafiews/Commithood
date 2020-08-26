@@ -37,7 +37,7 @@
           <p class="card-text "><%= event.description.truncate_words(20) %></p>
           <p class="card-address"><%= event.address %></p>
           <p class="card-date ">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
-          <%= link_to "Paticiper", event_path(event), class:"btn btn-success btn-green" %>
+          <%= link_to "Participer", event_path(event), class:"btn btn-success btn-green" %>
         </div>
       </div>
     <% end %>

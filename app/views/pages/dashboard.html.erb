@@ -1,19 +1,27 @@
 <div class="container">
   <div class="d-flex">
     <div class="col-3 mt-4">
-      <!-- Kally : pending cloudinary -->
-      <%# if current_user.photo.attached? %>
-        <%#= cl_image_tag current_user.photo.key, class: "avatar-large user-photo m-3" %>
-      <%# else %>
+      <!-- Kally : user profile -->
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar-large user-photo m-3" %>
+      <% else %>
         <%= image_tag "https://oozou.com/assets/placeholder-e61f8e40396b6f3d78281bfa3b2d5ca202616f0e3f9931d451a49d4c2ddfcfea.jpg", alt: "empty-avatar", class: "avatar-large user-photo m-3" %>
-      <%# end %>
+      <% end %>
 
         <p><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
 
-        <!-- Kally : add a class and pluralize / count each item -->
+        <!-- Kally : user action counters -->
         <div class="dashboard">
-          <p><i class="fas fa-calendar-check"></i> 0 participation</p>
-          <p><i class="fas fa-bookmark"></i> 0 événement enregistré </p>
+          <p><i class="fas fa-calendar-check"></i> <%= pluralize @my_events.size, "participation" %></p>
+
+          <p><i class="fas fa-bookmark"></i> <%= @my_events.size %>
+            <% if @my_events.size > 0 %>
+              événements enregistrés
+            <% else %>
+              événement enregistré
+            <% end %>
+          </p>
+          <!-- Kally : pending follow feature -->
           <p><i class="fas fa-heart"></i> 0 association suivie</p>
         </div>
     </div>
@@ -21,24 +29,62 @@
     <div class="col-5 mt-5 dashboard">
       <!-- Kally : pending event features to count and display -->
       <h2><i class="fas fa-calendar-alt"></i> Mes événements</h2>
+
       <div class="d-flex align-items-center mr-4 dashboard">
         <h3>A venir </h3>
-        <p class="counter text-muted">(0)</p>
+        <p class="counter text-muted">(<%= @my_upcoming_events.size %>)</p>
       </div>
-      <div class="d-flex align-items-center mr-4 dashboard">
+
+      <div>
+        <% @my_upcoming_events.each do |event| %>
+          <div class="card-event-index mb-3">
+            <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
+            <div class="card-event-index-infos">
+              <div>
+                <h4><%= event.name %></h4>
+                <p><%= event.description.truncate_words(18) %></p>
+                <p class="card-event-index-date">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
+              </div>
+              <%= link_to "Détails", event_path(event), class:"btn btn-success btn-join" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="d-flex align-items-center mt-5 mr-4 dashboard">
         <h3>Terminés</h3>
-        <p class="counter text-muted">(0)</p>
+        <p class="counter text-muted">(<%= @my_past_events.size %>)</p>
       </div>
+
+      <div>
+        <% @my_past_events.each do |event| %>
+          <div class="card-event-index mb-3">
+            <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
+            <div class="card-event-index-infos">
+              <div>
+                <h4><%= event.name %></h4>
+                <p><%= event.description.truncate_words(18) %></p>
+                <p class="card-event-index-date">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
+              </div>
+              <%= link_to "Détails", event_path(event), class:"btn btn-success btn-join" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
     </div>
 
+
     <div class="col-5 mt-5 dashboard">
-      <!-- Kally : pending favorite and follow features to count and display -->
+      <!-- Kally : pending favorite and follow features to count and display cards -->
       <h2><i class="fas fa-star"></i> Mes favoris</h2>
+
       <div class="d-flex align-items-center mr-4 dashboard">
         <h3>Evénements enregistrés</h3>
         <p class="counter text-muted">(0)</p>
       </div>
-      <div class="d-flex align-items-center mr-4 dashboard">
+
+      <div class="d-flex align-items-center mt-5 mr-4 dashboard">
         <h3>Associations suivies</h3>
         <p class="counter text-muted">(0)</p>
       </div>

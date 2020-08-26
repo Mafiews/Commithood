@@ -1,26 +1,48 @@
-<h2>S'inscrire</h2>
-<!-- <h2>Sign up</h2> -->
+<div class="">
+  <div class="container pt-5" id="subscription-container">
+    <h2 class="text-center mb-5" id="subscription">S'inscrire</h2>
+      <div class="row-justify-content">
+        <div class="col-lg-12 col-sm-4 col-sm-offset-4">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                    <%= f.input :first_name, label: "Prénom" %>
+               </div>
+                </div>
+                 <div class="col-6">
+                  <div class="form-group">
+                    <%= f.input :last_name, label: "Nom de famille" %>
+                  </div>
+                </div>
+              </div>
+      <!-- <h2>Sign up</h2> -->
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+              <div class="form-inputs">
+                <%= f.input :address, label: "Adresse" %>
+                <%= f.input :phone_number, label: "Téléphone" %>
+                <%= f.input :email,
+                            required: true,
+                            autofocus: true,
+                            input_html: { autocomplete: "email" }%>
+                <%= f.input :password,
+                            required: true,
+                            hint: ("minimum #{@minimum_password_length} caractères" if @minimum_password_length),
+                            input_html: { autocomplete: "nouveau mot de passe" }, label: "Mot de passe" %>
+                <%= f.input :password_confirmation,
+                            required: true,
+                            input_html: { autocomplete: "nouveau mot de passe" }, label: "Confirmation du mot de passe" %>
+                <%= f.input :remember_me, as: :boolean, label:"Rester connecté(e)" if devise_mapping.rememberable?%>
+                <%= f.input :photo, as: :file %>
+              </div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("minimum #{@minimum_password_length} caractères" if @minimum_password_length),
-                input_html: { autocomplete: "nouveau mot de passe" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "nouveau mot de passe" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "S'inscrire" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+              <div class="form-actions">
+                <%= f.button :submit, "S'inscrire",class: "btn btn-success btn-lg w-100" %>
+              </div>
+            <% end %>
+            <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+</div>

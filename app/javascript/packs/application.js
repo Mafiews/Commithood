@@ -25,16 +25,51 @@ require("channels")
 // External imports
 import "bootstrap";
 
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 // import mapbox
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initSweetalert } from '../plugins/init_sweetalert';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  initAutocomplete()
+  initAutocomplete();
+  initSweetalert('#sweet-alert-register', {
+    title: "Participation confirmée",
+    text: "BA du jour accomplie !",
+    icon: "success"
+  }, (value) => {
+    const link = document.querySelector('#register-link');
+    if (link) {link.click()};
+  });
   initMapbox();
 });
+
+
+//sweetalert function to display fancy alerts   // Matt
+
+
+
+// example from lecture to delete a flat
+// import { initSweetalert } from '../plugins/init_sweetalert';
+// initSweetalert('#sweet-alert-demo', {
+//   title: "Are you sure?",
+//   text: "This action cannot be reversed",
+//   icon: "warning"
+// }, (value) => {
+//   if (value) {
+//     const link = document.querySelector('#delete-link');
+//     link.click();
+//   }
+// });
+
+// base method from lecture with no callback nor value
+// initSweetalert('#sweet-alert-demo', {
+//   title: "A nice alert",
+//   text: "This is a great alert, isn't it?",
+//   icon: "success"
+// });
