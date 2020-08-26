@@ -13,6 +13,7 @@ class EventsController < ApplicationController
         lng: event.lng
       }
   end
+end
 
   # Ilana
   def show
