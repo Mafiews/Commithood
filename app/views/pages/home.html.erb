@@ -34,7 +34,8 @@
         <%= cl_image_tag event.photo.key, alt: "event photo", height: 200, crop: :fill %>
         <div class="card-body">
           <h5 class="card-title"><%= event.name %></h5>
-          <p class="card-text "><%= event.description.truncate_words(50) %></p>
+          <p class="card-text "><%= event.description.truncate_words(20) %></p>
+          <p class="card-address"><%= event.address %></p>
           <p class="card-date ">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
           <%= link_to "Paticiper", event_path(event), class:"btn btn-success btn-green" %>
         </div>
