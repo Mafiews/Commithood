@@ -6,6 +6,12 @@ class EventsController < ApplicationController
   def index
     #Matt for pundit ?
     @events = policy_scope(Event).order(created_at: :desc)
+
+    @markers = @events.map do |event|
+      {
+        lat: event.lat,
+        lng: event.lng
+      }
   end
 
   # Ilana
