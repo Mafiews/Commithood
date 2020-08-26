@@ -31,25 +31,26 @@ import "bootstrap";
 
 // import mapbox
 import { initMapbox } from '../plugins/init_mapbox';
+import { initSweetalert } from '../plugins/init_sweetalert';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initSweetalert('#sweet-alert-register', {
+    title: "Participation confirmée",
+    text: "BA du jour accomplie !",
+    icon: "success"
+  }, (value) => {
+    const link = document.querySelector('#register-link');
+    if (link) {link.click()};
+  });
   initMapbox();
 });
 
 
 //sweetalert function to display fancy alerts   // Matt
-import { initSweetalert } from '../plugins/init_sweetalert';
 
-initSweetalert('#sweet-alert-register', {
-  title: "Participation confirmée",
-  text: "BA du jour accomplie !",
-  icon: "success"
-}, (value) => {
-  const link = document.querySelector('#register-link');
-  link.click();
-});
+
 
 // example from lecture to delete a flat
 // import { initSweetalert } from '../plugins/init_sweetalert';
