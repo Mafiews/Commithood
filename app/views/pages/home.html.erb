@@ -3,14 +3,15 @@
 <div class="banner-hood" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1525026198548-4baa812f1183?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1533&q=80')">
 
 <div class="app-title">
-  <h1>Commit Hood</h1>
-  <h3>Use our free time wisely to do something meaningful!</h3>
+  <h1>Commit'hood</h1>
+  <h3>Engagez-vous à deux pas de chez vous !</h3>
+  <!-- <h3>Use your free time wisely to do something meaningful!</h3> -->
 </div>
   <div class="search-bar form-inline">
   <%= form_tag events_path, method: "get" do %>
     <%= select_tag 'user-cause', options_for_select(Cause::CAUSES), class: 'form-control mt-3' %>
     <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse", class: 'form-control mt-3 ml-2' %>
-    <%= submit_tag "Recherche", class: "btn btn-success text-white ml-2 mt-3" %>
+    <%= submit_tag "Rechercher 🔍", class: "btn btn-success text-white ml-2 mt-3" %>
   <% end %>
   </div>
 </div>
@@ -18,7 +19,7 @@
 
 <!-- yizhu create 3 cards to show the lastest 3 events registed under the banner, in form of card -->
 <div class="container event-cards mt-3">
-  <h3>En ce moment...</h3>
+  <h3>Un peu d'inspiration 💭</h3>
   <div class="row justify-content-around">
     <% @events.each do |event| %>
       <div class="card card-event-home" style="width: 18rem;">
