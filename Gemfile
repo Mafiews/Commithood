@@ -36,10 +36,10 @@ gem 'simple_form'
 
 # pundit gem for authorizations
 gem 'pundit'
-gem 'cloudinary', '~> 1.12.0'
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 gem 'geocoder'
 
+gem 'cloudinary', '~> 1.16.1'
 
 group :development, :test do
   gem 'pry-byebug'
