@@ -14,11 +14,11 @@ class EventsController < ApplicationController
       }
     end
   end
-end
 
   # Ilana
   def show
     set_event
+    @participation = Participation.new
   end
 
   private

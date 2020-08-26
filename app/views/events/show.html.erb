@@ -22,7 +22,7 @@
              <li><%= @event.seats%></li>
           </ol>
           <button class="btn-success">PARTICIPER</button>
-          <%#= link_to "Participer", event_participations_path(@event) %>
+          <%= link_to "Participer", event_participations_path(@event), method: :post %>
       </div>
     </div>
 
