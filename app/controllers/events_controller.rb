@@ -14,6 +14,7 @@ class EventsController < ApplicationController
       }
     end
   end
+end
 
   # Ilana
   def show
