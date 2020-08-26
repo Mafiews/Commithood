@@ -31,11 +31,13 @@ import "bootstrap";
 
 // import mapbox
 import { initMapbox } from '../plugins/init_mapbox';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initSweetalert } from '../plugins/init_sweetalert';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initAutocomplete();
   initSweetalert('#sweet-alert-register', {
     title: "Participation confirmée",
     text: "BA du jour accomplie !",
