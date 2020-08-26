@@ -25,24 +25,6 @@ require("channels")
 // External imports
 import "bootstrap";
 
-//sweetalert function to display fancy alerts   // Matthieu
-import { initSweetalert } from '../plugins/init_sweetalert';
-
-initSweetalert('#sweet-alert-demo', {
-  title: "A nice alert",
-  text: "This is a great alert, isn't it?",
-  icon: "success"
-}, (value) => {
-  console.log(value);
-});
-
-// base method with no callback nor value
-// initSweetalert('#sweet-alert-demo', {
-//   title: "A nice alert",
-//   text: "This is a great alert, isn't it?",
-//   icon: "success"
-// });
-
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -55,3 +37,36 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
 });
+
+
+//sweetalert function to display fancy alerts   // Matt
+import { initSweetalert } from '../plugins/init_sweetalert';
+
+initSweetalert('#sweet-alert-register', {
+  title: "Participation confirmée",
+  text: "BA du jour accomplie !",
+  icon: "success"
+}, (value) => {
+  const link = document.querySelector('#register-link');
+  link.click();
+});
+
+// example from lecture to delete a flat
+// import { initSweetalert } from '../plugins/init_sweetalert';
+// initSweetalert('#sweet-alert-demo', {
+//   title: "Are you sure?",
+//   text: "This action cannot be reversed",
+//   icon: "warning"
+// }, (value) => {
+//   if (value) {
+//     const link = document.querySelector('#delete-link');
+//     link.click();
+//   }
+// });
+
+// base method from lecture with no callback nor value
+// initSweetalert('#sweet-alert-demo', {
+//   title: "A nice alert",
+//   text: "This is a great alert, isn't it?",
+//   icon: "success"
+// });
