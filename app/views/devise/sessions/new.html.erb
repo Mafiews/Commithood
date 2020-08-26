@@ -12,8 +12,8 @@
                               input_html: { autocomplete: "email" } %>
                   <%= f.input :password,
                               required: false,
-                              input_html: { autocomplete: "mot de passe" } %>
-                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                              input_html: { autocomplete: "mot de passe" }, label:"Mot de passe" %>
+                  <%= f.input :remember_me, as: :boolean, label: "Rester connecté(e)" if devise_mapping.rememberable? %>
                     <div class="form-actions">
                       <%= f.button :submit, "C'est parti ! 💪", class: "btn btn-success btn-lg w-100"%>
                     </div>
