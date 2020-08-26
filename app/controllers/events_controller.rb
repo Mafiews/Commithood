@@ -5,13 +5,14 @@ class EventsController < ApplicationController
   # yizhu: add index controler to show all events
   def index
     #Matt for pundit ?
-    @events = policy_scope(Event).order(created_at: :desc)
+    @events = policy_scope(Event).geocoded.order(created_at: :desc)
 
     @markers = @events.map do |event|
       {
-        lat: event.lat,
-        lng: event.lng
+        lat: event.latitude,
+        lng: event.longitude
       }
+    end
   end
 
   # Ilana
