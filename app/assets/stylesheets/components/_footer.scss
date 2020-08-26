@@ -6,6 +6,12 @@
   height: 100px;
   padding: 0px 50px;
   color: $dark-green;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
 }
 .footer-links {
   display: flex;
@@ -24,3 +30,5 @@
 .footer .fa-heart {
   color: $red;
 }
+
+

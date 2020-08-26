@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :ngo
+  has_one_attached :photo
   has_many :participations
   has_many :users, through: :participations
 
