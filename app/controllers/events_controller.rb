@@ -12,6 +12,7 @@ class EventsController < ApplicationController
         lat: event.lat,
         lng: event.lng
       }
+    end
   end
 
   # Ilana
@@ -20,7 +21,6 @@ class EventsController < ApplicationController
   end
 
   private
-
 
   # ilana
   def set_event
