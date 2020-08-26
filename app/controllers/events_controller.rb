@@ -19,5 +19,6 @@ class EventsController < ApplicationController
   # ilana
   def set_event
     @event = Event.find(params[:id])
+    authorize @event
   end
 end
