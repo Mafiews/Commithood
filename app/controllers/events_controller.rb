@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def index
     #Matt for pundit ?
     @address = params[:address]
-    @events = policy_scope(Event).includes(:causes)
+    @events = policy_scope(Event)
 
     if params[:user_cause].present? && (params[:user_cause] != "Tous les thèmes") && (params[:address].present?)
       @causes = params[:user_cause]
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
   def filter_events_address_cause(events, causes, address)
     filter_events = []
       causes.each do |cause|
-        events.near(@address, 5).select {|event| select_event << event.causes.include?(cause)}
+        events.near(@address, 5).select {|event| select_event << event.tag_with.include?(cause)}
       end
     filtered_events
   end
