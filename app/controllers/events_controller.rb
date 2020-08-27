@@ -6,18 +6,16 @@ class EventsController < ApplicationController
   def index
     #Matt for pundit ?
     @address = params[:address]
-    @events = policy_scope(Event)
+    @causes = params[:user_cause]
 
     if params[:user_cause].present? && (params[:user_cause] != "Tous les thèmes") && (params[:address].present?)
-      @causes = params[:user_cause]
-      @events = filter_events_address_cause(@events, @causes, @address)
+      @events = policy_scope(Event).geocoded.near(@address, 5).tagged_with(@causes, any: true)
 
     elsif params[:user_cause].present? && (params[:user_cause] != "Tous les thèmes")
-      @causes = params[:user_cause]
-      @events = filter_events_cause(@events, @causes)
+      @events = policy_scope(Event).geocoded.tagged_with(@causes, any: true)
 
     elsif params[:address].present?
-      @events = @events.near(@address, 5)
+      @events = policy_scope(Event).geocoded.near(@address, 5)
 
     else
       @events = policy_scope(Event).geocoded.order(created_at: :desc)
@@ -51,13 +49,6 @@ class EventsController < ApplicationController
   end
 
   #Yizhu
-  def filter_events_address_cause(events, causes, address)
-    filter_events = []
-      causes.each do |cause|
-        events.near(@address, 5).select {|event| select_event << event.tag_with.include?(cause)}
-      end
-    filtered_events
-  end
 
   def filter_events_cause(events, causes)
     filter_events = []
