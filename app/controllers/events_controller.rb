@@ -65,7 +65,8 @@ class EventsController < ApplicationController
         @events.where(causes: cause)
       end
     filtered_events
-    
+  end
+
   # Kally
   def seats_left
     @events.each do |event|
@@ -78,5 +79,5 @@ class EventsController < ApplicationController
       event.save
     end
   end
-    
+
 end
