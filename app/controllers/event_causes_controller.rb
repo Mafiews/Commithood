@@ -1,0 +1,2 @@
+class EventCausesController < ApplicationController
+end
