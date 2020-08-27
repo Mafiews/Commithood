@@ -13,7 +13,7 @@
       </div>
         <div class="search-bar form-inline mt-5">
         <%= form_tag events_path, method: "get" do %>
-          <%= select_tag 'user-cause', options_for_select(Cause::CAUSES), class: 'form-control mt-3' %>
+          <%= select_tag :user_cause, options_for_select(Cause::CAUSES), class: 'form-control mt-3', :multiple => true %>
           <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse", class: 'form-control mt-3 ml-2' %>
           <%= submit_tag "Rechercher 🔍", class: "btn btn-success text-white ml-2 mt-3" %>
         <% end %>
