@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  respond_to :html
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_event, only: [:show, :destroy]
 
@@ -38,6 +39,18 @@ class EventsController < ApplicationController
   # Ilana
   def show
     @participation = Participation.new
+  end
+
+  def like
+    set_event
+    @event.liked_by current_user
+    redirect_to events_path
+  end
+
+  def unlike
+    set_event
+    @event.unliked_by current_user
+    redirect_to events_path
   end
 
   private

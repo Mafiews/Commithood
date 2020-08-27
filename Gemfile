@@ -36,12 +36,15 @@ gem 'simple_form'
 gem 'rails_admin', '~> 2.0'
 gem 'rails-i18n', '~> 6.0.0'
 
+
 # pundit gem for authorizations // Matt
 gem 'pundit'
 
 gem 'geocoder'
 
 gem 'cloudinary', '~> 1.16.1'
+gem 'acts_as_votable'
+
 
 # gem act as taggable to add categories to events // Matt
 # documentation: https://github.com/mbleigh/acts-as-taggable-on

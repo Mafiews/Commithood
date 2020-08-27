@@ -36,6 +36,14 @@ class ApplicationPolicy
     false
   end
 
+  def like?
+    false
+  end
+
+  def unlike?
+    false
+  end
+
   class Scope
     attr_reader :user, :scope
 

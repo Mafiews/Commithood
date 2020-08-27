@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  acts_as_votable cacheable_strategy: :update_columns
+
   belongs_to :ngo
   has_one_attached :photo
   has_many :participations
