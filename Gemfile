@@ -34,12 +34,15 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
-# pundit gem for authorizations
+# pundit gem for authorizations // Matt
 gem 'pundit'
 
 gem 'geocoder'
 
 gem 'cloudinary', '~> 1.16.1'
+
+# gem act as taggable to add categories to events // Matt
+gem 'acts-as-taggable-on', '~> 6.5'
 
 group :development, :test do
   gem 'pry-byebug'
