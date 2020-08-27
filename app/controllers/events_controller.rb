@@ -23,6 +23,10 @@ class EventsController < ApplicationController
       @events = policy_scope(Event).geocoded.order(created_at: :desc)
     end
 
+    # Kally
+    @participations = Participation.all
+    seats_left # private method below to count seats_left
+
     @markers = @events.map do |event|
       {
         lat: event.latitude,
@@ -34,7 +38,6 @@ class EventsController < ApplicationController
 
   # Ilana
   def show
-    set_event
     @participation = Participation.new
   end
 
@@ -46,6 +49,7 @@ class EventsController < ApplicationController
     authorize @event
   end
 
+  #Yizhu
   def filter_events_address_cause(events, causes, address)
     filter_events = []
       causes.each do |cause|
@@ -60,5 +64,18 @@ class EventsController < ApplicationController
         @events.where(causes: cause)
       end
     filtered_events
+    
+  # Kally
+  def seats_left
+    @events.each do |event|
+      if Participation.where(event_id: event.id)
+        event_participations = Participation.where(event_id: event.id)
+        event.seats_left = event.seats - event_participations.size
+      else
+        event.seats_left = event.seats
+      end
+      event.save
+    end
   end
+    
 end

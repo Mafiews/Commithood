@@ -15,7 +15,7 @@
            <li><%= @event.start_date%></li>
            <li><%= @event.end_date%></li>
            <li><%= @event.address%></li>
-           <li>Places disponibles : <%= @event.seats%></li>
+           <li>Places disponibles : <%= @event.seats_left%></li>
         </ol>
         <button id="sweet-alert-register" class="btn btn-primary">Participer</button>
         <%= link_to "", event_participations_path(@event), method: :post, id: "register-link", remote: true, class: "hidden" %>
