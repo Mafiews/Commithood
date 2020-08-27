@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def index
     #Matt for pundit ?
     @address = params[:address]
-    @events = policy_scope(Event).include(:causes)
+    @events = policy_scope(Event).includes(:causes)
 
     if params[:user_cause].present? && (params[:user_cause] != "Tous les thèmes") && (params[:address].present?)
       @causes = params[:user_cause]
