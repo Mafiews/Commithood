@@ -36,8 +36,14 @@
           <h5 class="card-title"><%= event.name %></h5>
           <p class="card-text "><%= event.description.truncate_words(20) %></p>
           <p class="card-address"><%= event.address %></p>
-          <p class="card-date ">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
-          <%= link_to "Participer", event_path(event), class:"btn btn-success btn-green" %>
+          <p><% if event.start_date.to_date == event.end_date.to_date %>
+          Date : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+          <% else %>
+          Dates : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+          <% end %>
+          </p>
+          <p>Places disponibles : <%= event.seats_left %></p>
+          <%= link_to "Détails", event_path(event), class:"btn btn-success btn-green" %>
         </div>
       </div>
     <% end %>
