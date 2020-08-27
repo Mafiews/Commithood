@@ -14,12 +14,12 @@
         <div class="dashboard">
           <p><i class="fas fa-calendar-check"></i> <%= pluralize @my_events.size, "participation" %></p>
 
-          <p><i class="fas fa-bookmark"></i> <%= @my_events.size %>
-            <% if @my_events.size > 0 %>
-              événements enregistrés
-            <% else %>
-              événement enregistré
-            <% end %>
+          <p><i class="fas fa-bookmark"></i> 0 événement enregistré
+            <%# if ... > 0 %>
+              <!-- événements enregistrés -->
+            <%# else %>
+              <!-- événement enregistré -->
+            <%# end %>
           </p>
           <!-- Kally : pending follow feature -->
           <p><i class="fas fa-heart"></i> 0 association suivie</p>

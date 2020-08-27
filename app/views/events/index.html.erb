@@ -24,6 +24,7 @@
               <p><%= event.description.truncate_words(18) %></p>
               <p class="event-address"><%= event.address %></p>
               <p class="card-event-index-date">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
+              <p>Places disponibles: <%= event.seats_left %></p>
             </div>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-index-user avatar-bordered" />
             <%= link_to "Participer", event_path(event), class:"btn btn-success btn-join" %>
