@@ -10,6 +10,7 @@ class EventsController < ApplicationController
     # Kally
     @participations = Participation.all
     seats_left # private method below to count seats_left
+    # fr_datetime
 
     @markers = @events.map do |event|
       {

@@ -34,6 +34,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'rails_admin', '~> 2.0'
+gem 'rails-i18n', '~> 6.0.0'
 
 # pundit gem for authorizations
 gem 'pundit'
