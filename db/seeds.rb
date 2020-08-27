@@ -101,7 +101,8 @@ event_1 = Event.create!(
   start_date: DateTime.new(2020,7,1,9),
   end_date: DateTime.new(2020,7,31,18),
   description: "Le concept est simple et basé sur la confiance : ramassez par-ci par-là ce qui est abandonné un peu partout dans la nature, pesez vos trouvailles avant d'en faire bon usage (jeter à la poubelle ce qui doit être jeté, mettez au recyclage ce qui peut être recyclé, donnez ce qui peut être réparé, etc. Envoyez nous au plus tard le 30.09.2020 le cumule en kg de tout ce que vous avez ramassé dans la nature pendant le mois.",
-  seats: "50",
+  seats: 50,
+  seats_left: 50,
   address: "13 Place du Pont Neuf, 75001 Paris",
   ngo_id: ngo_1.id
 )
@@ -116,7 +117,8 @@ event_2 = Event.create!(
  start_date: DateTime.new(2020,8,25,14),
  end_date: DateTime.new(2020,8,25,18),
  description: "Objectif : sensibiliser le plus grand nombre sur la protection de l'environnement et les changements climatiques. Agissons ensemble dès à présent !",
- seats: "20",
+ seats: 20,
+ seats_left: 20,
  address: "2 Rue Perrée, 75003 Paris",
  ngo_id: ngo_1.id
 )
@@ -131,7 +133,8 @@ event_3 = Event.create!(
  start_date: DateTime.new(2020,9,4,9),
  end_date: DateTime.new(2020,9,4,12),
  description: "Cette année, 15 éco-gestes seront proposés pendant 15 jours pour réduire notre consommation de plastique et faire pression sur les fabricants. Nous avons besoin de vous, chers bénévoles, pour faire vivre notre action de sensibilsation et de mobilisation autour de la lutte contre la pollution plastique.",
- seats: "15",
+ seats: 15,
+ seats_left: 15,
  address: "11 Port de la Rapée, 75012 Paris",
  ngo_id: ngo_1.id
 )
@@ -146,7 +149,8 @@ event_4 = Event.create!(
  start_date: DateTime.new(2020,8,24,15),
  end_date: DateTime.new(2020,8,24,17),
  description: "Vous souhaitez vous engager dans une association ? Venez nous aider à organiser cette table ronde autour du service civique.",
- seats: "5",
+ seats: 5,
+ seats_left: 5,
  address: "6 rue de la Comète, 75007 Paris",
  ngo_id: ngo_4.id
 )
@@ -161,7 +165,8 @@ event_5 = Event.create!(
  start_date: DateTime.new(2020,10,1,8),
  end_date: DateTime.new(2020,10,4,19),
  description: "Engagez-vous pour la recherche contre le cancer. Nous avons besoin de volontaires pour tenir les stands d'enregistrement et ravitaillement.",
- seats: "50",
+ seats: 50,
+ seats_left: 50,
  address: "2 route de la ferme, 75012 Paris",
  ngo_id: ngo_3.id
 )
@@ -176,7 +181,8 @@ event_6 = Event.create!(
  start_date: DateTime.new(2020,9,8,14),
  end_date: DateTime.new(2020,9,8,16),
  description: "Venez partager vos connaissances en recherche d'emploi : CV, entretien, etc.",
- seats: "10",
+ seats: 10,
+ seats_left: 10,
  address: "24 rue de la Solidarité, 75019 Paris",
  ngo_id: ngo_4.id
 )
@@ -191,7 +197,8 @@ event_7 = Event.create!(
  start_date: DateTime.new(2020,9,13,10),
  end_date: DateTime.new(2020,9,13,12),
  description: "Venez encadrer un cours de danse pour de jeunes adolescentes dans des quartiers défavorisés.",
- seats: "5",
+ seats: 5,
+ seats_left: 5,
  address: "50 rue Rambuteau, 75003 Paris",
  ngo_id: ngo_2.id
 )
@@ -206,7 +213,8 @@ event_8 = Event.create!(
  start_date: DateTime.new(2020,9,5,14),
  end_date: DateTime.new(2020,9,5,18),
  description: "Donnez des cours de tennis pour de jeunes débutants",
- seats: "5",
+ seats: 5,
+ seats_left: 5,
  address: "101 rue de la station, 93700 Drancy",
  ngo_id: ngo_2.id
 )
