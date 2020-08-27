@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_voter
   has_many :user_causes
   has_many :participations, dependent: :destroy
   has_many :events, through: :participations

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :events, only: [:destroy, :show, :index, :new, :create] do
     resources :participations, only: [:create]
+    member do
+      put "like", to: 'events#like'
+      put 'unlike', to: 'events#unlike'
+    end
   end
 
   get 'dashboard', to: 'pages#dashboard'

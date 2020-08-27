@@ -14,8 +14,8 @@
         <div class="dashboard">
           <p><i class="fas fa-calendar-check"></i> <%= pluralize @my_events.size, "participation" %></p>
 
-          <p><i class="fas fa-bookmark"></i> <%= @my_events.size %>
-            <% if @my_events.size > 0 %>
+          <p><i class="fas fa-bookmark"></i> <%= @events_liked.size %>
+            <% if @events_liked.size > 0 %>
               événements enregistrés
             <% else %>
               événement enregistré
@@ -81,6 +81,9 @@
 
       <div class="d-flex align-items-center mr-4 dashboard">
         <h3>Evénements enregistrés</h3>
+        <% @events_liked.each do |event| %>
+          <%= event.name %>
+        <% end %>
         <p class="counter text-muted">(0)</p>
       </div>
 

@@ -34,12 +34,15 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+
 # pundit gem for authorizations
 gem 'pundit'
 
 gem 'geocoder'
 
 gem 'cloudinary', '~> 1.16.1'
+gem 'acts_as_votable'
+
 
 group :development, :test do
   gem 'pry-byebug'

@@ -24,4 +24,12 @@ class EventPolicy < ApplicationPolicy
   def destroy?
     @record.user == @user || @user.admin
   end
+
+  def like?
+    user
+  end
+
+  def unlike?
+    user
+  end
 end

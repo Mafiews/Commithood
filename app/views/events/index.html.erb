@@ -15,9 +15,22 @@
   <div class="row mt-3">
     <div class="col-6">
       <!-- yizhu: insert events cards here -->
-      <% @events.each do |event| %>
         <div class="card-event-index m-3">
-          <%= cl_image_tag event.photo.key, alt: "event photo", height: 200, crop: :fill %>
+          <% @events.each do |event| %>
+            <%= cl_image_tag event.photo.key, alt: "event photo", height: 200, crop: :fill %>
+            <% if current_user.liked? event %>
+              <div>
+                <%= link_to unlike_event_path(event), class: "unlike-event", remote: :true, method: :put do %>
+                  <i class="fas fa-bookmark" id="unlike"></i>
+                <% end %>
+              </div>
+            <% else %>
+              <div>
+                <%= link_to like_event_path(event), class: "Intéressé", remote: :true, method: :put do %>
+                  <i class="far fa-bookmark" id="like-event"></i>
+                <% end %>
+              </div>
+            <% end  %>
           <div class="card-event-index-infos">
             <div>
               <h2><%= event.name %></h2>
@@ -28,8 +41,8 @@
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-event-index-user avatar-bordered" />
             <%= link_to "Participer", event_path(event), class:"btn btn-success btn-join" %>
           </div>
+         <% end %>
         </div>
-      <% end %>
     </div>
 
 

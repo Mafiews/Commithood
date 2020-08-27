@@ -19,5 +19,7 @@ class PagesController < ApplicationController
     end
     @my_upcoming_events
     @my_past_events
+
+    @events_liked = current_user.find_liked_items
   end
 end
