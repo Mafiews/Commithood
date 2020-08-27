@@ -43,6 +43,7 @@ gem 'geocoder'
 gem 'cloudinary', '~> 1.16.1'
 
 # gem act as taggable to add categories to events // Matt
+# documentation: https://github.com/mbleigh/acts-as-taggable-on
 gem 'acts-as-taggable-on', '~> 6.5'
 
 group :development, :test do
