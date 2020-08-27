@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_095137) do
+
+ActiveRecord::Schema.define(version: 2020_08_27_122621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +41,15 @@ ActiveRecord::Schema.define(version: 2020_08_27_095137) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "event_causes", force: :cascade do |t|
+    t.bigint "cause_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cause_id"], name: "index_event_causes_on_cause_id"
+    t.index ["event_id"], name: "index_event_causes_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -92,6 +102,33 @@ ActiveRecord::Schema.define(version: 2020_08_27_095137) do
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "user_causes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "cause_id", null: false
@@ -136,11 +173,14 @@ ActiveRecord::Schema.define(version: 2020_08_27_095137) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "event_causes", "causes"
+  add_foreign_key "event_causes", "events"
   add_foreign_key "events", "ngos"
   add_foreign_key "ngo_causes", "causes"
   add_foreign_key "ngo_causes", "ngos"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
+  add_foreign_key "taggings", "tags"
   add_foreign_key "user_causes", "causes"
   add_foreign_key "user_causes", "users"
 end

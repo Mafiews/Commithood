@@ -101,10 +101,13 @@ event_1 = Event.create!(
   start_date: DateTime.new(2020,7,1,9),
   end_date: DateTime.new(2020,7,31,18),
   description: "Le concept est simple et basé sur la confiance : ramassez par-ci par-là ce qui est abandonné un peu partout dans la nature, pesez vos trouvailles avant d'en faire bon usage (jeter à la poubelle ce qui doit être jeté, mettez au recyclage ce qui peut être recyclé, donnez ce qui peut être réparé, etc. Envoyez nous au plus tard le 30.09.2020 le cumule en kg de tout ce que vous avez ramassé dans la nature pendant le mois.",
-  seats: "50",
+  seats: 50,
+  seats_left: 50,
   address: "13 Place du Pont Neuf, 75001 Paris",
   ngo_id: ngo_1.id
 )
+event_1.tag_list = "Environnement"
+event_1.save
 img1 = URI.open('https://cdn-lejdd.lanmedia.fr/var/europe1/storage/images/lejdd/ecologie/pollution/pollution-la-premiere-competition-de-ramassage-des-dechets-se-deroule-demain-a-marseille-3901599/53092190-1-fre-FR/Pollution-la-premiere-competition-de-ramassage-des-dechets-se-deroule-demain-a-Marseille.jpg')
 event_1.photo.attach(io: img1, filename: "event_#{event_1.id}.jpg", content_type: "image/png")
 
@@ -115,10 +118,13 @@ event_2 = Event.create!(
  start_date: DateTime.new(2020,8,25,14),
  end_date: DateTime.new(2020,8,25,18),
  description: "Objectif : sensibiliser le plus grand nombre sur la protection de l'environnement et les changements climatiques. Agissons ensemble dès à présent !",
- seats: "20",
+ seats: 20,
+ seats_left: 20,
  address: "2 Rue Perrée, 75003 Paris",
  ngo_id: ngo_1.id
 )
+event_2.tag_list = "Environnement, Santé"
+event_2.save
 img2 = URI.open('https://blog.pollutec.com/wp-content/uploads/2020/04/1024x634_protection-de-lenvironnement.jpg')
 event_2.photo.attach(io: img2, filename: "event#{event_2.id}.jpg", content_type: "image/png")
 
@@ -129,10 +135,13 @@ event_3 = Event.create!(
  start_date: DateTime.new(2020,9,4,9),
  end_date: DateTime.new(2020,9,4,12),
  description: "Cette année, 15 éco-gestes seront proposés pendant 15 jours pour réduire notre consommation de plastique et faire pression sur les fabricants. Nous avons besoin de vous, chers bénévoles, pour faire vivre notre action de sensibilsation et de mobilisation autour de la lutte contre la pollution plastique.",
- seats: "15",
+ seats: 15,
+ seats_left: 15,
  address: "11 Port de la Rapée, 75012 Paris",
  ngo_id: ngo_1.id
 )
+event_3.tag_list = "Environnement, Culture, Santé"
+event_3.save
 img3 = URI.open('https://www.ici-londres.com/data/img/thumbs/thaoss-no-plastic-200722-100504.jpg')
 event_3.photo.attach(io: img3, filename: "event#{event_3.id}.jpg", content_type: "image/png")
 
@@ -143,10 +152,13 @@ event_4 = Event.create!(
  start_date: DateTime.new(2020,8,24,15),
  end_date: DateTime.new(2020,8,24,17),
  description: "Vous souhaitez vous engager dans une association ? Venez nous aider à organiser cette table ronde autour du service civique.",
- seats: "5",
+ seats: 5,
+ seats_left: 5,
  address: "6 rue de la Comète, 75007 Paris",
  ngo_id: ngo_4.id
 )
+event_4.tag_list = "Isolement, Précarité"
+event_4.save
 img4 = URI.open('https://cafedesimages.fr/wp-content/uploads/2018/01/cafe-citoyen-e1516469602783-1300x605.jpg')
 event_4.photo.attach(io: img4, filename: "event#{event_4.id}.jpg", content_type: "image/png")
 
@@ -157,10 +169,13 @@ event_5 = Event.create!(
  start_date: DateTime.new(2020,10,1,8),
  end_date: DateTime.new(2020,10,4,19),
  description: "Engagez-vous pour la recherche contre le cancer. Nous avons besoin de volontaires pour tenir les stands d'enregistrement et ravitaillement.",
- seats: "50",
+ seats: 50,
+ seats_left: 50,
  address: "2 route de la ferme, 75012 Paris",
  ngo_id: ngo_3.id
 )
+event_5.tag_list = "Environnement, Santé, Sport"
+event_5.save
 img5 = URI.open('http://www.u-run.fr/wp-content/uploads/2015/06/10488119_1064186336943033_6425489115595270322_n.jpg')
 event_5.photo.attach(io: img5, filename: "event#{event_5.id}.jpg", content_type: "image/png")
 
@@ -171,10 +186,13 @@ event_6 = Event.create!(
  start_date: DateTime.new(2020,9,8,14),
  end_date: DateTime.new(2020,9,8,16),
  description: "Venez partager vos connaissances en recherche d'emploi : CV, entretien, etc.",
- seats: "10",
+ seats: 10,
+ seats_left: 10,
  address: "24 rue de la Solidarité, 75019 Paris",
  ngo_id: ngo_4.id
 )
+event_6.tag_list = "Précarité, Isolement, Formation"
+event_6.save
 img6 = URI.open('http://www.yonne.gouv.fr/var/ide_site/storage/images/politiques-publiques/economie-et-emploi/emploi/les-contrats-aides/96875-3-fre-FR/Les-contrats-aides_large.jpg')
 event_6.photo.attach(io: img6, filename: "event#{event_6.id}.jpg", content_type: "image/png")
 
@@ -185,10 +203,13 @@ event_7 = Event.create!(
  start_date: DateTime.new(2020,9,13,10),
  end_date: DateTime.new(2020,9,13,12),
  description: "Venez encadrer un cours de danse pour de jeunes adolescentes dans des quartiers défavorisés.",
- seats: "5",
+ seats: 5,
+ seats_left: 5,
  address: "50 rue Rambuteau, 75003 Paris",
  ngo_id: ngo_2.id
 )
+event_7.tag_list = "Isolement, Jeunesse, Santé, Culture, Sport"
+event_7.save
 img7 = URI.open('https://shoelifer.com/wp-content/uploads/2019/10/Shoelifer-Une-spot-beaute-studio-7-danse-urbaine-hip-hop-casablanca-2019.jpg')
 event_7.photo.attach(io: img7, filename: "event#{event_7.id}.jpg", content_type: "image/png")
 
@@ -199,10 +220,13 @@ event_8 = Event.create!(
  start_date: DateTime.new(2020,9,5,14),
  end_date: DateTime.new(2020,9,5,18),
  description: "Donnez des cours de tennis pour de jeunes débutants",
- seats: "5",
+ seats: 5,
+ seats_left: 5,
  address: "101 rue de la station, 93700 Drancy",
  ngo_id: ngo_2.id
 )
+event_8.tag_list = "Jeunesse, Santé, Sport, Formation"
+event_8.save
 img8 = URI.open('https://www.fft.fr/sites/default/files/styles/image_16_9/public/20180623_cf_fs_0057_web.jpg?h=18143cfe&itok=_0-9b92k')
 event_8.photo.attach(io: img8, filename: "event#{event_8.id}.jpg", content_type: "image/png")
 

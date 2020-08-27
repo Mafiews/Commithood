@@ -13,7 +13,7 @@
       </div>
         <div class="search-bar form-inline mt-5">
         <%= form_tag events_path, method: "get" do %>
-          <%= select_tag 'user-cause', options_for_select(Cause::CAUSES), class: 'form-control mt-3' %>
+          <%= select_tag :user_cause, options_for_select(Cause::CAUSES), class: 'form-control mt-3', :multiple => true %>
           <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse", class: 'form-control mt-3 ml-2' %>
           <%= submit_tag "Rechercher 🔍", class: "btn btn-success text-white ml-2 mt-3" %>
         <% end %>
@@ -49,8 +49,14 @@
           <h5 class="card-title"><%= event.name %></h5>
           <p class="card-text "><%= event.description.truncate_words(20) %></p>
           <p class="card-address"><%= event.address %></p>
-          <p class="card-date ">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
-          <%= link_to "Participer", event_path(event), class:"btn btn-success btn-green" %>
+          <p><% if event.start_date.to_date == event.end_date.to_date %>
+          Date : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+          <% else %>
+          Dates : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+          <% end %>
+          </p>
+          <p>Places disponibles : <%= event.seats_left %></p>
+          <%= link_to "Détails", event_path(event), class:"btn btn-success btn-green" %>
         </div>
       </div>
     <% end %>

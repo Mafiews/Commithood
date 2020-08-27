@@ -12,13 +12,26 @@
       <button class="btn-outlight"> Suivre</button>
       <h3>Infos pratiques</h3>
         <ol style="list-style-type:none;" id="ol-details">
-           <li><%= @event.start_date%></li>
-           <li><%= @event.end_date%></li>
-           <li><%= @event.address%></li>
-           <li>Places disponibles : <%= @event.seats%></li>
+          <li><i class="fas fa-map-marker-alt"></i> <%= @event.address%></li>
+          <li><i class="far fa-calendar-alt"></i>
+          <% if @event.start_date.to_date == @event.end_date.to_date %>
+          <%= I18n.l(@event.start_date, locale: :fr) %> - <%= I18n.l @event.end_date, locale: :fr, format: :hours %>
+          <% else %>
+          <%= I18n.l(@event.start_date, locale: :fr) %> - <%= I18n.l(@event.end_date, locale: :fr) %>
+          <% end %>
+          </li>
+          <li>Places disponibles : <%= @event.seats_left%></li>
         </ol>
-        <button id="sweet-alert-register" class="btn btn-primary">Participer</button>
-        <%= link_to "", event_participations_path(@event), method: :post, id: "register-link", remote: true, class: "hidden" %>
+        <% if @event.seats_left.zero? %>
+          <button class="btn btn-danger">Complet</button>
+        <% elsif current_user && current_user.events.find(@event.id) %>
+          <button class="btn btn-success">Inscrit ✅</button>
+        <% elsif current_user %>
+          <button id="sweet-alert-register" class="btn btn-primary">Participer</button>
+          <%= link_to "", event_participations_path(@event), method: :post, id: "register-link sweet-alert-register", remote: true, class: "hidden" %>
+        <% else %>
+          <%= link_to "Participer", event_participations_path(@event), method: :post, id: "register-link", class: "btn btn-primary" %>
+        <% end %>
     </div>
   </div>
 </div>

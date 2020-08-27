@@ -1,3 +1,5 @@
+// Matt: add init_sweetalert
+
 import swal from 'sweetalert';
 
 const initSweetalert = (selector, options = {}, callback = () => {}) => {
