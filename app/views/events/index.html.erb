@@ -20,21 +20,23 @@
           <% @events.each do |event| %>
         <!-- Ilana like bookmark -->
             <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
-            <% if current_user.liked? event %>
-              <div>
+            <div>
+            <% if user_signed_in?  %>
+              <% if current_user.liked? event %>
                 <%= link_to unlike_event_path(event), class: "unlike-event", remote: :true, method: :put do %>
                   <i class="fas fa-bookmark" id="unlike"></i>
                 <% end %>
-              </div>
-            <% else %>
-              <div>
-                <%= link_to like_event_path(event), class: "Intéressé", remote: :true, method: :put do %>
+               <% else %>
+                  <%= link_to like_event_path(event), class: "Intéressé", remote: :true, method: :put do %>
                   <i class="far fa-bookmark" id="like-event"></i>
                 <% end %>
-              </div>
-            <% end  %>
+              <% end  %>
+            <% else %>
+              <i class="far fa-bookmark" id="like-event"></i>
+            <% end %>
+            </div>
            <!-- Ilana like bookmark end -->
-             
+
           <div class="card-event-index-infos">
             <div>
               <h2><%= event.name %></h2>

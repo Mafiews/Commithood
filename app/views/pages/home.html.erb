@@ -32,19 +32,21 @@
     <% @events.each do |event| %>
       <div class="card card-event-home" style="width: 18rem;">
         <%= cl_image_tag event.photo.key, alt: "event photo", height: 200, crop: :fill %>
-        <% if current_user.liked? event %>
-          <div>
-            <%= link_to unlike_event_path(event), class: "unlike-event", remote: :true, method: :put do %>
-              <i class="fas fa-bookmark" id="unlike"></i>
+        <div>
+          <% if user_signed_in? %>
+            <% if current_user.liked? event %>
+              <%= link_to unlike_event_path(event), class: "unlike-event", remote: :true, method: :put do %>
+                <i class="fas fa-bookmark" id="unlike"></i>
+              <% end %>
+            <% else %>
+              <%= link_to like_event_path(event), class: "Intéressé", remote: :true, method: :put do %>
+                <i class="far fa-bookmark" id="like-event"></i>
+              <% end %>
             <% end %>
-          </div>
-        <% else %>
-          <div>
-            <%= link_to like_event_path(event), class: "Intéressé", remote: :true, method: :put do %>
-              <i class="far fa-bookmark" id="like-event"></i>
-            <% end %>
-          </div>
-            <% end  %>
+            <% else %>
+            <i class="far fa-bookmark" id="like-event"></i>
+          <% end  %>
+        </div>
         <div class="card-body">
           <h5 class="card-title"><%= event.name %></h5>
           <p class="card-text "><%= event.description.truncate_words(20) %></p>
