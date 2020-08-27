@@ -5,9 +5,10 @@ class EventsController < ApplicationController
 
   # yizhu: add index controler to show all events
   def index
-    #Matt for pundit ?
+
     @address = params[:address]
     @causes = params[:user_cause]
+    # select_events = policy_scope(Event).geocoded.where(:start_date >= Time.now)
 
     if params[:user_cause].present? && (params[:user_cause] != "Tous les thèmes") && (params[:address].present?)
       @events = policy_scope(Event).geocoded.near(@address, 5).tagged_with(@causes, any: true)
