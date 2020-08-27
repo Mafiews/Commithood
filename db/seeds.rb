@@ -106,9 +106,10 @@ event_1 = Event.create!(
   address: "13 Place du Pont Neuf, 75001 Paris",
   ngo_id: ngo_1.id
 )
+event_1.tag_list = "Environnement"
+event_1.save
 img1 = URI.open('https://cdn-lejdd.lanmedia.fr/var/europe1/storage/images/lejdd/ecologie/pollution/pollution-la-premiere-competition-de-ramassage-des-dechets-se-deroule-demain-a-marseille-3901599/53092190-1-fre-FR/Pollution-la-premiere-competition-de-ramassage-des-dechets-se-deroule-demain-a-Marseille.jpg')
 event_1.photo.attach(io: img1, filename: "event_#{event_1.id}.jpg", content_type: "image/png")
-event_1.tag_list.add("Environnement")
 
 puts "Event #{event_1.name} is created"
 
@@ -122,9 +123,10 @@ event_2 = Event.create!(
  address: "2 Rue Perrée, 75003 Paris",
  ngo_id: ngo_1.id
 )
+event_2.tag_list = "Environnement, Santé"
+event_2.save
 img2 = URI.open('https://blog.pollutec.com/wp-content/uploads/2020/04/1024x634_protection-de-lenvironnement.jpg')
 event_2.photo.attach(io: img2, filename: "event#{event_2.id}.jpg", content_type: "image/png")
-event_2.tag_list.add("Environnement, Santé", parse: true)
 
 puts "Event #{event_2.name} created"
 
@@ -138,9 +140,10 @@ event_3 = Event.create!(
  address: "11 Port de la Rapée, 75012 Paris",
  ngo_id: ngo_1.id
 )
+event_3.tag_list = "Environnement, Culture, Santé"
+event_3.save
 img3 = URI.open('https://www.ici-londres.com/data/img/thumbs/thaoss-no-plastic-200722-100504.jpg')
 event_3.photo.attach(io: img3, filename: "event#{event_3.id}.jpg", content_type: "image/png")
-event_3.tag_list.add("Environnement, Culture, Santé", parse: true)
 
 puts "Event #{event_3.name} created"
 
@@ -154,9 +157,10 @@ event_4 = Event.create!(
  address: "6 rue de la Comète, 75007 Paris",
  ngo_id: ngo_4.id
 )
+event_4.tag_list = "Isolement, Précarité"
+event_4.save
 img4 = URI.open('https://cafedesimages.fr/wp-content/uploads/2018/01/cafe-citoyen-e1516469602783-1300x605.jpg')
 event_4.photo.attach(io: img4, filename: "event#{event_4.id}.jpg", content_type: "image/png")
-event_4.tag_list.add("Isolement, Précarité", parse: true)
 
 puts "Event #{event_4.name} created"
 
@@ -170,9 +174,10 @@ event_5 = Event.create!(
  address: "2 route de la ferme, 75012 Paris",
  ngo_id: ngo_3.id
 )
+event_5.tag_list = "Environnement, Santé, Sport"
+event_5.save
 img5 = URI.open('http://www.u-run.fr/wp-content/uploads/2015/06/10488119_1064186336943033_6425489115595270322_n.jpg')
 event_5.photo.attach(io: img5, filename: "event#{event_5.id}.jpg", content_type: "image/png")
-event_5.tag_list.add("Environnement, Santé, Sport", parse: true)
 
 puts "Event #{event_5.name} created"
 
@@ -186,9 +191,10 @@ event_6 = Event.create!(
  address: "24 rue de la Solidarité, 75019 Paris",
  ngo_id: ngo_4.id
 )
+event_6.tag_list = "Précarité, Isolement, Formation"
+event_6.save
 img6 = URI.open('http://www.yonne.gouv.fr/var/ide_site/storage/images/politiques-publiques/economie-et-emploi/emploi/les-contrats-aides/96875-3-fre-FR/Les-contrats-aides_large.jpg')
 event_6.photo.attach(io: img6, filename: "event#{event_6.id}.jpg", content_type: "image/png")
-event_6.tag_list.add("Précarité, Isolement, Formation", parse: true)
 
 puts "Event #{event_6.name} created"
 
@@ -202,9 +208,10 @@ event_7 = Event.create!(
  address: "50 rue Rambuteau, 75003 Paris",
  ngo_id: ngo_2.id
 )
+event_7.tag_list = "Isolement, Jeunesse, Santé, Culture, Sport"
+event_7.save
 img7 = URI.open('https://shoelifer.com/wp-content/uploads/2019/10/Shoelifer-Une-spot-beaute-studio-7-danse-urbaine-hip-hop-casablanca-2019.jpg')
 event_7.photo.attach(io: img7, filename: "event#{event_7.id}.jpg", content_type: "image/png")
-event_7.tag_list.add("Isolement, Jeunesse, Santé, Culture, Sport", parse: true)
 
 puts "Event #{event_7.name} created"
 
@@ -218,9 +225,10 @@ event_8 = Event.create!(
  address: "101 rue de la station, 93700 Drancy",
  ngo_id: ngo_2.id
 )
+event_8.tag_list = "Jeunesse, Santé, Sport, Formation"
+event_8.save
 img8 = URI.open('https://www.fft.fr/sites/default/files/styles/image_16_9/public/20180623_cf_fs_0057_web.jpg?h=18143cfe&itok=_0-9b92k')
 event_8.photo.attach(io: img8, filename: "event#{event_8.id}.jpg", content_type: "image/png")
-event_8.tag_list.add("Jeunesse, Santé, Sport, Formation", parse: true)
 
 puts "Event #{event_8.name} created"
 
