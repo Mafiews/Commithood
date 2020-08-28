@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     member do
       put "like", to: 'events#like'
       put 'unlike', to: 'events#unlike'
+      put "like_home", to: 'events#like_home'
+      put 'unlike_home', to: 'events#unlike_home'
     end
   end
 

@@ -17,8 +17,16 @@
 
 .card-event-index {
   .bookmark-like-red {
-    position: absolute;
-    top: 240px; right: 50px;
+    position: relative;
+  }
+
+  .fas.fa-bookmark {
+  position: absolute;
+  top: 12px; right: 20px;
+  }
+
+  .far.fa-bookmark {
+  position: absolute;
+  top: 12px; right: 20px;
   }
 }
-
