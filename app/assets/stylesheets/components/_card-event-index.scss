@@ -1,15 +1,23 @@
 .card-event-index {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 
 }
+
+// .card-event-index.card-photo{
+//   height: 200px;
+// }
 
 .card-event-index > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
   position:relative;
+  // &:hover{
+  //   transform: scale(1.3);
+  //   transition: all 300ms ease-in-out;
+  // }
 }
 
 .card-event-index h2 {
