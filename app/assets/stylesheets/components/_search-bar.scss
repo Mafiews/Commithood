@@ -1,3 +1,12 @@
-.algolia-places {
-  display: inline !important;
+
+.search-bar {
+  form {
+    display: flex;
+  }
+
+  .select2-container--default .select2-selection--multiple {
+    border-radius: 3px !important;
+    padding: 1px 35px 1px 16px !important;
+    border:1px solid #CCC !important;
+  }
 }

@@ -2,14 +2,16 @@
 <div class="container justify-content-center">
 
   <!-- add result filter and text search function -->
-  <div class="search-bar-index form-inline">
-    <%= form_tag events_path, method: "get" do %>
-      <%= select_tag 'user-cause', options_for_select(Cause::CAUSES), class: 'form-control event-address mt-3' %>
-      <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Adresse", class: 'form-control mt-3' %>
-      <%= text_field_tag :keyword, "", required: false, id: "keyword", label: false, placeholder: "Mot clé", class: 'form-control mt-3' %>
-      <%= submit_tag "Rechercher 🔍", class: "btn btn-warning text-white ml-2 mt-3" %>
-    <% end %>
-  </div>
+
+  <div class="search-bar mt-3">
+        <%= form_tag events_path, method: "get" do %>
+          <div class="search-select col-5">
+            <%= select_tag :user_cause, options_for_select(Cause::CAUSES), class: 'select2', :multiple => true %>
+          </div>
+          <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse", class: 'mr-3' %>
+          <%= submit_tag "Rechercher 🔍", class: "btn btn-warning text-white ml-3" %>
+        <% end %>
+        </div>
 
   <!-- yizhu: section of cards for events show, 50% of the larger -->
   <div class="row mt-3">
@@ -18,6 +20,7 @@
       <% @events.each do |event| %>
         <div class="card-event-index m-3">
             <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
+
         <!-- Ilana like bookmark -->
             <div class="bookmark-like-red">
             <% if user_signed_in?  %>
