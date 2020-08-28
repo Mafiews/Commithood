@@ -50,9 +50,9 @@
               </p>
               <p>Places disponibles : <%= event.seats_left %></p>
             </div>
-            <% if event.ngo.photo.attached? %>
-              <%= cl_image_tag event.ngo.photo.key, alt: "event photo", crop: :fill, class: "card-event-index-user avatar-bordered" %>
-            <% end %>
+            <%# if event.ngo.photo.attached? %>
+              <%#= cl_image_tag event.ngo.photo.key, alt: "event photo", crop: :fill, class:"card-event-index-user avatar-bordered" %>
+            <%# end %>
             <%= link_to "Détails", event_path(event), class:"btn btn-success btn-join" %>
           </div>
         </div>
