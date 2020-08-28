@@ -24,6 +24,8 @@ volunteer_user = User.create!(
   phone_number: "0612345678",
   description: "J'aimerais aider les associations de ma ville à organiser des événéments"
 )
+avatar1 = URI.open('https://thumbs.dreamstime.com/b/admin-sign-laptop-icon-stock-vector-166205404.jpg')
+volunteer_user.photo.attach(io: avatar1, filename: "photo#{volunteer_user.id}.jpg", content_type: "image/png")
 puts "User #{volunteer_user.first_name} created"
 
 admin_user = User.create!(
@@ -67,6 +69,8 @@ ngo_1 = Ngo.create!(
   address: "2 rue du Dessous des Berges, 75013 Paris",
   description: "FNE Paris est la fédération départementale de FNE et des associations parisiennes de protection de l'environnement."
 )
+logo1 = URI.open('https://www.respire-asso.org/wp-content/uploads/2011/07/logo-asef.jpg')
+ngo_1.photo.attach(io: logo1, filename: "logo#{ngo_1.id}.jpg", content_type: "image/png")
 puts "NGO #{ngo_1.name} created"
 
 ngo_2 = Ngo.create!(
@@ -76,6 +80,9 @@ ngo_2 = Ngo.create!(
   address: "14 rue Lesault, 93500 Pantin",
   description: "Principale association d'insertion par le sport en France."
 )
+logo2 = URI.open('https://pab19.sportsregions.fr/media/uploaded/sites/3064/association/5d50816cc28a3_1037827611268520940485735588084727533561588n.jpg')
+ngo_2.photo.attach(io: logo2, filename: "logo#{ngo_2.id}.jpg", content_type: "image/png")
+
 puts "NGO #{ngo_2.name} created"
 
 ngo_3 = Ngo.create!(
@@ -85,6 +92,9 @@ ngo_3 = Ngo.create!(
   address: "14 rue Orfila, 75020 Paris",
   description: "Organise des courses pour soutenir la recherche contre le cancer du sein."
 )
+logo3 = URI.open('https://hand.jdadijon.com/wp-content/uploads/2016/05/le-logo-odyssea.jpg')
+ngo_3.photo.attach(io: logo3, filename: "logo#{ngo_3.id}.jpg", content_type: "image/png")
+
 puts "NGO #{ngo_3.name} created"
 
 ngo_4 = Ngo.create!(
@@ -94,6 +104,8 @@ ngo_4 = Ngo.create!(
   address: "29 rue des Boulets, 75011 Paris",
   description: "Pour l'autonomie et l'insertion professionnelle des jeunes."
 )
+logo4 = URI.open('https://pbs.twimg.com/profile_images/1205154832291639296/jlzxqiek.jpg')
+ngo_4.photo.attach(io: logo4, filename: "logo#{ngo_4.id}.jpg", content_type: "image/png")
 puts "NGO #{ngo_4.name} created"
 
 event_1 = Event.create!(

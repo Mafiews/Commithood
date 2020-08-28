@@ -1,6 +1,6 @@
 <div class="container-event">
   <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @event.photo.key, crop: :fill %>')">
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="avatar-bordered" id="avatar-ngo">
+    <%= cl_image_tag @event.ngo.photo.key, alt: "event photo", crop: :fill, class: "avatar-bordered", id: "avatar-ngo" %>
   </div>
   <div class="d-flex" id="events-details">
     <div class="col-8 ">

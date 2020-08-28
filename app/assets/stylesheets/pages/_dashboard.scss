@@ -1,30 +1,62 @@
-.dashboard > h2 {
+.dashboard {
+  h2 {
   font-weight: 800;
   font-size: 32px;
-  margin-bottom: 10px;
+  margin: 25px 0 10px 0 ;
   color: $dark-green;
-}
-
-.dashboard > h3 {
+  }
+  h2 > .fas {
+  color: $orange;
+  }
+  h3 {
   font-weight: 500;
   font-size: 24px;
   margin-bottom: 10px;
   color: $green;
-}
-
-.dashboard > h2 > .fas {
-  color: $orange;
-}
-
-.dashboard p {
+  }
+  p {
   font-size: 14px;
-  .fas {
-    color: $orange;
+    .fas {
+      color: $orange;
+      margin-right: 5px;
+    }
+  }
+  .counter {
+  padding-left: 10px;
+  }
+  .profile-card {
+    border-radius: 2px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin: 25px 20px 0 0;
   }
 }
 
-.dashboard .counter {
-  padding-left: 10px;
+
+.dashboard-profile-text {
+  width: 180px;
+  margin: 0 10px 0 10px;
+}
+
+.tabs-underlined {
+  display: flex;
+  align-items: center;
+}
+
+.tabs-underlined .tab-underlined {
+  color: black;
+  padding: 8px;
+  margin: 8px 16px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.tabs-underlined .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
 }
 
 .card-event-dashboard {
@@ -32,3 +64,4 @@
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
+
