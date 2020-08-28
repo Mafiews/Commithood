@@ -2,12 +2,14 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
 }
 
 .card-event-index > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+  position:relative;
 }
 
 .card-event-index h2 {
@@ -28,7 +30,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  position: relative;
 }
 
 .card-event-index-infos .card-event-index-user {
