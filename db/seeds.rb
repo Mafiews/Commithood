@@ -24,7 +24,7 @@ volunteer_user = User.create!(
   phone_number: "0612345678",
   description: "J'aimerais aider les associations de ma ville à organiser des événéments"
 )
-avatar1 = URI.open('https://thumbs.dreamstime.com/b/admin-sign-laptop-icon-stock-vector-166205404.jpg')
+avatar1 = URI.open('https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.premiere.fr%2FStar%2FSebastien-Folin&psig=AOvVaw3gxOLoTx7oxKJzBz5d5fiD&ust=1598709856343000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCfq72IvusCFQAAAAAdAAAAABAD')
 volunteer_user.photo.attach(io: avatar1, filename: "photo#{volunteer_user.id}.jpg", content_type: "image/png")
 puts "User #{volunteer_user.first_name} created"
 
