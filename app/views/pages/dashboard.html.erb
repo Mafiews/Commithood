@@ -11,7 +11,12 @@
         <p><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
       <!-- Kally : user action counters -->
       <div class="dashboard-profile-text">
-        <p><i class="fas fa-calendar-check"></i> <%= pluralize @my_events.size, "participation" %></p>
+        <p><i class="fas fa-calendar-check"></i> <%= @my_events.size %>
+          <% if @my_events.size.zero? || @my_events.size == 1 %>
+            participation
+          <% else %>
+            participations
+          <% end %>
 
       <!-- Ilana book mark -->
         <p><i class="fas fa-bookmark"></i> <%= @events_liked.size %>
