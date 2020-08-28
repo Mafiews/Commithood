@@ -28,7 +28,7 @@
 
 
 <!-- yizhu create 3 cards to show the lastest 3 events registed under the banner, in form of card -->
-<div class="container event-cards mt-3">
+<div class="container event-cards mt-3" id="event-recos">
   <h3>Un peu d'inspiration 💭</h3>
   <div class="row justify-content-around">
     <% @events.each do |event| %>
@@ -37,11 +37,11 @@
         <div class="bookmark-like-red">
           <% if user_signed_in? %>
             <% if current_user.liked? event %>
-              <%= link_to unlike_event_path(event), class: "unlike-event", remote: :true, method: :put do %>
+              <%= link_to unlike_home_event_path(event), class: "unlike-event", remote: true, method: :put do %>
                 <i class="fas fa-bookmark" id="unlike"></i>
               <% end %>
             <% else %>
-              <%= link_to like_event_path(event), class: "Intéressé", remote: :true, method: :put do %>
+              <%= link_to like_home_event_path(event), class: "interested", remote: true, method: :put do %>
                 <i class="far fa-bookmark" id="like-event"></i>
               <% end %>
             <% end %>
