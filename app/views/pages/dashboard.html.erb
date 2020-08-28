@@ -63,13 +63,14 @@
               <div>
                 <h4><%= event.name %></h4>
                 <p><%= event.description.truncate_words(18) %></p>
-                <p><% if event.start_date.to_date == event.end_date.to_date %>
-                Date : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+                <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+                <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
                 <% else %>
-                Dates : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
                 <% end %>
                 </p>
-                <p>Places disponibles : <%= event.seats_left %></p>
+                <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
               </div>
               <%= link_to "Inscrit", event_path(event), class:"btn btn-success btn-join" %>
             </div>
@@ -90,7 +91,14 @@
               <div>
                 <h4><%= event.name %></h4>
                 <p><%= event.description.truncate_words(18) %></p>
-                <p class="card-event-index-date">Date: <%= event.start_date %> / durée: <%= ((event.end_date - event.start_date) / 3600).to_i %> h </p>
+                <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+                <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+                <% else %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+                <% end %>
+                </p>
+                <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
               </div>
               <%= link_to "Détails", event_path(event), class:"btn btn-success btn-join" %>
             </div>
@@ -106,8 +114,8 @@
       <h2>Mes favoris <i class="fas fa-star"></i></h2>
 
       <div class="d-flex align-items-center mr-4 dashboard">
-        <h3>Evénements enregistrés</h3>
-        <p class="counter text-muted">(0)</p>
+        <h3>Evénements favoris</h3>
+        <p class="counter text-muted">(<%= @events_liked.size %>)</p>
       </div>
       <div>
         <% @events_liked.each do |event| %>
@@ -117,13 +125,14 @@
               <div>
                 <h4><%= event.name %></h4>
                 <p><%= event.description.truncate_words(18) %></p>
-                <p><% if event.start_date.to_date == event.end_date.to_date %>
-                Date : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+                <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+                <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
                 <% else %>
-                Dates : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
                 <% end %>
                 </p>
-                <p>Places disponibles : <%= event.seats_left %></p>
+                <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
               </div>
               <%= link_to "Détails", event_path(event), class:"btn btn-success btn-join" %>
             </div>

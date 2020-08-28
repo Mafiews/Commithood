@@ -53,14 +53,14 @@
         <div class="card-body">
           <h5 class="card-title"><%= event.name %></h5>
           <p class="card-text "><%= event.description.truncate_words(20) %></p>
-          <p class="card-address"><%= event.address %></p>
-          <p><% if event.start_date.to_date == event.end_date.to_date %>
-          Date : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+          <p class="card-address"><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+          <p class="card-address"><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
+          <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
           <% else %>
-          Dates : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+          <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
           <% end %>
           </p>
-          <p>Places disponibles : <%= event.seats_left %></p>
+          <p class="card-address"><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
           <%= link_to "Détails", event_path(event), class:"btn btn-success btn-green" %>
         </div>
       </div>
