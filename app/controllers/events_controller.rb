@@ -32,8 +32,29 @@ class EventsController < ApplicationController
       {
         lat: event.latitude,
         lng: event.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { event: event })
+        image_url: helpers.asset_url(
+          case
+          when event.tag_list.first == "Environnement"
+            "tree.png"
+          else
+            "logo.png"
+          end
+          ),
+        data_event_id: event.id
+        # infoWindow: render_to_string(partial: "info_window", locals: { event: event })
       }
+    end
+
+    unless params[:address].nil? || params[:address] == ''
+      location = Geocoder.search(params[:address])
+      @lat = location[0].latitude
+      @lng = location[0].longitude
+      @marker = {
+        lat: @lat,
+        lng: @lng,
+        image_url: helpers.asset_url('logo.png')
+      }
+      @markers << @marker
     end
   end
 
