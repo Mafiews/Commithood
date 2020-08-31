@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @my_events = current_user.events
+    @my_events = current_user.events.sort_by { |event| event.start_date }
     # Kally : set variables to filter @my_events
     @my_upcoming_events = []
     @my_past_events = []
