@@ -6,9 +6,6 @@
   background-size: cover;
   background-position: center;
   text-align: center;
-  .title-info {
-
-  }
 }
 
 // Commit Hood title setting, relative position
@@ -23,6 +20,15 @@
     color: white;
     text-shadow: 0px 3px 10px black;
   }
+}
+
+// navbar for home
+#logo-navbar-all {
+  display: none;
+}
+
+#navbar-home{
+  transition: 0.5s background-color ease;
 }
 
 
