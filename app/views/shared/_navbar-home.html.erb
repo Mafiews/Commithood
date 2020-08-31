@@ -1,6 +1,7 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top" id="navbar-home">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "Logo_Commit_hood.png" %>
+    <%= image_tag "Logo_Commit_hood.png", id: "logo-navbar-all" %>
+    <%= image_tag "Logo_Commit_hood-white.png", id: "logo-home" %>
 
     <% end %>
 
@@ -32,12 +33,13 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Tous les événements", events_path, class: "nav-link" %>
+          <%= link_to "Tous les événements", events_path, class: "nav-link", id: "nav-link-home1" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Connexion", new_user_session_path, class: "nav-link", id: "nav-link-home2" %>
         </li>
       <% end %>
     </ul>
   </div>
 </div>
+

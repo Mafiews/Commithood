@@ -1,0 +1,38 @@
+#navbar-home {
+  justify-content: space-between;
+  background-color: transparent;
+  text-decoration: none;
+  display: flex;
+  transition: 1s background-color ease;
+}
+
+// #logo-home {
+//   color: white;
+
+// }
+
+.navbar-lewagon-white {
+  background-color: white;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 160px;
+}
+
+#nav-link-home1 {
+  color: $white;
+  &:hover {
+    color: $orange;
+  }
+}
+
+#nav-link-home2 {
+  color: $white;
+  &:hover {
+    color: $orange;
+  }
+}
