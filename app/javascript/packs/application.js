@@ -43,6 +43,7 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initUpdateNavbarOnScroll()
   initSelect2();
+  initEventinfo();
   initSweetalert('#sweet-alert-register', {
     title: "Participation confirmée",
     text: "BA du jour accomplie !",
