@@ -1,38 +1,56 @@
 .dashboard {
   h2 {
-  font-weight: 800;
-  font-size: 32px;
-  margin: 25px 0 10px 0 ;
-  color: $dark-green;
+    font-weight: 800;
+    font-size: 32px;
+    margin: 25px 0 10px 0 ;
+    color: $dark-green;
   }
   h2 > .fas {
-  color: $orange;
+    color: $orange;
   }
   h3 {
-  font-weight: 500;
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: $green;
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: $green;
   }
   p {
-  font-size: 14px;
+  font-size: 16px;
     .fas, .far {
       color: $orange;
       margin-right: 5px;
     }
-  }
-  .counter {
-  padding-left: 10px;
   }
   .profile-card {
     border-radius: 2px;
     background-color: white;
     text-align: center;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    margin: 25px 20px 0 0;
+    margin: 25px 20px 0 40px;
   }
 }
 
+.card-event-dashboard {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  padding: 0;
+  margin: 15px 0px 15px 15px;
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  .card-event-infos-dashboard {
+    padding: 15px;
+    p {
+      margin: 10px 0 10px 0;
+    }
+  }
+}
 
 .dashboard-profile-text {
   width: 180px;
@@ -42,26 +60,26 @@
 .tabs-underlined {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .tabs-underlined .tab-underlined {
   color: black;
   padding: 8px;
   margin: 8px 16px;
-  opacity: .4;
+  opacity: .5;
   cursor: pointer;
   text-decoration: none;
   border-bottom: 4px solid transparent;
+  i {
+    padding-right: 5px
+  }
 }
 
 .tabs-underlined .tab-underlined.active {
+  color: $dark-green;
   opacity: 1;
-  border-bottom: 3px solid #555555;
+  border-bottom: 3px solid $dark-green;
 }
 
-.card-event-dashboard {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15);
-}
 
