@@ -28,8 +28,9 @@
 
 
 <!-- yizhu create 3 cards to show the lastest 3 events registed under the banner, in form of card -->
-<div class="container event-cards mt-3">
-  <h3>Un peu d'inspiration 💭</h3>
+<div class="container event-cards mt-3" id="event-recos">
+  <h3 class="my-4">Un peu d'inspiration 💭</h3>
+
   <div class="row justify-content-around">
     <% @events.each do |event| %>
       <div class="card card-event-home" style="width: 18rem;">
@@ -37,11 +38,11 @@
         <div class="bookmark-like-red">
           <% if user_signed_in? %>
             <% if current_user.liked? event %>
-              <%= link_to unlike_event_path(event), class: "unlike-event", remote: :true, method: :put do %>
+              <%= link_to unlike_home_event_path(event), class: "unlike-event", remote: true, method: :put do %>
                 <i class="fas fa-bookmark" id="unlike"></i>
               <% end %>
             <% else %>
-              <%= link_to like_event_path(event), class: "Intéressé", remote: :true, method: :put do %>
+              <%= link_to like_home_event_path(event), class: "interested", remote: true, method: :put do %>
                 <i class="far fa-bookmark" id="like-event"></i>
               <% end %>
             <% end %>
@@ -52,14 +53,14 @@
         <div class="card-body">
           <h5 class="card-title"><%= event.name %></h5>
           <p class="card-text "><%= event.description.truncate_words(20) %></p>
-          <p class="card-address"><%= event.address %></p>
-          <p><% if event.start_date.to_date == event.end_date.to_date %>
-          Date : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+          <p class="card-address"><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+          <p class="card-address"><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
+          <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
           <% else %>
-          Dates : <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+          <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
           <% end %>
           </p>
-          <p>Places disponibles : <%= event.seats_left %></p>
+          <p class="card-address"><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
           <%= link_to "Détails", event_path(event), class:"btn btn-success btn-green" %>
         </div>
       </div>
