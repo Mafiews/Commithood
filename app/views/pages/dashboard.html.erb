@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <%= render 'shared/navbar' %>
 
 <div class="d-flex dashboard">
+=======
+<div class="d-flex justify-content-center dashboard">
+>>>>>>> dashboard-event-cards
   <!-- Kally : user stats -->
   <div class="profile-card align-self-start">
     <% if current_user.photo.attached? %>
@@ -34,7 +38,7 @@
   </div>
   <!-- End of user stats -->
 
-  <div class="col-9 mt-4">
+  <div class="col-10 mt-4">
     <!-- Kally : Tabs -->
       <ul class="nav list-inline tabs-underlined" id="myTab" role="tablist">
         <li>
@@ -62,72 +66,18 @@
 
       <!-- Upcoming events -->
       <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
-        <div class="d-flex">
-          <% @my_upcoming_events.each do |event| %>
-            <div class="col-4 card-event-dashboard">
-              <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
-                <div class="card-event-infos-dashboard">
-                  <h4><%= event.name %></h4>
-                  <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
-                  <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
-                  <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
-                  <% else %>
-                  <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
-                  <% end %>
-                  </p>
-                  <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
-                  <%= link_to "Inscrit", event_path(event), class:"btn btn-success" %>
-                </div>
-            </div>
-          <% end %>
-        </div>
+        <%= render 'event_card', events: @my_upcoming_events %>
       </div>
-      <!-- End of Upcoming events -->
 
       <!-- Past events -->
       <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
-        <div class="d-flex">
-          <% @my_past_events.each do |event| %>
-            <div class="col-4 card-event-dashboard">
-              <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
-              <div class="card-event-infos-dashboard">
-                  <h4><%= event.name %></h4>
-                  <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
-                  <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
-                  <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
-                  <% else %>
-                  <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
-                  <% end %>
-                  </p>
-                  <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
-                <%= link_to "Détails", event_path(event), class:"btn btn-success btn-join" %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+        <%= render 'event_card', events: @my_past_events %>
       </div>
 
       <!-- Favorite events -->
       <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
-        <div class="d-flex">
-          <% @events_liked.each do |event| %>
-            <div class="col-4 card-event-dashboard">
-              <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
-              <div class="card-event-infos-dashboard">
-                <h4><%= event.name %></h4>
-                <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
-                <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
-                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
-                <% else %>
-                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
-                <% end %>
-                </p>
-                <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
-                <%= link_to "Détails", event_path(event), class:"btn btn-success btn-join" %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+        <%= render 'event_card', events: @events_liked %>
       </div>
+    </div>
   </div>
 </div>
