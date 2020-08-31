@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 <%= render 'shared/navbar' %>
 
-<div class="d-flex dashboard">
-=======
 <div class="d-flex justify-content-center dashboard">
->>>>>>> dashboard-event-cards
   <!-- Kally : user stats -->
   <div class="profile-card align-self-start">
     <% if current_user.photo.attached? %>
@@ -49,7 +45,7 @@
         </li>
         <li>
           <a href="#past" class="tab-underlined" id="past-tab" data-toggle="tab" role="tab" aria-controls="past" aria-selected="false">
-            <i class="fas fa-undo"></i>
+            <i class="fas fa-history"></i>
             Terminés <span class="text-muted">(<%= @my_past_events.size %>)</span>
           </a>
         </li>
