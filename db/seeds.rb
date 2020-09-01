@@ -117,7 +117,7 @@ ngo_5 = Ngo.create!(
   Reconnu d'utilité publique en 1990, le Club recueille et stérilise des animaux errants et les place dans des familles de bénévoles le temps qu'ils soient adoptés.
   Nous recherchons souvent des volontaires pour nous aider dans les diverses tâches de gestion des animaux et d'accueil du public."
 )
-logo5 = URI.open('https://www.facebook.com/cda12/photos/a.126919857388415/1033343870079338/?type=1&theater')
+logo5 = URI.open('https://stockagehelloassoprod.blob.core.windows.net/images/logos/club-de-defense-des-animaux-paris-12.png')
 ngo_5.photo.attach(io: logo5, filename: "logo#{ngo_5.id}.jpg", content_type: "image/png")
 puts "NGO #{ngo_5.name} created"
 
@@ -148,7 +148,7 @@ Les associations d’insertion et/ou d’accompagnement de publics en difficult�
 Des groupes d’étudiants
 Des collectivités et entreprises."
 )
-logo7 = URI.open('https://www.facebook.com/veloecoledavs/photos/a.926192160844819/928568253940543/?type=1&theater')
+logo7 = URI.open('https://res.cloudinary.com/dw5mswvza/image/upload/v1598945610/logo_davs_a4k00h.png')
 ngo_7.photo.attach(io: logo7, filename: "logo#{ngo_7.id}.jpg", content_type: "image/png")
 puts "NGO #{ngo_7.name} created"
 
@@ -355,7 +355,7 @@ Nous recherchons 10 volontaires pour nous aider pendant la journée à accueilli
 )
 event_9.tag_list = "Bien-être animal"
 event_9.save
-img9 = URI.open('https://res.cloudinary.com/dw5mswvza/image/upload/v1598945610/logo_club_jsyvcd.jpg')
+img9 = URI.open('http://www.spabrive.fr/wp-content/uploads/2019/11/72603453_10215650322353343_5166919427446276096_n-1-600x498.jpg')
 event_9.photo.attach(io: img9, filename: "event#{event_9.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_9.name} created"
@@ -424,7 +424,7 @@ event_13 = Event.create!(
 )
 event_13.tag_list = "Jeunesse, Sport, Précarité"
 event_13.save
-img13 = URI.open('https://res.cloudinary.com/dw5mswvza/image/upload/v1598945610/logo_davs_a4k00h.png')
+img13 = URI.open('https://assodavs.files.wordpress.com/2015/02/stage-3.jpeg?w=874&h=656')
 event_13.photo.attach(io: img13, filename: "event#{event_13.id}.jpg", content_type: "image/png")
 
 puts "Event #{event_13.name} created"
@@ -492,12 +492,12 @@ Retrouvez la ludothèque Rue Julien Lacroix animé par l'association Strataj'm: 
 Strataj'm a besoin de 15 volontaires pour animer la ludothèque sur l'ensemble de la période d'ouverture, n'hésitez plus !",
  seats: 15,
  seats_left: 15,
- address: "Parc de Belleville, Rue Julien Lacroix, 75020 Paris",
+ address: "47 Rue des Couronnes, 75020 Paris",
  ngo_id: ngo_8.id
 )
 event_17.tag_list = "Jeunesse, Environnement, Isolement, Précarité"
 event_17.save
-img17 = URI.open('http://crl10.net/sites/default/files/CRL10_affiche_ludomouv7_web.jpg')
+img17 = URI.open('https://cdn.paris.fr/paris/2019/07/24/original-31726007f4faf7a7b54cb0b776d6d1bc.jpeg')
 event_17.photo.attach(io: img17, filename: "event#{event_17.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_17.name} created"
