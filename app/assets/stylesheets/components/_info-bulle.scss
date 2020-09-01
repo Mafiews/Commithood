@@ -1,0 +1,17 @@
+.infobulle {
+  position: relative;
+}
+
+.infobulle-texte {
+  position: absolute;
+  bottom: -29px;
+  left: 4px;
+  width: 75px;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  font-size: 12px;
+  background-color: #FAAE15;
+  text-align: center;
+  border: 0px;
+}
