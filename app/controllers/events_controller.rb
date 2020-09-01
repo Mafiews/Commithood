@@ -17,7 +17,7 @@ class EventsController < ApplicationController
       @events = policy_scope(Event).geocoded.tagged_with(@causes, any: true)
 
     elsif params[:address].present?
-      @events = policy_scope(Event).geocoded.near(@address, 5)
+      @events = policy_scope(Event).geocoded.near(@address, 8)
 
     else
       @events = policy_scope(Event).geocoded.order(created_at: :desc)
@@ -28,14 +28,33 @@ class EventsController < ApplicationController
     seats_left # private method below to count seats_left
     # fr_datetime
 
+    # CAUSES = ["Tous les thèmes",, "Précarité", "Santé", "Sport"]
     @markers = @events.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
         image_url: helpers.asset_url(
-          case
-          when event.tag_list.first == "Environnement"
-            "tree.png"
+          case event.tag_list.first
+          when "Environnement"
+            "tag-environment.png"
+          when "Cause animale"
+            "tag-animal.png"
+          when "Culture"
+            "tag-culture.png"
+          when "Formation"
+            "tag-formation.png"
+          when "Isolement"
+            "tag-isolement.png"
+          when "Jeunesse"
+            "tag-jeunesse.png"
+          when "Personnes âgées"
+            "tag-personnes-agees.png"
+          when "Précarité"
+            "tag-precarite.png"
+          when "Santé"
+            "tag-sante.png"
+          when "Sport"
+            "tag-sport.png"
           else
             "logo.png"
           end
@@ -85,6 +104,18 @@ class EventsController < ApplicationController
     set_event
     @event.unliked_by current_user
     redirect_to root_path(anchor: "event-recos")
+  end
+
+  def like_dashboard
+    set_event
+    @event.liked_by current_user
+    redirect_to dashboard_path
+  end
+
+  def unlike_dashboard
+    set_event
+    @event.unliked_by current_user
+    redirect_to dashboard_path
   end
 
   private

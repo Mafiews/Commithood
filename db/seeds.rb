@@ -18,8 +18,8 @@ puts 'Loading...'
 volunteer_user = User.create!(
   email: "commit@hood.com",
   password: "test12345",
-  first_name: "Commit",
-  last_name: "Hood",
+  first_name: "Sébastien",
+  last_name: "Folin",
   address: "16 Villa Gaudelet, 75011 Paris",
   phone_number: "0612345678",
   description: "J'aimerais aider les associations de ma ville à organiser des événéments"
@@ -117,7 +117,7 @@ ngo_5 = Ngo.create!(
   Reconnu d'utilité publique en 1990, le Club recueille et stérilise des animaux errants et les place dans des familles de bénévoles le temps qu'ils soient adoptés.
   Nous recherchons souvent des volontaires pour nous aider dans les diverses tâches de gestion des animaux et d'accueil du public."
 )
-logo5 = URI.open('https://www.facebook.com/cda12/photos/a.126919857388415/1033343870079338/?type=1&theater')
+logo5 = URI.open('https://stockagehelloassoprod.blob.core.windows.net/images/logos/club-de-defense-des-animaux-paris-12.png')
 ngo_5.photo.attach(io: logo5, filename: "logo#{ngo_5.id}.jpg", content_type: "image/png")
 puts "NGO #{ngo_5.name} created"
 
@@ -129,8 +129,8 @@ ngo_6 = Ngo.create!(
   description: "La Fabrique de la Solidarité, est un lieu ressource de la Ville de Paris pour tou·te·s les Parisien·ne·s souhaitant agir dans le domaine de la lutte contre l’exclusion.
 Poussez donc la porte et rencontrez l'équipe du lieu qui vous expliquera toutes ses missions et comment vous pouvez vous engager contre l'exclusion en étant formé et accompagné."
 )
-logo6 = URI.open('https://www.facebook.com/lafabriquedelasolidarite/photos/a.2765805703446567/2765806330113171/?type=1&theater')
-ngo_6.photo.attach(io: logo6, filename: "logo#{ngo_6.id}.jpg", content_type: "image/png")
+logo6 = URI.open('https://res.cloudinary.com/dw5mswvza/image/upload/v1598945610/logo_fabrique_jmcigh.jpg')
+ngo_6.photo.attach(io: logo6, filename: "logo#{ngo_6.id}.jpg", content_type: "image/jpg")
 puts "NGO #{ngo_6.name} created"
 
 ngo_7 = Ngo.create!(
@@ -148,7 +148,7 @@ Les associations d’insertion et/ou d’accompagnement de publics en difficult�
 Des groupes d’étudiants
 Des collectivités et entreprises."
 )
-logo7 = URI.open('https://www.facebook.com/veloecoledavs/photos/a.926192160844819/928568253940543/?type=1&theater')
+logo7 = URI.open('https://res.cloudinary.com/dw5mswvza/image/upload/v1598945610/logo_davs_a4k00h.png')
 ngo_7.photo.attach(io: logo7, filename: "logo#{ngo_7.id}.jpg", content_type: "image/png")
 puts "NGO #{ngo_7.name} created"
 
@@ -187,7 +187,7 @@ ngo_10 = Ngo.create!(
 Caméléon est une association de solidarité internationale née en 1997. Elle développe une approche globale pour agir sur les causes et les effets des violences sexuelles à l’égard des enfants et des adolescents."
 )
 logo10 = URI.open('https://www.cameleon-association.org/wp-content/uploads/2014/08/logo-slogan_2013_FR-Fond-blanc.jpg')
-ngo_10.photo.attach(io: logo10, filename: "logo#{ngo_10.id}.jpg", content_type: "image/png")
+ngo_10.photo.attach(io: logo10, filename: "logo#{ngo_10.id}.jpg", content_type: "image/jpg")
 puts "NGO #{ngo_10.name} created"
 
 ngo_11 = Ngo.create!(
@@ -199,7 +199,7 @@ ngo_11 = Ngo.create!(
 Rejoignez notre équipe de bénévoles : nous recherchons des bénévoles dans toute la France. Le rôle du bénévole peut être multiple, par exemple : effectuer des repérages, prendre des photos, des vidéos, déposer des mains courantes ou plaintes au nom de l’association (sous procuration) au commissariat, transporter les animaux dans leur famille d'accueil, chez le vétérinaire, effectuer des pré- et postvisites pour de futurs adoptants ou familles d'accueil etc...
 Rejoignez notre équipe de familles d’accueil : Vous pouvez accueillir un animal chez vous, pendant quelques jours, quelques semaines ou plus ? Contactez nous !"
 )
-logo11 = URI.open('https://www.facebook.com/4brigadeanimalebenevole/photos/a.1732445640374581/2322526831366456/?type=1&theater')
+logo11 = URI.open('https://res.cloudinary.com/dw5mswvza/image/upload/v1598946445/logo_bab_ovrueu.png')
 ngo_11.photo.attach(io: logo11, filename: "logo#{ngo_11.id}.jpg", content_type: "image/png")
 puts "NGO #{ngo_11.name} created"
 
@@ -207,7 +207,8 @@ event_1 = Event.create!(
   name: "Championnat de ramassage de déchets",
   start_date: DateTime.new(2020,9,1,9),
   end_date: DateTime.new(2020,9,30,18),
-  description: "Le concept est simple et basé sur la confiance : ramassez par-ci par-là ce qui est abandonné un peu partout dans la nature, pesez vos trouvailles avant d'en faire bon usage (jeter à la poubelle ce qui doit être jeté, mettez au recyclage ce qui peut être recyclé, donnez ce qui peut être réparé, etc. Envoyez nous au plus tard le 30.09.2020 le cumule en kg de tout ce que vous avez ramassé dans la nature pendant le mois.",
+  description: "Le concept est simple et basé sur la confiance : ramassez par-ci par-là ce qui est abandonné un peu partout dans la nature, pesez vos trouvailles avant d'en faire bon usage (jeter à la poubelle ce qui doit être jeté, mettez au recyclage ce qui peut être recyclé, donnez ce qui peut être réparé, etc.
+  Envoyez nous au plus tard le 30.09.2020 le cumule en kg de tout ce que vous avez ramassé dans la nature pendant le mois. Des lots sont à gagner pour celles et ceux qui auront ramassé le plus de déchets !",
   seats: 50,
   seats_left: 50,
   address: "13 Place du Pont Neuf, 75001 Paris",
@@ -216,7 +217,7 @@ event_1 = Event.create!(
 event_1.tag_list = "Environnement"
 event_1.save
 img1 = URI.open('https://media.paperblog.fr/i/183/1831965/association-japonaise-mene-operation-ramassag-L-1.jpeg')
-event_1.photo.attach(io: img1, filename: "event_#{event_1.id}.jpg", content_type: "image/png")
+event_1.photo.attach(io: img1, filename: "event_#{event_1.id}.jpg", content_type: "image/jpeg")
 
 puts "Event #{event_1.name} is created"
 
@@ -233,7 +234,7 @@ event_2 = Event.create!(
 event_2.tag_list = "Environnement, Santé"
 event_2.save
 img2 = URI.open('https://blog.pollutec.com/wp-content/uploads/2020/04/1024x634_protection-de-lenvironnement.jpg')
-event_2.photo.attach(io: img2, filename: "event#{event_2.id}.jpg", content_type: "image/png")
+event_2.photo.attach(io: img2, filename: "event#{event_2.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_2.name} created"
 
@@ -250,7 +251,7 @@ event_3 = Event.create!(
 event_3.tag_list = "Environnement, Culture, Santé"
 event_3.save
 img3 = URI.open('https://www.ici-londres.com/data/img/thumbs/thaoss-no-plastic-200722-100504.jpg')
-event_3.photo.attach(io: img3, filename: "event#{event_3.id}.jpg", content_type: "image/png")
+event_3.photo.attach(io: img3, filename: "event#{event_3.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_3.name} created"
 
@@ -267,7 +268,7 @@ event_4 = Event.create!(
 event_4.tag_list = "Isolement, Précarité, Culture"
 event_4.save
 img4 = URI.open('https://cafedesimages.fr/wp-content/uploads/2018/01/cafe-citoyen-e1516469602783-1300x605.jpg')
-event_4.photo.attach(io: img4, filename: "event#{event_4.id}.jpg", content_type: "image/png")
+event_4.photo.attach(io: img4, filename: "event#{event_4.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_4.name} created"
 
@@ -284,7 +285,7 @@ event_5 = Event.create!(
 event_5.tag_list = "Santé, Sport, Environnement"
 event_5.save
 img5 = URI.open('http://www.u-run.fr/wp-content/uploads/2015/06/10488119_1064186336943033_6425489115595270322_n.jpg')
-event_5.photo.attach(io: img5, filename: "event#{event_5.id}.jpg", content_type: "image/png")
+event_5.photo.attach(io: img5, filename: "event#{event_5.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_5.name} created"
 
@@ -301,7 +302,7 @@ event_6 = Event.create!(
 event_6.tag_list = "Formation, Précarité, Isolement"
 event_6.save
 img6 = URI.open('http://www.yonne.gouv.fr/var/ide_site/storage/images/politiques-publiques/economie-et-emploi/emploi/les-contrats-aides/96875-3-fre-FR/Les-contrats-aides_large.jpg')
-event_6.photo.attach(io: img6, filename: "event#{event_6.id}.jpg", content_type: "image/png")
+event_6.photo.attach(io: img6, filename: "event#{event_6.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_6.name} created"
 
@@ -319,7 +320,7 @@ Toutes les jeunes de notre centre ont un bon niveau de danse (notamment en hip h
 event_7.tag_list = "Jeunesse, Sport, Isolement, Santé, Culture"
 event_7.save
 img7 = URI.open('https://shoelifer.com/wp-content/uploads/2019/10/Shoelifer-Une-spot-beaute-studio-7-danse-urbaine-hip-hop-casablanca-2019.jpg')
-event_7.photo.attach(io: img7, filename: "event#{event_7.id}.jpg", content_type: "image/png")
+event_7.photo.attach(io: img7, filename: "event#{event_7.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_7.name} created"
 
@@ -337,7 +338,7 @@ Nous vous fournirons tout le matériel nécessaire : balles, plots, raquettes po
 event_8.tag_list = "Jeunesse, Santé, Sport"
 event_8.save
 img8 = URI.open('https://www.fft.fr/sites/default/files/styles/image_16_9/public/20180623_cf_fs_0057_web.jpg?h=18143cfe&itok=_0-9b92k')
-event_8.photo.attach(io: img8, filename: "event#{event_8.id}.jpg", content_type: "image/png")
+event_8.photo.attach(io: img8, filename: "event#{event_8.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_8.name} created"
 
@@ -354,8 +355,8 @@ Nous recherchons 10 volontaires pour nous aider pendant la journée à accueilli
 )
 event_9.tag_list = "Bien-être animal"
 event_9.save
-img9 = URI.open('https://tse1.mm.bing.net/th?id=OIP.yyi217D2jOpgxeonsqsCeQHaFj&pid=Api')
-event_9.photo.attach(io: img9, filename: "event#{event_9.id}.jpg", content_type: "image/png")
+img9 = URI.open('http://www.spabrive.fr/wp-content/uploads/2019/11/72603453_10215650322353343_5166919427446276096_n-1-600x498.jpg')
+event_9.photo.attach(io: img9, filename: "event#{event_9.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_9.name} created"
 
@@ -373,7 +374,7 @@ Nous irons le 13 septembre prochain dans le quartier des Olympiades et nous avon
 event_10.tag_list = "Bien-être animal"
 event_10.save
 img10 = URI.open('https://static.actu.fr/uploads/2019/09/25263-190912135006460-0.jpg')
-event_10.photo.attach(io: img10, filename: "event#{event_10.id}.jpg", content_type: "image/png")
+event_10.photo.attach(io: img10, filename: "event#{event_10.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_10.name} created"
 
@@ -390,7 +391,7 @@ event_11 = Event.create!(
 event_11.tag_list = "Précarité, Isolement, Personnes âgées, Santé"
 event_11.save
 img11 = URI.open('https://www.leparisien.fr/resizer/MiJEwSPWDF14AntjyiVZRCyyjfs=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/37RZU7PGY7ECT27BCL47KS67YA.jpg')
-event_11.photo.attach(io: img11, filename: "event#{event_11.id}.jpg", content_type: "image/png")
+event_11.photo.attach(io: img11, filename: "event#{event_11.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_11.name} created"
 
@@ -407,7 +408,7 @@ event_12 = Event.create!(
 event_12.tag_list = "Isolement, Précarité, Personnes âgées, Santé"
 event_12.save
 img12 = URI.open('https://cdn.paris.fr/paris/2019/07/24/original-0d95337da8ad6d40f9f99bd0f8c46a3c.jpg')
-event_12.photo.attach(io: img12, filename: "event#{event_12.id}.jpg", content_type: "image/png")
+event_12.photo.attach(io: img12, filename: "event#{event_12.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_12.name} created"
 
@@ -460,7 +461,7 @@ A cette occasion la Mairie de Paris recherche 50 bénévoles pour tenir les stan
 event_15.tag_list = "Culture, Formation, Environnement, Santé, Jeunesse, Sport"
 event_15.save
 img15 = URI.open('https://cdn.paris.fr/paris/2019/07/24/original-1b007dcc2cef06730f2467b6928414b5.jpg')
-event_15.photo.attach(io: img15, filename: "event#{event_15.id}.jpg", content_type: "image/png")
+event_15.photo.attach(io: img15, filename: "event#{event_15.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_15.name} created"
 
@@ -478,7 +479,7 @@ Nous cherchons à ce titre l'aide de 5 bénévoles pour encadrer le groupe penda
 event_16.tag_list = "Jeunesse, Isolement, Environnement"
 event_16.save
 img16 = URI.open('http://les-jardiniers-a-velo.fr/wp-content/uploads/2016/02/ateliers-participatifs-jardinage-ville-habitants-appropriation-culture-developpement-durable7.jpg')
-event_16.photo.attach(io: img16, filename: "event#{event_16.id}.jpg", content_type: "image/png")
+event_16.photo.attach(io: img16, filename: "event#{event_16.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_16.name} created"
 
@@ -491,13 +492,13 @@ Retrouvez la ludothèque Rue Julien Lacroix animé par l'association Strataj'm: 
 Strataj'm a besoin de 15 volontaires pour animer la ludothèque sur l'ensemble de la période d'ouverture, n'hésitez plus !",
  seats: 15,
  seats_left: 15,
- address: "Parc de Belleville, Rue Julien Lacroix, 75020 Paris",
+ address: "47 Rue des Couronnes, 75020 Paris",
  ngo_id: ngo_8.id
 )
 event_17.tag_list = "Jeunesse, Environnement, Isolement, Précarité"
 event_17.save
-img17 = URI.open('http://crl10.net/sites/default/files/CRL10_affiche_ludomouv7_web.jpg')
-event_17.photo.attach(io: img17, filename: "event#{event_17.id}.jpg", content_type: "image/png")
+img17 = URI.open('https://cdn.paris.fr/paris/2019/07/24/original-31726007f4faf7a7b54cb0b776d6d1bc.jpeg')
+event_17.photo.attach(io: img17, filename: "event#{event_17.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_17.name} created"
 
@@ -515,7 +516,7 @@ event_18 = Event.create!(
 event_18.tag_list = "Isolement, Précarité, Formation"
 event_18.save
 img18 = URI.open('http://www.autremonde.org/wp-content/uploads/2015/07/book.jpg')
-event_18.photo.attach(io: img18, filename: "event#{event_18.id}.jpg", content_type: "image/png")
+event_18.photo.attach(io: img18, filename: "event#{event_18.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_18.name} created"
 
@@ -574,7 +575,7 @@ Déjeuner compris !",
 event_21.tag_list = "Précarité, Jeunesse, Santé"
 event_21.save
 img21 = URI.open('https://www.cameleon-association.org/wp-content/uploads/2020/04/Tatoo-Flash-2020-CAMELEON-1.jpg')
-event_21.photo.attach(io: img21, filename: "event#{event_21.id}.jpg", content_type: "image/png")
+event_21.photo.attach(io: img21, filename: "event#{event_21.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_21.name} created"
 

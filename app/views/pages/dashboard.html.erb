@@ -1,6 +1,6 @@
 <%= render 'shared/navbar' %>
 
-<div class="d-flex justify-content-center dashboard">
+<div class="d-flex dashboard">
   <!-- Kally : user stats -->
   <div class="profile-card align-self-start">
     <% if current_user.photo.attached? %>
@@ -34,7 +34,7 @@
   </div>
   <!-- End of user stats -->
 
-  <div class="col-10 mt-4">
+  <div class="col-sm-10 mt-4">
     <!-- Kally : Tabs -->
       <ul class="nav list-inline tabs-underlined" id="myTab" role="tablist">
         <li>
@@ -63,17 +63,16 @@
       <!-- Upcoming events -->
       <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
         <%= render 'event_card', events: @my_upcoming_events %>
-        <!-- follow-button Ilana  -->
       </div>
 
       <!-- Past events -->
       <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
-        <%= render 'event_card', events: @my_past_events %>
+        <%= render 'card_event', events: @my_past_events %>
       </div>
 
       <!-- Favorite events -->
       <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
-        <%= render 'event_card', events: @events_liked %>
+        <%= render 'card_event', events: @events_liked %>
       </div>
     </div>
   </div>

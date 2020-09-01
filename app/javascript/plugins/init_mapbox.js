@@ -7,11 +7,13 @@ const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
+    const lat = mapElement.dataset.lat
+    const lng = mapElement.dataset.lng
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-
+      center: [lat, lng],
     });
 
 

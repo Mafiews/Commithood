@@ -40,5 +40,13 @@ class EventPolicy < ApplicationPolicy
   def unlike_home?
     user
   end
+  
+  def like_dashboard?
+    user
+  end
 
+  def unlike_dashboard?
+    user
+  end
+  
 end

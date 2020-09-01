@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   resources :events, only: [:destroy, :show, :index, :new, :create] do
     resources :participations, only: [:create]
     member do
-      put "like", to: 'events#like'
+      put 'like', to: 'events#like'
       put 'unlike', to: 'events#unlike'
-      put "like_home", to: 'events#like_home'
+      put 'like_home', to: 'events#like_home'
       put 'unlike_home', to: 'events#unlike_home'
+      put 'like_dashboard', to: 'events#like_dashboard'
+      put 'unlike_dashboard', to: 'events#unlike_dashboard'
     end
   end
 
