@@ -76,7 +76,7 @@
               <%# if event.ngo.photo.attached? %>
                 <%#= cl_image_tag event.ngo.photo.key, alt: "event photo", crop: :fill, class:"card-event-index-user avatar-bordered" %>
               <%# end %>
-              <%= link_to "Je paticipe", event_path(event), class:"btn btn-success btn-join" %>
+              <%= link_to "Je paticipe !", event_path(event), class:"btn btn-success btn-join" %>
             </div>
           </div>
         <% end %>
@@ -130,7 +130,7 @@
               <%#= cl_image_tag event.ngo.photo.key, alt: "event photo", crop: :fill, class:"card-event-index-user avatar-bordered" %>
             <%# end %>
             <div class="action-links form-inline">
-              <%= link_to "More Détails", event_path(event) %>
+              <%= link_to "Plus de détails...", event_path(event) %>
               <% if event.seats_left.zero? %>
                 <button class="btn btn-danger my-2">Complet</button>
               <% elsif event.start_date < DateTime.now %>
@@ -138,7 +138,7 @@
                   <button class="btn btn-secondary">Terminé</button>
                 <% end %>
               <% elsif user_signed_in? == false %>
-                <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success" %>
+                <%= link_to "Je participe !", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success" %>
               <% elsif current_user.participations.find_by(event_id: event.id) %>
                 <%= link_to event_path(event) do %>
                   <button class="btn btn-warning">Déjà inscrit</button>

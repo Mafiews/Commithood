@@ -37,6 +37,7 @@ import { initSelect2 } from '../plugins/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { initEventinfo} from '../plugins/init_eventinfo';
 import { initSearchbarIndex } from '../components/init_searchbar_index';
+// import { initSlick} from '../plugins/init_slick';
 import { initBookmark} from '../components/init_bookmark';
 
 document.addEventListener('turbolinks:load', () => {
@@ -48,6 +49,7 @@ document.addEventListener('turbolinks:load', () => {
   initSearchbarIndex();
   initMapbox();
   initEventinfo();
+  // initSlick();
   initSweetalert('#sweet-alert-register', {
     title: "Participation confirmée",
     text: "BA du jour accomplie !",
