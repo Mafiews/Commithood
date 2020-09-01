@@ -6,16 +6,14 @@ const initUpdateNavbarOnScroll = () => {
   const navLink2 = document.getElementById ("nav-link-home2")
   if (navbar) {
     window.addEventListener('scroll', () => {
-      console.log(window.scrollY);
       if (window.scrollY <= 500) {
         navbar.style.backgroundColor = 'transparent';
-        // navbar.classList.add('navbar-lewagon-white');
+        // navbar.classList.add('nav-link-home1');
         logoGreen.style.display = 'none'
         logoWhite.style.display = 'block'
         navLink1.style.color = 'white'
         navLink2.style.color = 'white'
       } else {
-
         logoGreen.style.display = "block"
         logoWhite.style.display = "none"
         navbar.style.backgroundColor = '#FCF9F1'
