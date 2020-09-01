@@ -9,4 +9,13 @@ const initSelect2 = () => {
   });
 };
 
+
+const initSelect2Multi = () => {
+  $('.select2').select2({
+    width: '100%',
+    placeholder: "Choisissez une ou plusieurs causes",
+    allowClear: true
+  });
+};
+
 export { initSelect2 };

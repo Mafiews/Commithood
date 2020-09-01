@@ -407,7 +407,7 @@ event_12 = Event.create!(
 )
 event_12.tag_list = "Isolement, Précarité, Personnes âgées, Santé"
 event_12.save
-img12 = URI.open('https://cdn.paris.fr/paris/2019/07/24/original-0d95337da8ad6d40f9f99bd0f8c46a3c.jpg')
+img12 = URI.open('https://img.aws.la-croix.com/2019/02/14/1201002593/Si-equipes-pousse-recherche-peripheries-capitale-avait-toutefoisdhebergements-ouverts-cette-annee-24-400-contre-21-500-places-fevrier-2018_0_729_486.jpg')
 event_12.photo.attach(io: img12, filename: "event#{event_12.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_12.name} created"
@@ -460,7 +460,7 @@ A cette occasion la Mairie de Paris recherche 50 bénévoles pour tenir les stan
 )
 event_15.tag_list = "Culture, Formation, Environnement, Santé, Jeunesse, Sport"
 event_15.save
-img15 = URI.open('https://cdn.paris.fr/paris/2019/07/24/original-1b007dcc2cef06730f2467b6928414b5.jpg')
+img15 = URI.open('https://res.cloudinary.com/dw5mswvza/image/upload/v1598949870/ludomobile_hmrwi4.jpg')
 event_15.photo.attach(io: img15, filename: "event#{event_15.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_15.name} created"
