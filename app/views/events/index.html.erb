@@ -2,17 +2,23 @@
 <%= render 'shared/navbar' %>
 <div class="justify-content-center">
 
-
+  <!-- yizhu: add tabs -->
+  <!-- to be continue... -->
   <!-- yizhu: map section with cards -->
 
   <div class="d-flex map-cards">
     <!-- add result filter and text search function -->
     <div class="search-bar-index mt-3">
-      <%= form_tag events_path, method: "get" do %>
-        <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
-        <%= submit_tag "Rechercher 🔍", class: "btn btn-warning text-white" %>
-        <div class="search-select-index col-5">
-          <%= check_box_tag :user_cause, options_for_select(Cause::CAUSES), :multiple => true %>
+      <%= form_tag events_path, method: "get", remote:true do %>
+        <%= text_field_tag :address, params[:address].present? ? params[:address] : '', required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
+        <%= submit_tag "Rechercher 🔍", class: "btn btn-warning text-white mt-2" %>
+        <div class="search-select-index mt-3">
+          <h5>Choisisez votre Thèmes</h5>
+          <ul>
+            <% Cause::CAUSES.each do |cause| %>
+              <li><%= check_box_tag "user_cause_#{cause.downcase}", "#{cause}", params["user_cause_#{cause.downcase}"] == cause, id: "user_cause" %>   <%= cause %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
     </div>
@@ -29,7 +35,7 @@
 
       <!-- yizhu: section of cards for events show, 50% of the larger -->
 
-      <div class="col-4 p-0" id="card-info">
+      <div class="p-0" id="card-info">
         <!-- yizhu: insert events cards here -->
         <% @events.each do |event| %>
           <div class="card-info-window mt-3" id="event-<%= event.id %>" >

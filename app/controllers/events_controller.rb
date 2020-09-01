@@ -7,13 +7,20 @@ class EventsController < ApplicationController
   def index
 
     @address = params[:address]
-    @causes = params[:user_cause]
+    @causes = params.select{|k,v| k.include?('user_cause')}.values
+
+    if @causes.size > 0;
+      @causes
+    else
+      @causes = params[:user_cause]
+    end
+
     # select_events = policy_scope(Event).geocoded.where(:start_date >= Time.now)
 
-    if params[:user_cause].present? && (params[:user_cause] != "Tous les thèmes") && (params[:address].present?)
+    if !@causes.nil? && (!@causes.include?("Tous les thèmes")) && (params[:address].present?)
       @events = policy_scope(Event).geocoded.near(@address, 5).tagged_with(@causes, any: true)
 
-    elsif params[:user_cause].present? && (params[:user_cause] != "Tous les thèmes")
+    elsif !@causes.nil? && (!@causes.include?("Tous les thèmes"))
       @events = policy_scope(Event).geocoded.tagged_with(@causes, any: true)
 
     elsif params[:address].present?
@@ -33,6 +40,7 @@ class EventsController < ApplicationController
       {
         lat: event.latitude,
         lng: event.longitude,
+        title: event.tag_list,
         image_url: helpers.asset_url(
           case event.tag_list.first
           when "Environnement"

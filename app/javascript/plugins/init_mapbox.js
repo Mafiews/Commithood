@@ -3,9 +3,11 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-const initMapbox = () => {
-  const mapElement = document.getElementById('map');
 
+
+const initMapbox = () => {
+
+  const mapElement = document.getElementById('map');
   if (mapElement) { // only build a map if there's a div#map to inject into
     const lat = mapElement.dataset.lat
     const lng = mapElement.dataset.lng
@@ -22,7 +24,10 @@ const initMapbox = () => {
     markers.forEach((marker) => {
       const element = document.createElement('div');
       element.className = 'marker';
-      element.id = marker.data_event_id
+      element.dataToggle = "tooltip";
+      element.dataPlacement = "top";
+      element.title = marker.title;
+      element.id = marker.data_event_id;
       element.style.backgroundImage = `url('${marker.image_url}')`;
       element.style.backgroundSize = 'contain';
       element.style.width = '30px';
