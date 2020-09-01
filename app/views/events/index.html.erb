@@ -28,10 +28,10 @@
 
       <!-- yizhu: section of cards for events show, 50% of the larger -->
 
-      <div class="col-4 card-info p-0">
+      <div class="col-4 p-0" id="card-info">
         <!-- yizhu: insert events cards here -->
         <% @events.each do |event| %>
-          <div class="card-info-window mt-3" >
+          <div class="card-info-window mt-3" id="event-<%= event.id %>" >
 
             <%= cl_image_tag event.photo.key, alt: "event photo", height:200, crop: :fill %>
 
