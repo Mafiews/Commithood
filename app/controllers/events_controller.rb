@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     # select_events = policy_scope(Event).geocoded.where(:start_date >= Time.now)
 
     if !@causes.nil? && (!@causes.include?("Tous les thèmes")) && (params[:address].present?)
-      @events = policy_scope(Event).geocoded.near(@address, 5).tagged_with(@causes, any: true)
+      @events = policy_scope(Event).geocoded.near(@address, 8).tagged_with(@causes, any: true)
 
     elsif !@causes.nil? && (!@causes.include?("Tous les thèmes"))
       @events = policy_scope(Event).geocoded.tagged_with(@causes, any: true)
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
       @events = policy_scope(Event).geocoded.near(@address, 8)
 
     else
-      @events = policy_scope(Event).geocoded.order(created_at: :desc)
+      @events = policy_scope(Event).geocoded.order(start_date: :desc)
     end
 
     # Kally
@@ -35,7 +35,6 @@ class EventsController < ApplicationController
     seats_left # private method below to count seats_left
     # fr_datetime
 
-    # CAUSES = ["Tous les thèmes",, "Précarité", "Santé", "Sport"]
     @markers = @events.map do |event|
       {
         lat: event.latitude,
@@ -136,13 +135,13 @@ class EventsController < ApplicationController
 
   #Yizhu
 
-  def filter_events_cause(events, causes)
-    filter_events = []
-      causes.each do |cause|
-        @events.where(causes: cause)
-      end
-    filtered_events
-  end
+  # def filter_events_cause(events, causes)
+  #   filter_events = []
+  #     causes.each do |cause|
+  #       @events.where(causes: cause)
+  #     end
+  #   filtered_events
+  # end
 
   # Kally
   def seats_left
