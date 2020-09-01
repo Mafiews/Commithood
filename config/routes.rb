@@ -16,6 +16,4 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'pages#dashboard'
-  put 'ngos/:id/like', to: 'ngos#like', as: 'ngo_like'
-  put 'ngos/:id/unlike', to: 'ngos#unlike', as: 'ngo_unlike'
 end

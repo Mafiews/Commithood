@@ -1,5 +1,4 @@
 class Ngo < ApplicationRecord
-  acts_as_votable
   has_many :events
   has_many :ngo_causes
   has_many :causes, through: :ngo_causes
@@ -10,5 +9,4 @@ class Ngo < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   has_one_attached :photo
-
 end
