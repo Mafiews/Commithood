@@ -1,0 +1,154 @@
+<!-- yizhu: add a container to all elements, with a row to display two sections -->
+<%= render 'shared/navbar' %>
+<div class="justify-content-center">
+
+
+  <!-- yizhu: map section with cards -->
+
+  <div class="d-flex map-cards">
+    <!-- add result filter and text search function -->
+    <div class="search-bar-index mt-3">
+      <%= form_tag events_path, method: "get" do %>
+        <%= text_field_tag :address, "", required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
+        <%= submit_tag "Rechercher 🔍", class: "btn btn-warning text-white" %>
+        <div class="search-select-index col-5">
+          <%= check_box_tag :user_cause, options_for_select(Cause::CAUSES), :multiple => true %>
+        </div>
+      <% end %>
+    </div>
+    <!-- result filter end -->
+
+    <!-- section of map, 100% of the larger -->
+    <div id="map" class="mt-3"
+      data-lng="<%= @lng %>"
+      data-lat="<%= @lat %>"
+      style="width: 100%; height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+      <!-- yizhu: section of cards for events show, 50% of the larger -->
+
+      <div class="col-4 p-0" id="card-info">
+        <!-- yizhu: insert events cards here -->
+        <% @events.each do |event| %>
+          <div class="card-info-window mt-3" id="event-<%= event.id %>" >
+
+            <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
+
+          <!-- Ilana like bookmark -->
+            <div class="bookmark-like-red">
+              <% if user_signed_in? %>
+                <% if current_user.liked? event %>
+                  <%= link_to unlike_event_path(event), class: "unlike-event", remote: true, method: :put do %>
+                    <i class="fas fa-bookmark" id="unlike"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_event_path(event), class: "interested", remote: true, method: :put do %>
+                    <i class="far fa-bookmark" id="like-event"></i>
+                  <% end %>
+                <% end  %>
+              <% end %>
+            </div>
+             <!-- Ilana like bookmark end -->
+
+            <div class="card-info-window-infos">
+              <div>
+                <h2 class="my-3"><%= event.name %></h2>
+                <p><%= event.description %></p>
+                <p class="event-address"><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+                <!-- <p class="card-event-index-date">Date: <%= event.start_date %> / durée: <%#= ((event.end_date - event.start_date) / 3600).to_i %> h </p> -->
+                <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+                <% else %>
+                <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+                <% end %>
+                </p>
+                <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
+                <p> <%= event.tag_list %></p>
+              </div>
+              <%# if event.ngo.photo.attached? %>
+                <%#= cl_image_tag event.ngo.photo.key, alt: "event photo", crop: :fill, class:"card-event-index-user avatar-bordered" %>
+              <%# end %>
+              <%= link_to "Je paticipe", event_path(event), class:"btn btn-success btn-join" %>
+            </div>
+          </div>
+        <% end %>
+        <!-- yizhu: end of insert cards -->
+        </div>
+      <!-- end of cards section -->
+
+    </div>
+
+  <!-- yizhu: section of cards for events show, 50% of the larger -->
+    <div class="d-flex flex-wrap bd-highlight justify-content-around">
+
+      <!-- yizhu: insert events cards here -->
+      <% @events.each do |event| %>
+        <div class="card-event-index col-5 m-3" id="<%= event.id %>">
+
+          <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
+
+        <!-- Ilana like bookmark -->
+          <div class="bookmark-like-red">
+            <% if user_signed_in? %>
+              <% if current_user.liked? event %>
+                <%= link_to unlike_event_path(event), class: "unlike-event", remote: true, method: :put do %>
+                  <i class="fas fa-bookmark" id="unlike"></i>
+                <% end %>
+              <% else %>
+                <%= link_to like_event_path(event), class: "interested", remote: true, method: :put do %>
+                  <i class="far fa-bookmark" id="like-event"></i>
+                <% end %>
+              <% end  %>
+            <% end %>
+          </div>
+           <!-- Ilana like bookmark end -->
+
+          <div class="card-event-index-infos">
+            <div>
+              <h2><%= event.name %></h2>
+              <p><%= event.description.truncate_words(18) %></p>
+              <p class="event-address"><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+              <!-- <p class="card-event-index-date">Date: <%= event.start_date %> / durée: <%#= ((event.end_date - event.start_date) / 3600).to_i %> h </p> -->
+              <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
+              <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
+              <% else %>
+              <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
+              <% end %>
+              </p>
+              <p><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
+            </div>
+            <!-- logo association -->
+            <%# if event.ngo.photo.attached? %>
+              <%#= cl_image_tag event.ngo.photo.key, alt: "event photo", crop: :fill, class:"card-event-index-user avatar-bordered" %>
+            <%# end %>
+            <div class="action-links form-inline">
+              <%= link_to "More Détails", event_path(event) %>
+              <% if event.seats_left.zero? %>
+                <button class="btn btn-danger my-2">Complet</button>
+              <% elsif event.start_date < DateTime.now %>
+                <%= link_to event_path(event) do %>
+                  <button class="btn btn-secondary">Terminé</button>
+                <% end %>
+              <% elsif user_signed_in? == false %>
+                <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success" %>
+              <% elsif current_user.participations.find_by(event_id: event.id) %>
+                <%= link_to event_path(event) do %>
+                  <button class="btn btn-warning">Déjà inscrit</button>
+                <% end %>
+              <% elsif current_user %>
+                <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
+                  <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
+              <% end %>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!-- yizhu: end of insert cards -->
+    </div>
+    <!-- end of cards section -->
+
+  </div>

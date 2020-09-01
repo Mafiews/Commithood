@@ -43,6 +43,8 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initUpdateNavbarOnScroll()
   initSelect2();
+  initMapbox();
+  initEventinfo();
   initSweetalert('#sweet-alert-register', {
     title: "Participation confirmée",
     text: "BA du jour accomplie !",
@@ -51,8 +53,6 @@ document.addEventListener('turbolinks:load', () => {
     const link = document.querySelector('#register-link');
     if (link) {link.click()};
   });
-  initMapbox();
-  initEventinfo();
 });
 
 
