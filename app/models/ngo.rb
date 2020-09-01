@@ -1,4 +1,5 @@
 class Ngo < ApplicationRecord
+  acts_as_votable
   has_many :events
   has_many :ngo_causes
   has_many :causes, through: :ngo_causes
