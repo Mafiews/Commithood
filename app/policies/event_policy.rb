@@ -40,4 +40,5 @@ class EventPolicy < ApplicationPolicy
   def unlike_home?
     user
   end
+
 end
