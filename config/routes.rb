@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
   resources :ngos, only: [:show] do
     member do
-      put 'like', to: 'ngos#like'
-      put 'unlike', to: 'ngos#unlike'
+      put 'follow', to: 'ngos#follow'
+      put 'unfollow', to: 'ngos#unfollow'
     end
   end
 end

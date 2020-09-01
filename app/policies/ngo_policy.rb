@@ -3,11 +3,11 @@ class NgoPolicy < ApplicationPolicy
     true
   end
 
-  def like?
+  def follow?
     user
   end
 
-  def unlike?
+  def unfollow?
     user
   end
 
