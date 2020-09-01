@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'pages#dashboard'
-  put 'ngos/:id/like', to: 'ngos#like', as: 'ngo_like'
-  put 'ngos/:id/unlike', to: 'ngos#unlike', as: 'ngo_unlike'
+  resources :ngos, only: [:show] do
+    member do
+      put 'like', to: 'ngos#like'
+      put 'unlike', to: 'ngos#unlike'
+    end
+  end
 end
