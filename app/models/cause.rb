@@ -6,7 +6,7 @@ class Cause < ApplicationRecord
   has_many :event_causes
   has_many :events, through: :event_causes
 
-  CAUSES = ["Tous les thèmes", "Environnement", "Jeunesse", "Cause animale", "Précarité", "Isolement", "Personnes âgées", "Santé", "Culture", "Sport", "Formation"]
+  CAUSES = ["Tous les thèmes", "Environnement", "Jeunesse", "Bien-être animal", "Précarité", "Isolement", "Personnes âgées", "Santé", "Culture", "Sport", "Formation"]
 
   validates :name, inclusion: { in: CAUSES, allow_nil: false }
 end
