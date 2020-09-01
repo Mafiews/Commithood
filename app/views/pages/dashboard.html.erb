@@ -1,40 +1,9 @@
 <%= render 'shared/navbar' %>
 
-<div class="d-flex dashboard">
-  <!-- Kally : user stats -->
-  <div class="profile-card align-self-start">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar-large user-photo m-3" %>
-    <% else %>
-      <%= image_tag "https://oozou.com/assets/placeholder-e61f8e40396b6f3d78281bfa3b2d5ca202616f0e3f9931d451a49d4c2ddfcfea.jpg", alt: "empty-avatar", class: "avatar-large user-photo m-3" %>
-    <% end %>
-
-    <p><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
-    <!-- Kally : user action counters -->
-    <div class="dashboard-profile-text">
-      <p><i class="fas fa-calendar-check"></i> <%= @my_events.size %>
-        <% if @my_events.size.zero? || @my_events.size == 1 %>
-          participation
-        <% else %>
-          participations
-        <% end %>
-      </p>
-
-    <!-- Ilana book mark -->
-      <p><i class="fas fa-bookmark"></i> <%= @events_liked.size %>
-        <% if @events_liked.size.zero? || @events_liked.size == 1 %>
-          favori
-        <% else %>
-          favoris
-        <% end %>
-      </p>
-      <!-- Kally : pending follow feature -->
-      <!-- <p><i class="fas fa-heart"></i> 0 association suivie</p> -->
-    </div>
-  </div>
-  <!-- End of user stats -->
-
-  <div class="col-sm-10 mt-4">
+<div class="container-fluid">
+  <div class="dashboard">
+    <h1>Mes événements</h1>
+    <div class="row">
     <!-- Kally : Tabs -->
       <ul class="nav list-inline tabs-underlined" id="myTab" role="tablist">
         <li>
@@ -55,9 +24,11 @@
             Intéressé <span class="text-muted">(<%= @events_liked.size %>)</span></a>
         </li>
       </ul>
+  </div>
     <!-- End of Tabs -->
 
     <!-- Kally : Contents -->
+  <div class="row">
     <div class="tab-content" id="myTabContent">
 
       <!-- Upcoming events -->
@@ -76,4 +47,5 @@
       </div>
     </div>
   </div>
+
 </div>
