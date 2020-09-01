@@ -87,6 +87,18 @@ class EventsController < ApplicationController
     redirect_to root_path(anchor: "event-recos")
   end
 
+  def like_dashboard
+    set_event
+    @event.liked_by current_user
+    redirect_to dashboard_path
+  end
+
+  def unlike_dashboard
+    set_event
+    @event.unliked_by current_user
+    redirect_to dashboard_path
+  end
+
   private
 
   # ilana

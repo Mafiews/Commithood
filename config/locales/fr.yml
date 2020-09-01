@@ -216,5 +216,8 @@ fr:
       default: "%a. %d %b %Y, %Hh%M"
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
+      day_week: "%a."
+      day: "%d"
+      month: "%b"
       hours: "%Hh%M"
     pm: pm
