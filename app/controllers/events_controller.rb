@@ -37,7 +37,7 @@ class EventsController < ApplicationController
           case event.tag_list.first
           when "Environnement"
             "tag-environment.png"
-          when "Cause animale"
+          when "Bien-être animal"
             "tag-animal.png"
           when "Culture"
             "tag-culture.png"
