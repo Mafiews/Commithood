@@ -1,5 +1,9 @@
 class NgosController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:show]
+
+  def show
+    set_ngo
+  end
 
   def like
     set_ngo

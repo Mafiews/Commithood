@@ -1,4 +1,15 @@
+.container-fluid {
+  width: 90%;
+  margin-top: 20px;
+}
+
 .dashboard {
+  .tab-content {
+    width: 100%;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
   h2 {
     font-size: 20px;
     color: $dark-green;
@@ -56,7 +67,7 @@
   box-shadow: 0 0 5px rgba(0,0,0,0.05);
   padding: 0;
   margin: 15px 0px 15px 15px;
-  width: 25%;
+  width: 30%;
   .card-event-cover {
     img {
       height: 210px;
@@ -100,14 +111,15 @@
       width: 140%;
     }
     .btn {
-      position: absolute;
-      right: 4%;
-      top: 87%;
+      position: relative;
+      margin-top: 115%;
+      margin-left: -18%;
       color: white;
+      width: 110px;
     }
     .bookmark-like-red {
-      position: absolute;
-      right: 4%;
+      position: relative;
+      right: 8%;
     }
   }
 }

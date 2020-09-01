@@ -1,4 +1,8 @@
 class NgoPolicy < ApplicationPolicy
+  def show?
+    true
+  end
+
   def like?
     user
   end
