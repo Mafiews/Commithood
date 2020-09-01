@@ -2,6 +2,12 @@
   position: relative;
 }
 
+#card-info {
+  position:absolute;
+  right:-100%;
+  transition: all 1s ease-in-out;
+}
+
 .card-info-window {
   overflow: hidden;
   background: white;
@@ -9,9 +15,14 @@
   height:600px;
   width: 100%;
   position:absolute;
-  right:0px;
+  right:-100%;
   top:0px;
   padding:15px;
+  transition: all 1s ease-in-out;
+}
+
+.active {
+  right:0px !important;
 }
 
 
