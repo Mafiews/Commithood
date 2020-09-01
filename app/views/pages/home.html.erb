@@ -50,6 +50,27 @@
             <i class="far fa-bookmark" id="like-event"></i>
           <% end  %>
         </div>
+             <!-- follow button Ilana -->
+
+        <div class="follow-me">
+          <% if user_signed_in?  %>
+            <% if current_user.liked? event.ngo %>
+              <%= link_to ngo_unlike_path(event.ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
+                <i class="fas fa-heart" id="unlike"></i>
+              <% end %>
+            <% else %>
+              <%= link_to ngo_like_path(event.ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
+                <i class="far fa-heart" id="like-ngo"></i>
+              <% end %>
+            <% end  %>
+          <% else %>
+            <i class="far fa-heart" id="like-ngo"></i>
+          <% end %>
+      </div>
+      <!-- end of follow-button -->
+
+
+
         <div class="card-body">
           <h5 class="card-title"><%= event.name %></h5>
           <p class="card-text "><%= event.description.truncate_words(20) %></p>
