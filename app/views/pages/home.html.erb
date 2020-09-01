@@ -52,7 +52,9 @@
               <% end %>
             <% end %>
             <% else %>
-            <i class="far fa-bookmark" id="like-event"></i>
+              <%= link_to new_user_session_path, class: "interested" do %>
+                <i class="far fa-bookmark" id="like-event"></i>
+              <% end %>
           <% end  %>
         </div>
 
@@ -60,18 +62,20 @@
         <div class="follow-me">
           <% if user_signed_in?  %>
             <% if current_user.liked? event.ngo %>
-              <%= link_to ngo_unlike_path(event.ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
+              <%= link_to unfollow_ngo_path(event.ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
                 <i class="fas fa-heart" id="unlike"></i>
               <% end %>
             <% else %>
-              <%= link_to ngo_like_path(event.ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
+              <%= link_to follow_ngo_path(event.ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
                 <i class="far fa-heart" id="like-ngo"></i>
               <% end %>
             <% end  %>
           <% else %>
-            <i class="far fa-heart" id="like-ngo"></i>
+              <%= link_to new_user_session_path, class: "follow-ngo" do %>
+                <i class="far fa-heart" id="like-ngo"></i>
+              <% end %>
           <% end %>
-      </div>
+        </div>
       <!-- end of follow-button -->
 
         <div class="card-body">
