@@ -26,11 +26,11 @@
   </div>
 </div>
 
-<div class="container event-cards mt-3" id="event-recos">
-  <h3 class="my-4">Un peu d'inspiration 💭</h3>
+<div class="container mt-2" id="inspiration" >
+  <h3 class="my-4">Un peu d'inspiration 💭💭💭</h3>
 </div>
 
-    <!-- Matt : bootstrap carousel -->
+    <!-- Matt : bootstrap carousel start -->
     <div id="carouselExampleIndicators" class="carousel slide carousel-card-home" data-ride="carousel">
       <ol class="carousel-indicators">
         <% i = 0 %>
@@ -44,7 +44,7 @@
         <% Event.all.each do |event| %>
           <div class="carousel-item <%= j == 0 ? 'active' : ''%>">
             <div class="card-event-dashboard" style="margin: auto; height: 650px; width: 900px;">
-              <div class="card-event-cover">
+              <div class="card-event-cover event-cover-carousel">
                 <%= cl_image_tag event.photo.key, alt: "event photo", class:"card-event-img",crop: :fill %>
               </div>
 
@@ -52,7 +52,7 @@
 
                 <div class="d-flex align-self-stretch content-info-home">
 
-                  <!-- Date column -->
+                  <!-- Date column start -->
                   <div class="card-event-date col-2 text-center">
                     <% if event.ngo.photo.attached? %>
                       <%= cl_image_tag event.ngo.photo.key, class: "avatar-event-card avatar-home" %>
@@ -62,8 +62,9 @@
                     <p><%= I18n.l(event.start_date, locale: :fr, format: :month).upcase %></p>
                     <p id="card-event-hour"><%= I18n.l(event.start_date, locale: :fr, format: :hours) %></p>
                   </div>
+                  <!-- Date column end -->
 
-                  <!-- Infos column -->
+                  <!-- Infos column start -->
                   <div class="card-event-details col-sm-7">
                     <%= link_to event.ngo.name, ngo_path(event.ngo), id: "card-event-ngo" %>
         <!--             <p id="card-event-ngo"><%= event.ngo.name %></p> -->
@@ -81,14 +82,15 @@
                     <br>
                     <%= event.description %>
                   </div>
+                  <!-- Infos column end -->
 
-                  <!-- Button -->
+                  <!-- Button start -->
                   <% if event.end_date < DateTime.now %>
                     <%= link_to event_path(event) do %>
                       <button class="btn btn-secondary card-btn-home">Terminé</button>
                     <% end %>
                   <% elsif user_signed_in? == false %>
-                    <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
+                    <%= link_to "Je participe !", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
                   <% elsif current_user.participations.find_by(event_id: event.id) %>
                     <%= link_to event_path(event) do %>
                       <button class="btn btn-warning card-btn-home">Déjà inscrit</button>
@@ -99,12 +101,12 @@
                     <% end %>
                   <% elsif current_user %>
                     <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
-                      <button id="sweet-alert-register" class="btn btn-success card-btn-home">Je participe!</button>
+                      <button id="sweet-alert-register" class="btn btn-success card-btn-home">Je participe !</button>
                     <% end %>
                   <% end %>
-                  <!-- end of Button -->
+                  <!-- Button end -->
 
-                  <!-- Bookmark -->
+                  <!-- Bookmark start -->
                   <% if user_signed_in? %>
                     <% if current_user.liked? event %>
                       <%= link_to unlike_dashboard_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
@@ -116,7 +118,7 @@
                       <% end %>
                     <% end  %>
                   <% end %>
-                  <!-- End of Bookmark -->
+                  <!-- Bookmark end -->
 
                 </div>
               </div>
@@ -135,77 +137,4 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <!-- end of bootstrap carousel -->
-
-<!-- Matt - section to be deleted when carousel works -->
-<!-- yizhu create 3 cards to show the lastest 3 events registed under the banner, in form of card -->
-<div class="container event-cards mt-3" id="event-recos">
-  <h3 class="my-4">Un peu d'inspiration 💭</h3>
-
-  <div class="row justify-content-around">
-    <% @events.each do |event| %>
-      <div class="card card-event-home" style="width: 18rem;">
-        <%= cl_image_tag event.photo.key, alt: "event photo", height: 200, crop: :fill %>
-        <div class="bookmark-like-red">
-          <% if user_signed_in? %>
-            <% if current_user.liked? event %>
-              <%= link_to unlike_home_event_path(event), class: "unlike-event", remote: true, method: :put do %>
-                <i class="fas fa-bookmark" id="unlike"></i>
-              <% end %>
-            <% else %>
-              <%= link_to like_home_event_path(event), class: "interested", remote: true, method: :put do %>
-                <i class="far fa-bookmark" id="like-event"></i>
-                <div class="infobulle" style="display: none;">
-                  <div class="infobulle-texte" id="Intéressé" >
-                    Intéressé(e)
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-            <% else %>
-              <%= link_to new_user_session_path, class: "interested" do %>
-                <i class="far fa-bookmark" id="like-event"></i>
-              <% end %>
-          <% end  %>
-        </div>
-
-        <!-- follow button Ilana -->
-        <div class="follow-me">
-          <% if user_signed_in?  %>
-            <% if current_user.liked? event.ngo %>
-              <%= link_to unfollow_ngo_path(event.ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
-                <i class="fas fa-heart" id="unlike"></i>
-              <% end %>
-            <% else %>
-              <%= link_to follow_ngo_path(event.ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
-                <i class="far fa-heart" id="like-ngo"></i>
-              <% end %>
-            <% end  %>
-          <% else %>
-              <%= link_to new_user_session_path, class: "follow-ngo" do %>
-                <i class="far fa-heart" id="like-ngo"></i>
-              <% end %>
-          <% end %>
-        </div>
-      <!-- end of follow-button -->
-
-        <div class="card-body">
-          <h5 class="card-title"><%= event.name %></h5>
-          <p class="card-text "><%= event.description.truncate_words(20) %></p>
-          <p class="card-address"><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
-          <p class="card-address"><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
-          <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
-          <% else %>
-          <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l(event.end_date, locale: :fr) %>
-          <% end %>
-          </p>
-          <p class="card-address"><i class="fas fa-user-circle"></i> Places disponibles : <%= event.seats_left %></p>
-          <%= link_to "Détails", event_path(event), class:"btn btn-success btn-green" %>
-        </div>
-      </div>
-    <% end %>
-    </div>
-
-<!-- Matt - end of section to be deleted when carousel works -->
-
   </div>

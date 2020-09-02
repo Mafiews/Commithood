@@ -11,7 +11,7 @@
     <div class="search-bar-index">
       <%= form_tag events_path, method: "get", remote:true do %>
         <%= text_field_tag :address, params[:address].present? ? params[:address] : '', required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
-        <%= submit_tag "Rechercher 🔍", class: "btn btn-warning text-white mt-2" %>
+        <%= submit_tag "Rechercher", class: "btn btn-success text-white mt-2" %>
         <div class="search-select-index mt-3">
           <h5>Choisisez votre Thèmes</h5>
           <div class="cause-list">
@@ -20,7 +20,7 @@
                 <li>
                   <label class="cause-select <%= cause.parameterize.split('-').first %> <%= @causes.include?(cause) ? "active" : "" %>">
                     <%= check_box_tag "user_cause_#{cause.downcase}", "#{cause}", params["user_cause_#{cause.downcase}"] == cause, id: "user_cause", style:'visibility: hidden'%>
-                    <%= image_tag "#{cause == "Tous les thèmes" ? "logo" : cause.parameterize}.png", size: "16x16", alt: "alttext" %> <%= cause %> (<%= cause == "Tous les thèmes" ? Event.all.size : Event.tagged_with("#{cause}").count %>)
+                    <%= image_tag "#{cause == "Tous les thèmes" ? "logo" : cause.parameterize}.png", size: "20x20", alt: "alttext" %>  <%= cause %> (<%= cause == "Tous les thèmes" ? Event.all.size : Event.tagged_with("#{cause}").count %>)
                   </label>
                 </li>
               <% end %>
@@ -35,52 +35,56 @@
     <div id="map" class=""
       data-lng="<%= @lng %>"
       data-lat="<%= @lat %>"
-      style="width: 100%; height: 600px;"
+      style="width: 100%; height: 90vh;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
 
       <!-- yizhu: section of cards for events show, 50% of the larger -->
 
-      <div class="p-0" id="card-info">
-        <!-- yizhu: insert events cards here -->
-        <% @events.each do |event| %>
-          <div class="card-info-window" id="event-<%= event.id %>" >
+    <div class="p-0" id="card-info">
+      <!-- yizhu: insert events cards here -->
+      <% @events.each do |event| %>
+        <div class="card-info-window" id="event-<%= event.id %>" >
 
-            <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
+          <%= cl_image_tag event.photo.key, crop: :fill, class: "event-photo" %>
 
-              <!-- Bookmark on photo -->
-            <div class="bookmark-like-red">
-              <% if user_signed_in? %>
-                <% if current_user.liked? event %>
-                  <%= link_to unlike_event_path(event), class: "unlike-event", remote: true, method: :put do %>
-                    <i class="fas fa-bookmark" id="unlike"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to like_event_path(event), class: "interested", remote: true, method: :put do %>
-                    <i class="far fa-bookmark" id="like-event"></i>
-                    <div class="infobulle" style="display: none;">
-                      <div class="infobulle-texte" id="Intéressé" >
-                        Intéressé(e)
-                      </div>
-                    </div>
-                  <% end %>
+            <!-- Bookmark on photo -->
+          <div class="bookmark-like-red">
+            <% if user_signed_in? %>
+              <% if current_user.liked? event %>
+                <%= link_to unlike_event_path(event), class: "unlike-event", remote: true, method: :put do %>
+                  <i class="fas fa-bookmark" id="unlike"></i>
                 <% end %>
               <% else %>
-                  <%= link_to new_user_session_path, class: "interested" do %>
-                    <i class="far fa-bookmark" id="like-event"></i>
-                  <% end %>
-              <% end  %>
-            </div>
+                <%= link_to like_event_path(event), class: "interested", remote: true, method: :put do %>
+                  <i class="far fa-bookmark" id="like-event"></i>
+                  <div class="infobulle" style="display: none;">
+                    <div class="infobulle-texte" id="Intéressé" >
+                      Intéressé(e)
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% else %>
+                <%= link_to new_user_session_path, class: "interested" do %>
+                  <i class="far fa-bookmark" id="like-event"></i>
+                <% end %>
+            <% end  %>
+          </div>
 
             <div class="card-info-window-infos">
-              <div class="d-flex justify-content-between mb-2">
+              <div class="d-flex justify-content-between mb-3">
+
                 <div>
                   <h2><%= event.name %></h2>
-                  <p> <%= event.tag_list %></p>
-                  <p class="event-address"><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
-                  <!-- <p class="card-event-index-date">Date: <%= event.start_date %> / durée: <%#= ((event.end_date - event.start_date) / 3600).to_i %> h </p> -->
+                  <p>
+                    <%= render "shared/tag_icons", event: event %>
+                  </p>
+
+                 <p class="event-address"><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
                   <p><i class="fas fa-user-circle"></i> <%= event.seats_left %> bénévoles souhaités</p>
+
                   <p><i class="far fa-calendar-alt"></i><% if event.start_date.to_date == event.end_date.to_date %>
                   <%= I18n.l(event.start_date, locale: :fr) %> - <%= I18n.l event.end_date, locale: :fr, format: :hours %>
                   <% else %>
@@ -88,6 +92,7 @@
                   <% end %>
                   </p>
                 </div>
+
                 <div class="d-inline">
                   <div class="card-event-date text-center">
                     <strong>
@@ -100,20 +105,22 @@
                   <div>
                     <%= link_to "Je paticipe !", event_path(event), class:"btn btn-success btn-join" %>
                   </div>
+
                 </div>
               </div>
-              <p><%= event.description %></p>
             </div>
+            <p class="px-3"><%= event.description %></p>
           </div>
-        <% end %>
-        <!-- yizhu: end of insert cards -->
         </div>
+      <% end %>
+      <!-- yizhu: end of insert cards -->
+    </div>
       <!-- end of cards section -->
 
-    </div>
+  </div>
 
   <!-- yizhu: section of cards for events show, 50% of the larger -->
-    <div class="d-flex flex-wrap bd-highlight justify-content-around">
+    <div class="d-flex flex-wrap bd-highlight justify-content-around card-inactive">
       <%= render "/events/card_event", events: @events %>
     </div>
     <!-- end of cards section -->

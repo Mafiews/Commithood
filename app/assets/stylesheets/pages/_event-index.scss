@@ -2,7 +2,7 @@
 background-color: white;
 // position: absolute;
 transition: all 1s ease-in-out;
-height:600px;
+height:100%;
 padding-left: 10px;
 box-shadow: 0 0 5px rgba(0,0,0,0.1);
   ul{
@@ -12,21 +12,29 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
   }
 }
 
-.inactive{
+.inactive {
   position: absolute;
+}
+
+.card-inactive {
+  left: -100%
+}
+
+.map-cards {
+ height:90vh;
 }
 
 .cause-list {
   .tous{
     font-weight: bold;
-  }
+  };
   .environnement{
     color:$environnement;
     &.active {
       border: 1px solid $environnement;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .bien{
     color: $bien-etre;
@@ -34,7 +42,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $bien-etre;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .jeunesse {
     color: $jeunesse;
@@ -42,7 +50,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $jeunesse;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .sport {
     color: $sport;
@@ -50,7 +58,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $sport;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .formation {
     color: $formation;
@@ -58,7 +66,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $formation;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .culture {
     color: $culture;
@@ -66,7 +74,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $culture;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .sante {
     color: $sante;
@@ -74,7 +82,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $sante;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .precarite {
     color: $precarite;
@@ -82,7 +90,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $precarite;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .isolement {
     color: $isolement;
@@ -90,7 +98,7 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $isolement;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
   .personnes {
     color: $personnes;
@@ -98,9 +106,8 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
       border: 1px solid $personnes;
       border-radius: 10px;
       padding: 0px 12px 0px 0px;
-    }
+    };
   };
-
 }
 
 

@@ -7,7 +7,7 @@
   right:-100%;
   top:0px;
   transition: all 1s ease-in-out;
-  height:600px;
+  height:100%;
   width: 30%;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
@@ -19,13 +19,13 @@
 .card-info-window {
   overflow: hidden;
   background: white;
-  width: 100%;
-  height: 600px;
+  width: 30%;
+  height: 100vh;
   position: absolute;
   right:-100%;
   top:0px;
   transition: all 1s ease-in-out;
-  img {
+  .event-photo {
     height: 250px;
     object-fit: cover;
     width:100%;
@@ -34,11 +34,18 @@
     //   transition: all 300ms ease-in-out;
     // }
   }
+  .event-tag {
+    height: 30px;
+    margin: 0 2px 5px 0;
+  }
   .bookmark-like-red {
     position: absolute;
-    bottom: 93%;
-    left: 4%;
-    font-size: 32px;
+    bottom: 58.5%;
+    left: 3.5%;
+    font-size: 30px;
+    padding: 2px 6px;
+    background-color: rgba(30, 30, 30, .65);
+    border-radius: 2px;
     #like-event, #unlike {
       color: white;
     }
