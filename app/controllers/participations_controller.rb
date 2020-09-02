@@ -7,9 +7,9 @@ class ParticipationsController < ApplicationController
     if @participation.save
       @event.seats_left = @event.seats - 1
       @event.save
-      redirect_to event_path(@event)
-    else
-      render "events/show"
+    #   redirect_to event_path(@event)
+    # else
+    #   render "events/show"
     end
   end
 end
