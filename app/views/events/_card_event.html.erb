@@ -1,0 +1,77 @@
+<div class="d-flex flex-wrap">
+  <% events.each do |event| %>
+    <div class="card-event-dashboard">
+      <div class="card-event-cover">
+        <%= cl_image_tag event.photo.key, alt: "event photo", class:"card-event-img",crop: :fill %>
+      </div>
+      <div class="card-event-infos-dashboard">
+        <div class="d-flex align-self-stretch">
+
+          <!-- Date column -->
+          <div class="card-event-date col-2 text-center">
+            <% if event.ngo.photo.attached? %>
+              <%= cl_image_tag event.ngo.photo.key, class: "avatar-event-card" %>
+            <% end %>
+            <p><%= I18n.l(event.start_date, locale: :fr, format: :day_week) %></p>
+            <p class="event-day-highlight"><%= I18n.l(event.start_date, locale: :fr, format: :day) %></p>
+            <p><%= I18n.l(event.start_date, locale: :fr, format: :month).upcase %></p>
+            <p id="card-event-hour"><%= I18n.l(event.start_date, locale: :fr, format: :hours) %></p>
+          </div>
+
+          <!-- Infos column -->
+          <div class="card-event-details col-sm-7">
+            <%= link_to event.ngo.name, ngo_path(event.ngo), id: "card-event-ngo" %>
+<!--             <p id="card-event-ngo"><%= event.ngo.name %></p> -->
+            <h2><%= event.name %></h2>
+            <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
+            <p><i class="fas fa-user-circle"></i> <%= event.seats_left %> bénévoles souhaités</p>
+            <!-- Day counter -->
+            <% if event.start_date > DateTime.now %>
+              <p><i class="far fa-calendar-alt"></i> commence dans <%= ((event.start_date - DateTime.now) / 1.day).to_i %> jours</p>
+            <% elsif event.end_date > DateTime.now %>
+              <p><i class="far fa-calendar-alt"></i> termine dans <%= ((event.end_date - DateTime.now) / 1.day).to_i %> jours</p>
+            <% else %>
+              <br>
+            <% end %>
+          </div>
+
+          <!-- Button -->
+            <% if event.end_date < DateTime.now %>
+              <%= link_to event_path(event) do %>
+                <button class="btn btn-secondary">Terminé</button>
+              <% end %>
+            <% elsif user_signed_in? == false %>
+              <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success" %>
+            <% elsif current_user.participations.find_by(event_id: event.id) %>
+              <%= link_to event_path(event) do %>
+                <button class="btn btn-warning">Déjà inscrit</button>
+              <% end %>
+            <% elsif event.seats_left.zero? %>
+              <%= link_to event_path(event) do %>
+                <button class="btn btn-danger my-2">Complet</button>
+              <% end %>
+            <% elsif current_user %>
+              <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
+                <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
+              <% end %>
+            <% end %>
+
+          <!-- Bookmark -->
+            <% if user_signed_in? %>
+              <% if current_user.liked? event %>
+                <%= link_to unlike_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
+                  <i class="fas fa-bookmark" id="unlike"></i>
+                <% end %>
+              <% else %>
+                <%= link_to like_event_path(event), class: "interested bookmark-like-red", method: :put, remote: true do %>
+                  <i class="far fa-bookmark" id="like-event"></i>
+                <% end %>
+              <% end  %>
+            <% end %>
+
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -3,14 +3,104 @@ background-color: white;
 // position: absolute;
 transition: all 1s ease-in-out;
 height:600px;
-padding:10px;
+padding-left: 10px;
+box-shadow: 0 0 5px rgba(0,0,0,0.1);
   ul{
   list-style: none;
-  padding-left:15px;
+  margin-left:5px;
+  padding:0px;
   }
 }
 
 .inactive{
   position: absolute;
 }
+
+.cause-list {
+  .tous{
+    font-weight: bold;
+  }
+  .environnement{
+    color:$environnement;
+    &.active {
+      border: 1px solid $environnement;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .bien{
+    color: $bien-etre;
+    &.active {
+      border: 1px solid $bien-etre;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .jeunesse {
+    color: $jeunesse;
+    &.active {
+      border: 1px solid $jeunesse;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .sport {
+    color: $sport;
+    &.active {
+      border: 1px solid $sport;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .formation {
+    color: $formation;
+    &.active {
+      border: 1px solid $formation;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .culture {
+    color: $culture;
+    &.active {
+      border: 1px solid $culture;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .sante {
+    color: $sante;
+    &.active {
+      border: 1px solid $sante;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .precarite {
+    color: $precarite;
+    &.active {
+      border: 1px solid $precarite;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .isolement {
+    color: $isolement;
+    &.active {
+      border: 1px solid $isolement;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+  .personnes {
+    color: $personnes;
+    &.active {
+      border: 1px solid $personnes;
+      border-radius: 10px;
+      padding: 0px 12px 0px 0px;
+    }
+  };
+
+}
+
 
