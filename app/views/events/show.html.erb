@@ -9,9 +9,9 @@
       <p> <%= @event.description %></p>
     </div>
     <div class="card-event col-4">
-      <h2>organisé par <%= @event.ngo.name %></h2>
+      <h4>Organisé par <%= @event.ngo.name %></h4>
       <!-- <button class="btn">Suivre</button> -->
-      <h3 class="mt-4">Infos pratiques</h3>
+      <h3 class="mt-4"></h3>
         <ol style="list-style-type:none;" id="ol-details">
           <li><i class="fas fa-map-marker-alt"></i> <%= @event.address%></li>
           <li><i class="far fa-calendar-alt"></i>
@@ -30,7 +30,7 @@
         <% elsif current_user.participations.find_by(event_id: @event.id) %>
           <button class="btn btn-success my-2">Inscrit ✅</button>
         <% elsif current_user %>
-          <button id="sweet-alert-register" class="btn btn-primary my-2">Participer</button>
+          <button id="sweet-alert-register" class="btn btn-primary my-2">Je participe !</button>
           <%= link_to "", event_participations_path(@event), method: :post, id: "register-link", remote: true, class: "hidden" %>
         <% end %>
     </div>
