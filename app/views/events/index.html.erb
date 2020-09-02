@@ -13,7 +13,7 @@
         <%= text_field_tag :address, params[:address].present? ? params[:address] : '', required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
         <%= submit_tag "Rechercher", class: "btn btn-success text-white mt-2" %>
         <div class="search-select-index mt-3">
-          <h5>Choisissez vos Thèmes</h5>
+          <h5>Choisissez vos Thèmes </h5>
           <div class="cause-list">
             <ul>
               <% Cause::CAUSES.each do |cause| %>
