@@ -36,38 +36,38 @@
           </div>
 
           <!-- Button -->
-            <% if event.end_date < DateTime.now %>
-              <%= link_to event_path(event) do %>
-                <button class="btn btn-secondary">Terminé</button>
-              <% end %>
-            <% elsif user_signed_in? == false %>
-              <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success" %>
-            <% elsif current_user.participations.find_by(event_id: event.id) %>
-              <%= link_to event_path(event) do %>
-                <button class="btn btn-warning">Déjà inscrit</button>
-              <% end %>
-            <% elsif event.seats_left.zero? %>
-              <%= link_to event_path(event) do %>
-                <button class="btn btn-danger my-2">Complet</button>
-              <% end %>
-            <% elsif current_user %>
-              <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
-                <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
-              <% end %>
+          <% if event.end_date < DateTime.now %>
+            <%= link_to event_path(event) do %>
+              <button class="btn btn-secondary">Terminé</button>
             <% end %>
+          <% elsif user_signed_in? == false %>
+            <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success" %>
+          <% elsif current_user.participations.find_by(event_id: event.id) %>
+            <%= link_to event_path(event) do %>
+              <button class="btn btn-warning">Déjà inscrit</button>
+            <% end %>
+          <% elsif event.seats_left.zero? %>
+            <%= link_to event_path(event) do %>
+              <button class="btn btn-danger my-2">Complet</button>
+            <% end %>
+          <% elsif current_user %>
+            <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
+              <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
+            <% end %>
+          <% end %>
 
           <!-- Bookmark -->
-            <% if user_signed_in? %>
-              <% if current_user.liked? event %>
-                <%= link_to unlike_dashboard_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
-                  <i class="fas fa-bookmark" id="unlike"></i>
-                <% end %>
-              <% else %>
-                <%= link_to like_dashboard_event_path(event), class: "interested bookmark-like-red", method: :put, remote: true do %>
-                  <i class="far fa-bookmark" id="like-event"></i>
-                <% end %>
-              <% end  %>
-            <% end %>
+          <% if user_signed_in? %>
+            <% if current_user.liked? event %>
+              <%= link_to unlike_dashboard_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
+                <i class="fas fa-bookmark" id="unlike"></i>
+              <% end %>
+            <% else %>
+              <%= link_to like_dashboard_event_path(event), class: "interested bookmark-like-red", method: :put, remote: true do %>
+                <i class="far fa-bookmark" id="like-event"></i>
+              <% end %>
+            <% end  %>
+          <% end %>
 
 
         </div>
