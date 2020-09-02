@@ -13,10 +13,10 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Tous les événements", events_path, class: "nav-link" %>
+          <%= link_to "Tous les événements", events_path, class: "nav-link", id: "navbar-link-all"%>
         </li>
         <li class="nav-item active">
-          <%= link_to "Tableau de bord", dashboard_path, class: "nav-link" %>
+          <%= link_to "Tableau de bord", dashboard_path, class: "nav-link", id: "navbar-link-all"%>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
@@ -32,10 +32,10 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Tous les événements", events_path, class: "nav-link" %>
+          <%= link_to "Tous les événements", events_path, class: "nav-link", id: "navbar-link-all" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Connexion", new_user_session_path, class: "nav-link", id: "navbar-link-all" %>
         </li>
       <% end %>
     </ul>
