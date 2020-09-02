@@ -44,14 +44,18 @@
   }
   #event-address {
     border: none !important;
+    border-left: 1px solid #CCC !important
   }
   .select2-container--default .select2-selection--multiple {
     border: none !important;
-    border-right: 1px solid #CCC !important
+    padding-top: 1% !important
   }
   // .select2-container--default .select2-selection--multiple {
   //   border: none !important;
   // }
+  .ap-suggestion {
+    text-align: left;
+  }
 }
 
 // card design in the following:

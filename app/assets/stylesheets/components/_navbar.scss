@@ -12,8 +12,8 @@
   width: 160px;
 }
 
-.nav-link {
-  color: $green;
+#navbar-link-all {
+  color: $green !important;
   &:hover {
     color: $orange !important;
   }
