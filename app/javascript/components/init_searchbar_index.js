@@ -1,3 +1,4 @@
+
 const initSearchbarIndex = () => {
   const causes = document.querySelectorAll('#user_cause');
   causes.forEach ((cause) => {

@@ -9,12 +9,12 @@
   transition: all 1s ease-in-out;
   height:600px;
   width: 30%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .card-info-window {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
   width: 100%;
   height:600px;
   position:absolute;
