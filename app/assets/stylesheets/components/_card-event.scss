@@ -12,7 +12,6 @@
       object-fit: cover;
     }
   }
-
   .btn-warning {
     color: white !important;
   }
@@ -67,10 +66,10 @@
     }
     .btn {
       position: relative;
-      margin-top: 130%;
+      margin-top: 150% !important;
       margin-left: -10%;
       color: white;
-      width: auto;
+      width: 110px;
     }
     .bookmark-like-red {
       position: relative;

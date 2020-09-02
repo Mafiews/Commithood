@@ -20,13 +20,11 @@ class NgosController < ApplicationController
   def follow
     set_ngo
     @ngo.liked_by current_user
-    redirect_to root_path(anchor: "event-recos")
   end
 
   def unfollow
     set_ngo
     @ngo.unliked_by current_user
-    redirect_to root_path(anchor: "event-recos")
   end
 
   private
