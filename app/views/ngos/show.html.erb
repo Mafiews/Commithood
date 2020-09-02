@@ -1,5 +1,66 @@
 <%= render 'shared/navbar' %>
-<div>
-  <h1><%= @ngo.name %></h1>
+<div class="container-fluid">
+  <div class="ngo-page">
 
+    <h1><%= @ngo.name %></h1>
+
+    <div class="follow-me">
+      <% if user_signed_in?  %>
+        <% if current_user.liked? @ngo %>
+          <%= link_to unfollow_ngo_path(@ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
+            <i class="fas fa-heart" id="unlike"></i>
+          <% end %>
+        <% else %>
+          <%= link_to follow_ngo_path(@ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
+            <i class="far fa-heart" id="like-ngo"></i>
+          <% end %>
+        <% end  %>
+      <% else %>
+          <%= link_to new_user_session_path, class: "follow-ngo" do %>
+            <i class="far fa-heart" id="like-ngo"></i>
+          <% end %>
+      <% end %>
+    </div>
+
+    <p><%= @ngo.description %></p>
+
+    <% if @ngo.photo.attached? %>
+      <%= cl_image_tag @ngo.photo.key, class: "avatar-ngo" %>
+    <% end %>
+
+    <!-- Kally : Tabs -->
+    <div class="row my-3">
+      <ul class="nav list-inline tabs-underlined" id="myTab" role="tablist">
+        <li>
+          <a href="#upcoming" class="tab-underlined active" id="upcoming-tab" data-toggle="tab" role="tab" aria-controls="upcoming" aria-selected="true">
+            <i class="far fa-calendar-alt"></i>
+            Actuels <span class="text-muted">(<%= @upcoming_ngo_events.size %>)</span>
+          </a>
+        </li>
+        <li>
+          <a href="#past" class="tab-underlined" id="past-tab" data-toggle="tab" role="tab" aria-controls="past" aria-selected="false">
+            <i class="fas fa-history"></i>
+            Terminés <span class="text-muted">(<%= @past_ngo_events.size %>)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <div class="tab-content" id="myTabContent">
+
+        <!-- Upcoming events -->
+        <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+          <%= render 'pages/card_event', events: @upcoming_ngo_events %>
+        </div>
+
+        <!-- Past events -->
+        <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+          <%= render 'pages/card_event', events: @past_ngo_events %>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>

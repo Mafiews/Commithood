@@ -3,6 +3,18 @@ class NgosController < ApplicationController
 
   def show
     set_ngo
+    @ngo_events = @ngo.events
+    @upcoming_ngo_events = []
+    @past_ngo_events = []
+    @ngo_events.each do |event|
+      if event.end_date > DateTime.now
+        @upcoming_ngo_events << event
+      else
+        @past_ngo_events << event
+      end
+    end
+    @upcoming_ngo_events
+    @past_ngo_events
   end
 
   def follow

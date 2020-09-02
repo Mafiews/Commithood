@@ -22,9 +22,12 @@ class PagesController < ApplicationController
 
     @likes = current_user.find_liked_items
     @events_liked = []
+    @ngos_liked = []
     @likes.each do |like|
       @events_liked << like if like.instance_of? Event
+      @ngos_liked << like if like.instance_of? Ngo
     end
     @events_liked
+    @ngos_liked
   end
 end

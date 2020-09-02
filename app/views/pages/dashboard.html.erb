@@ -3,49 +3,98 @@
 <div class="container-fluid">
   <div class="dashboard">
     <h1>Mes événements</h1>
-    <div class="row">
+    <p><em>Retrouvez tous les événements auxquels vous participez, ceux qui vous intéressent ainsi que les associations que vous suivez : </em></p>
     <!-- Kally : Tabs -->
+    <div class="row my-3">
       <ul class="nav list-inline tabs-underlined" id="myTab" role="tablist">
+
         <li>
           <a href="#upcoming" class="tab-underlined active" id="upcoming-tab" data-toggle="tab" role="tab" aria-controls="upcoming" aria-selected="true">
             <i class="far fa-calendar-alt"></i>
             Actuels <span class="text-muted">(<%= @my_upcoming_events.size %>)</span>
           </a>
         </li>
+
         <li>
           <a href="#past" class="tab-underlined" id="past-tab" data-toggle="tab" role="tab" aria-controls="past" aria-selected="false">
             <i class="fas fa-history"></i>
             Terminés <span class="text-muted">(<%= @my_past_events.size %>)</span>
           </a>
         </li>
+
         <li>
           <a href="#favorite" class="tab-underlined" id="favorite-tab" data-toggle="tab" role="tab" aria-controls="favorite" aria-selected="false">
             <i class="fas fa-bookmark"></i>
             Intéressé <span class="text-muted">(<%= @events_liked.size %>)</span></a>
         </li>
+
+        <li>
+          <a href="#follow" class="tab-underlined" id="follow-tab" data-toggle="tab" role="tab" aria-controls="follow" aria-selected="false">
+            <i class="fas fa-heart"></i>
+            Associations <span class="text-muted">(<%= @ngos_liked.size %>)</span></a>
+        </li>
       </ul>
-  </div>
+    </div>
     <!-- End of Tabs -->
 
     <!-- Kally : Contents -->
-  <div class="row">
-    <div class="tab-content" id="myTabContent">
+    <div class="row">
+      <div class="tab-content" id="myTabContent">
 
-      <!-- Upcoming events -->
-      <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
-        <%= render 'card_event', events: @my_upcoming_events %>
-      </div>
+        <!-- Upcoming events -->
+        <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+          <%= render 'card_event', events: @my_upcoming_events %>
+        </div>
 
-      <!-- Past events -->
-      <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
-        <%= render 'card_event', events: @my_past_events %>
-      </div>
+        <!-- Past events -->
+        <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+          <%= render 'card_event', events: @my_past_events %>
+        </div>
 
-      <!-- Favorite events -->
-      <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
-        <%= render 'card_event', events: @events_liked %>
+        <!-- Favorite events -->
+        <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
+          <%= render 'card_event', events: @events_liked %>
+        </div>
+
+        <!-- Favorite ngos -->
+        <div class="tab-pane fade" id="follow" role="tabpanel" aria-labelledby="favorite-tab">
+          <!-- Ngo card -->
+
+          <div class="d-flex flex-wrap">
+            <% @ngos_liked.each do |ngo| %>
+              <div class="d-flex ngo-card align-items-center ml-3">
+                <% if ngo.photo.attached? %>
+                  <%= cl_image_tag ngo.photo.key, class: "avatar-ngo" %>
+                <% end %>
+                <div class="m-3">
+                  <p><%= ngo.name %></p>
+                  <%= link_to "Voir les événéments", ngo_path(ngo)  %>
+                  <div class="follow-me">
+                    <% if user_signed_in?  %>
+                      <% if current_user.liked? ngo %>
+                        <%= link_to unfollow_ngo_path(ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
+                          <i class="fas fa-heart" id="unlike"></i>
+                        <% end %>
+                      <% else %>
+                        <%= link_to follow_ngo_path(ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
+                          <i class="far fa-heart" id="like-ngo"></i>
+                        <% end %>
+                      <% end  %>
+                    <% else %>
+                        <%= link_to new_user_session_path, class: "follow-ngo" do %>
+                          <i class="far fa-heart" id="like-ngo"></i>
+                        <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
