@@ -11,8 +11,10 @@ class EventsController < ApplicationController
 
     if @causes.size > 0;
       @causes
-    else
+    elsif params[:user_cause].present?
       @causes = params[:user_cause]
+    else
+      @causes = "Tous les thèmes"
     end
 
     # select_events = policy_scope(Event).geocoded.where(:start_date >= Time.now)
