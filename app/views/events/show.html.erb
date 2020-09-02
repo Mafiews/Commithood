@@ -24,13 +24,13 @@
           <li><i class="fas fa-user-circle"></i> Places disponibles : <%= @event.seats_left%></li>
         </ol>
         <% if @event.seats_left.zero? %>
-          <button class="btn btn-danger my-2">Complet</button>
+          <button class="btn btn-secondary my-2">Complet</button>
         <% elsif user_signed_in? == false %>
-          <%= link_to "Participer", event_participations_path(@event), method: :post, id: "register-link", class: "btn btn-primary" %>
+          <%= link_to "Participer", event_participations_path(@event), method: :post, id: "register-link", class: "btn btn-success" %>
         <% elsif current_user.participations.find_by(event_id: @event.id) %>
-          <button class="btn btn-success my-2">Inscrit ✅</button>
+          <button class="btn btn-success my-2">Déjà inscrit</button>
         <% elsif current_user %>
-          <button id="sweet-alert-register" class="btn btn-primary my-2">Je participe !</button>
+          <button id="sweet-alert-register" class="btn btn-success my-2">Je participe !</button>
           <%= link_to "", event_participations_path(@event), method: :post, id: "register-link", remote: true, class: "hidden" %>
         <% end %>
     </div>

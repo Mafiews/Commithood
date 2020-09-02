@@ -28,8 +28,8 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
 
-const mapElement = document.getElementById('map');
 const initMapbox = () => {
+  const mapElement = document.getElementById('map');
   if(mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const lat = mapElement.dataset.lat

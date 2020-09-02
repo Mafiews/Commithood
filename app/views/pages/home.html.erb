@@ -109,11 +109,11 @@
                   <!-- Bookmark start -->
                   <% if user_signed_in? %>
                     <% if current_user.liked? event %>
-                      <%= link_to unlike_dashboard_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
+                      <%= link_to unlike_home_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
                         <i class="fas fa-bookmark" id="unlike"></i>
                       <% end %>
                     <% else %>
-                      <%= link_to like_dashboard_event_path(event), class: "interested bookmark-like-red", method: :put, remote: true do %>
+                      <%= link_to like_home_event_path(event), class: "interested bookmark-like-red", method: :put, remote: true do %>
                         <i class="far fa-bookmark" id="like-event"></i>
                       <% end %>
                     <% end  %>
