@@ -28,7 +28,7 @@
         <% elsif user_signed_in? == false %>
           <%= link_to "Participer", event_participations_path(@event), method: :post, id: "register-link", class: "btn btn-success" %>
         <% elsif current_user.participations.find_by(event_id: @event.id) %>
-          <button class="btn btn-success my-2">Déjà inscrit</button>
+          <button class="btn btn-warning my-2" style="color: white">Vous êtes inscrit</button>
         <% elsif current_user %>
           <button id="sweet-alert-register" class="btn btn-success my-2">Je participe !</button>
           <%= link_to "", event_participations_path(@event), method: :post, id: "register-link", remote: true, class: "hidden" %>
