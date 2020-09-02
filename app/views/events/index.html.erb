@@ -104,7 +104,25 @@
                   </strong>
                 </div>
                 <div>
-                  <%= link_to "Je paticipe !", event_path(event), class:"btn btn-success btn-join" %>
+                  <% if event.end_date < DateTime.now %>
+                    <%= link_to event_path(event) do %>
+                      <button class="btn btn-secondary card-btn-home">Terminé</button>
+                    <% end %>
+                  <% elsif user_signed_in? == false %>
+                    <%= link_to "Je participe !", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
+                  <% elsif current_user.participations.find_by(event_id: event.id) %>
+                    <%= link_to event_path(event) do %>
+                      <button class="btn btn-warning card-btn-home">Déjà inscrit</button>
+                    <% end %>
+                  <% elsif event.seats_left.zero? %>
+                    <%= link_to event_path(event) do %>
+                      <button class="btn btn-danger my-2 card-btn-home">Complet</button>
+                    <% end %>
+                  <% elsif current_user %>
+                    <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
+                      <button id="sweet-alert-register" class="btn btn-success card-btn-home">Je participe !</button>
+                    <% end %>
+                  <% end %>
                 </div>
 
               </div>
