@@ -19,7 +19,7 @@
 .card-info-window {
   overflow: hidden;
   background: white;
-  width: 30%;
+  width: 100%;
   height: 100vh;
   position: absolute;
   right:-100%;
@@ -40,7 +40,7 @@
   }
   .bookmark-like-red {
     position: absolute;
-    bottom: 58.5%;
+    bottom: 92.5%;
     left: 3.5%;
     font-size: 30px;
     padding: 2px 6px;
