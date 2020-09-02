@@ -6,7 +6,7 @@ const initUpdateNavbarOnScroll = () => {
   const navLink2 = document.getElementById ("nav-link-home2")
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY <= 500) {
+      if (window.scrollY <= 600) {
         navbar.style.backgroundColor = 'transparent';
         // navbar.classList.add('nav-link-home1');
         logoGreen.style.display = 'none'
