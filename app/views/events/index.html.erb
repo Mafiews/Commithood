@@ -8,24 +8,31 @@
 
   <div class="d-flex map-cards">
     <!-- add result filter and text search function -->
-    <div class="search-bar-index mt-3">
+    <div class="search-bar-index">
       <%= form_tag events_path, method: "get", remote:true do %>
         <%= text_field_tag :address, params[:address].present? ? params[:address] : '', required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
         <%= submit_tag "Rechercher 🔍", class: "btn btn-warning text-white mt-2" %>
         <div class="search-select-index mt-3">
           <h5>Choisisez votre Thèmes</h5>
-          <ul>
-            <% Cause::CAUSES.each do |cause| %>
-              <li><%= check_box_tag "user_cause_#{cause.downcase}", "#{cause}", params["user_cause_#{cause.downcase}"] == cause, id: "user_cause" %>   <%= cause %></li>
-            <% end %>
-          </ul>
+          <div class="cause-list">
+            <ul>
+              <% Cause::CAUSES.each do |cause| %>
+                <li>
+                  <label class="cause-select <%= cause.parameterize.split('-').first %> <%= @causes.include?(cause) ? "active" : "" %>">
+                    <%= check_box_tag "user_cause_#{cause.downcase}", "#{cause}", params["user_cause_#{cause.downcase}"] == cause, id: "user_cause", style:'visibility: hidden'%>
+                    <%= image_tag "#{cause == "Tous les thèmes" ? "logo" : cause.parameterize}.png", size: "16x16", alt: "alttext" %> <%= cause %> (<%= cause == "Tous les thèmes" ? Event.all.size : Event.tagged_with("#{cause}").count %>)
+                  </label>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       <% end %>
     </div>
     <!-- result filter end -->
 
     <!-- section of map, 100% of the larger -->
-    <div id="map" class="mt-3"
+    <div id="map" class=""
       data-lng="<%= @lng %>"
       data-lat="<%= @lat %>"
       style="width: 100%; height: 600px;"
@@ -38,7 +45,7 @@
       <div class="p-0" id="card-info">
         <!-- yizhu: insert events cards here -->
         <% @events.each do |event| %>
-          <div class="card-info-window mt-3" id="event-<%= event.id %>" >
+          <div class="card-info-window" id="event-<%= event.id %>" >
 
             <%= cl_image_tag event.photo.key, alt: "event photo", crop: :fill %>
 
