@@ -20,7 +20,8 @@
 
           <!-- Infos column -->
           <div class="card-event-details col-sm-7">
-            <p id="card-event-ngo"><%= event.ngo.name %></p>
+            <%= link_to event.ngo.name, ngo_path(event.ngo), id: "card-event-ngo" %>
+<!--             <p id="card-event-ngo"><%= event.ngo.name %></p> -->
             <h2><%= event.name %></h2>
             <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
             <p><i class="fas fa-user-circle"></i> <%= event.seats_left %> bénévoles souhaités</p>
