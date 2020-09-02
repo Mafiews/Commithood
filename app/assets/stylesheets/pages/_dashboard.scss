@@ -1,29 +1,9 @@
-.dashboard {
-  h2 {
-    font-size: 20px;
-    color: $dark-green;
-  }
-  p {
-  font-size: 15px;
-  margin-bottom: 5px;
-    .fas, .far {
-      color: $dark-green;
-      margin-right: 5px;
-    }
-  }
-  .profile-card {
-    border-radius: 2px;
-    background-color: white;
-    text-align: center;
-    box-shadow: 0 0 5px rgba(0,0,0,0.05);
-    margin: 24px auto;
-    width: 180px;
-  }
+.container-fluid {
+  width: 87%;
+  margin-top: 20px;
 }
 
-.dashboard-profile-text {
-  margin: 0 10px 0 10px;
-}
+// Tabs
 
 .tabs-underlined {
   display: flex;
@@ -50,13 +30,69 @@
   border-bottom: 3px solid $dark-green;
 }
 
+// Dashboard
+
+.dashboard, .ngo-page {
+  .tab-content {
+    width: 100%;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 20px;
+    color: $dark-green;
+  }
+  p {
+  font-size: 16px;
+  margin-bottom: 4px;
+    .fas, .far {
+      color: $dark-green;
+      margin-right: 5px;
+    }
+  > em {
+    opacity: 0.8;
+    }
+  }
+  .profile-card {
+    border-radius: 2px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    margin: 24px auto;
+    width: 180px;
+  }
+  .avatar-ngo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0px 2px rgba(0,0,0,0.25);
+    border: white 1px solid;
+    margin: 0 10px 0 20px;
+    object-fit: cover;
+  }
+  .ngo-card {
+    background-color: white;
+    width: 31%;
+    padding: 10px 0;
+    box-shadow: 0 0 2px rgba(0,0,0,0.05);
+    a {
+      color: $dark-green;
+      font-size: 15px;
+    }
+  }
+}
+
+
+// Card Event
+
 .card-event-dashboard {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.05);
   padding: 0;
-  margin: 15px 0px 15px 15px;
-  width: 25%;
+  margin: 20px 0px 20px 20px;
+  width: 31%;
   .card-event-cover {
     img {
       height: 210px;
@@ -66,7 +102,7 @@
   }
   .card-event-date {
     bottom: 22px;
-      font-weight: bold;
+    font-weight: bold;
     .avatar-event-card {
       width: 50px;
       height: 50px;
@@ -100,14 +136,15 @@
       width: 140%;
     }
     .btn {
-      position: absolute;
-      right: 4%;
-      top: 87%;
+      position: relative;
+      margin-top: 130%;
+      margin-left: -18%;
       color: white;
+      width: auto;
     }
     .bookmark-like-red {
-      position: absolute;
-      right: 4%;
+      position: relative;
+      right: 7%;
     }
   }
 }

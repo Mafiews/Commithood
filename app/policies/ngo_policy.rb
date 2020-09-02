@@ -1,9 +1,13 @@
 class NgoPolicy < ApplicationPolicy
-  def like?
+  def show?
+    true
+  end
+
+  def follow?
     user
   end
 
-  def unlike?
+  def unfollow?
     user
   end
 

@@ -1,8 +1,16 @@
 .search-bar-index {
-  bottom: 150px; right: 150px;	
-  #event-address { width: 24rem;	
-  }	
-  #keyword {	
-    width:24rem;	
-  }	
+background-color: white;
+// position: absolute;
+transition: all 1s ease-in-out;
+height:600px;
+padding:10px;
+  ul{
+  list-style: none;
+  padding-left:15px;
+  }
 }
+
+.inactive{
+  position: absolute;
+}
+

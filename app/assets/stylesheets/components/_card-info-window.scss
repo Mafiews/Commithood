@@ -8,6 +8,7 @@
   top:0px;
   transition: all 1s ease-in-out;
   height:600px;
+  width: 30%;
 }
 
 .card-info-window {
@@ -37,6 +38,7 @@
     height: 200px;
     object-fit: cover;
     position:relative;
+    width:100%;
     // &:hover{
     //   transform: scale(0.5) translate(-100%, -100%);
     //   transition: all 300ms ease-in-out;

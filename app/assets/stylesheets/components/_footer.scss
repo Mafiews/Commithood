@@ -1,5 +1,6 @@
 .footer {
   background: $orange;
+  opacity: 0.7;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,7 +20,7 @@
 }
 .footer-links a {
   color: $dark-green;
-  opacity: 0.5;
+  opacity: 0.7;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
