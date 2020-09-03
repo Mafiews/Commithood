@@ -14,7 +14,7 @@ const initSearchbarIndexHide = () => {
         menu.classList.remove('inactive');
       };
     });
-    }
+  }
 }
 
 export {initSearchbarIndexHide};
