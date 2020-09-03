@@ -17,8 +17,8 @@ class PagesController < ApplicationController
         @my_upcoming_events << my_event
       end
     end
-    @my_upcoming_events
-    @my_past_events
+    @my_upcoming_events = @my_upcoming_events.sort_by { |event| event.start_date }
+    @my_past_events = @my_past_events.sort_by { |event| event.start_date }
 
     @likes = current_user.find_liked_items
     @events_liked = []
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
       @events_liked << like if like.instance_of? Event
       @ngos_liked << like if like.instance_of? Ngo
     end
-    @events_liked
+    @events_liked = @events_liked.reject { |event| event.participations.find_by(user_id: current_user.id) }
     @ngos_liked
   end
 end
