@@ -26,7 +26,9 @@ class NgosController < ApplicationController
   def unfollow
     set_ngo
     @ngo.unliked_by current_user
-    redirect_to ngo_path(anchor: "#{@ngo.id}")
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
 
   private
