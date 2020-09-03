@@ -303,7 +303,7 @@ event_6 = Event.create!(
 )
 event_6.tag_list = "Formation, Précarité, Isolement"
 event_6.save
-img6 = URI.open('http://www.yonne.gouv.fr/var/ide_site/storage/images/politiques-publiques/economie-et-emploi/emploi/les-contrats-aides/96875-3-fre-FR/Les-contrats-aides_large.jpg')
+img6 = URI.open('https://ressources.blogdumoderateur.com/2020/06/formation-chef-de-projet-paris-1200x800.jpeg')
 event_6.photo.attach(io: img6, filename: "event#{event_6.id}.jpg", content_type: "image/jpg")
 
 puts "Event #{event_6.name} created"
@@ -524,7 +524,7 @@ puts "Event #{event_18.name} created"
 
 event_19 = Event.create!(
  name: "Bénévolat logistique livraison",
- start_date: DateTime.new(2020,1,2,9),
+ start_date: DateTime.new(2020,9,1,9),
  end_date: DateTime.new(2020,12,31,18),
  description: "Caméléon envoie régulièrement des cartons de 1m³ aux Philippines (environ tous les 2 mois).
  Nous recherchons un bénévole véhiculé, prêt à faire le lien entre le siège de l’association (15e arr.) et le lieu de destination (16e arr.).
@@ -583,7 +583,7 @@ puts "Event #{event_21.name} created"
 
 event_22 = Event.create!(
  name: "Soins ponctuels aux animaux du refuge",
- start_date: DateTime.new(2020,3,1,9),
+ start_date: DateTime.new(2020,12,1,9),
  end_date: DateTime.new(2020,12,31,18),
  description: "Notre association collecte les signalements de maltraitance animale entrant dans le cadre de la loi autorisant un retrait de l'animal, et lorsque cela est possible, nous prenons en charge les animaux sortis de maltraitance et nous en occupons jusqu’à leur adoption.
 Nous avons aujourd'hui besoin d'aide pour effectuer les soins aux animaux, notamment les nourrir, les emmener en promenade, etc. Les gardes pourront être effectuées en fonction de vos disponibilités.
