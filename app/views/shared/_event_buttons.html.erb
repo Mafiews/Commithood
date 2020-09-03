@@ -1,21 +1,21 @@
 <div class="event-button">
   <% if event.end_date < DateTime.now %>
     <%= link_to event_path(event) do %>
-      <button class="btn btn-secondary card-btn-home">Terminé</button>
+      <button class="btn btn-secondary">Terminé</button>
     <% end %>
   <% elsif user_signed_in? == false %>
-    <%= link_to "Je participe !", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
+    <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success" %>
   <% elsif current_user.participations.find_by(event_id: event.id) %>
     <%= link_to event_path(event) do %>
-      <button class="btn btn-warning card-btn-home">Déjà inscrit</button>
+      <button class="btn btn-warning">Plus d'infos</button>
     <% end %>
   <% elsif event.seats_left.zero? %>
     <%= link_to event_path(event) do %>
-      <button class="btn btn-danger my-2 card-btn-home">Complet</button>
+      <button class="btn btn-danger my-2">Complet</button>
     <% end %>
   <% elsif current_user %>
     <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
-      <button id="sweet-alert-register" class="btn btn-success card-btn-home">Je participe !</button>
+      <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
     <% end %>
   <% end %>
 </div>
