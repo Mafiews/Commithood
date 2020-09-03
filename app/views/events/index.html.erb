@@ -43,7 +43,7 @@
 
 
     <!-- section of map, 100% of the larger -->
-    <div id="map" class=""
+    <div id="map"
       data-lng="<%= @lng %>"
       data-lat="<%= @lat %>"
       style="width: 100%; height: 90vh;"
@@ -55,7 +55,7 @@
 
     <div class="p-0" id="card-info">
       <!-- yizhu: insert events cards here -->
-      <% @events.each do |event| %>
+      <% Event.all.each do |event| %>
         <div class="card-info-window" id="event-<%= event.id %>" >
 
             <!-- Bookmark on photo -->
@@ -120,7 +120,7 @@
                       <button class="btn btn-secondary">Terminé</button>
                     <% end %>
                   <% elsif user_signed_in? == false %>
-                    <%= link_to "Je participe !", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
+                    <%= link_to "Je participe!", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
                   <% elsif current_user.participations.find_by(event_id: event.id) %>
                     <%= link_to event_path(event) do %>
                       <button class="btn btn-warning" style="color: white; width: 110px">Déjà inscrit</button>
@@ -130,7 +130,7 @@
                       <button class="btn btn-danger my-2">Complet</button>
                     <% end %>
                   <% elsif current_user %>
-                    <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
+                    <%= link_to event_participations_path(event), method: :post, id: "register-link", class: "hidden" do %>
                       <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
                     <% end %>
                   <% end %>

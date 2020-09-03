@@ -27,6 +27,8 @@ require("channels")
 import "bootstrap";
 
 
+
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -48,8 +50,9 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   initBookmark();
   initSelect2();
-  initSearchbarIndex();
-  initMapbox();
+  const map = initMapbox();
+  console.log(map)
+  // initSearchbarIndex(map);
   initEventinfo();
   initSearchbarIndexHide();
   // initSlick();
@@ -64,9 +67,7 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 
-//sweetalert function to display fancy alerts   // Matt
-
-
+import "controllers";
 
 // example from lecture to delete a flat
 // import { initSweetalert } from '../plugins/init_sweetalert';
@@ -87,3 +88,4 @@ document.addEventListener('turbolinks:load', () => {
 //   text: "This is a great alert, isn't it?",
 //   icon: "success"
 // });
+

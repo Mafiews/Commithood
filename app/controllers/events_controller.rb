@@ -73,6 +73,11 @@ class EventsController < ApplicationController
       }
     end
 
+    respond_to do |format|
+      format.html
+      format.json { render json: { markers: @markers } }
+    end
+
     unless params[:address].nil? || params[:address] == ''
       location = Geocoder.search(params[:address])
       @lat = location[0].latitude
