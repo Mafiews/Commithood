@@ -34,6 +34,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initSweetalert } from '../plugins/init_sweetalert';
+import { sweetAlertEverywhere } from '../plugins/init_sweetalert';
 import { initSelect2 } from '../plugins/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { initEventinfo} from '../plugins/init_eventinfo';
@@ -53,14 +54,10 @@ document.addEventListener('turbolinks:load', () => {
   initEventinfo();
   initSearchbarIndexHide();
   // initSlick();
-  initSweetalert('#sweet-alert-register', {
-    title: "Participation confirmée",
-    text: "BA du jour accomplie !",
-    icon: "success"
-  }, (value) => {
-    const link = document.querySelector('#register-link');
-    if (link) {link.click()};
-  });
+ sweetAlertEverywhere();
+
+
+
 });
 
 

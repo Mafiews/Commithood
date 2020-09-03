@@ -21,4 +21,31 @@ const initSweetalert = (selector, options = {}, callback = () => {}) => {
 //   }
 // };
 
-export { initSweetalert };
+
+
+const sweetAlertEverywhere = () => {
+  const allBtns = document.querySelectorAll('#sweet-alert-register')
+console.log(allBtns)
+  allBtns.forEach((btn) => {
+    console.log(btn)
+    // initSweetalert(btn, {
+    //   title: "Participation confirmée",
+    //   text: "BA du jour accomplie !",
+    //   icon: "success"
+    // }, (value) => {
+    //   const link = document.querySelector('#register-link');
+    //   if (link) {link.click()};
+    // });
+    btn.addEventListener('click', (event) => {
+      swal("Participation confirmée", "BA du jour accomplie !", "success");
+      btn.style.backgroundColor = "#f8b400"
+      btn.style.borderColor = "#f8b400"
+      btn.innerText = "Déjà inscrit"
+    })
+  })
+}
+
+
+
+
+export { initSweetalert, sweetAlertEverywhere };

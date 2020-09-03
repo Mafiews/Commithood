@@ -34,8 +34,8 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const lat = mapElement.dataset.lat
     const lng = mapElement.dataset.lng
-    console.log(lat);
-    console.log(lng)
+    // console.log(lat);
+    // console.log(lng)
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
