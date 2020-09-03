@@ -80,7 +80,7 @@ class EventsController < ApplicationController
       @marker = {
         lat: @lat,
         lng: @lng,
-        image_url: helpers.asset_url('logo.png')
+        image_url: helpers.asset_url('marqueur-rond-bordure.png')
       }
       @markers << @marker
     end

@@ -1,8 +1,9 @@
 .search-bar-index {
 background-color: white;
-// position: absolute;
 transition: all 1s ease-in-out;
 height:100%;
+width: 240px !important;
+position:relative;
   ul{
   list-style: none;
   margin-left:5px;
@@ -10,13 +11,21 @@ height:100%;
   }
 }
 
-#button-menu {
-background-color: white;
-color:$gray;
+.button-menu {
+color:$green;
+z-index: 1000;
+position:absolute;
+left:240px;
+}
+
+.button-menu-inactive {
+left:0px !important;
 }
 
 .inactive {
-  width:0%;
+  overflow: hidden;
+  position:absolute;
+  right: -100%;
 }
 
 .card-inactive {
