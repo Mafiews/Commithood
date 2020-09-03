@@ -38,6 +38,8 @@ admin_user = User.create!(
   description: "Je suis admin du monde entier",
   admin: true
   )
+avatar2 = URI.open('https://res.cloudinary.com/dmfdprtbo/image/upload/v1598000814/icw6ukko45nyrhnhvm3p895yilsf.jpg')
+admin_user.photo.attach(io: avatar2, filename: "photo#{admin_user.id}.jpg", content_type: "image/png")
 puts "User #{admin_user.first_name} created"
 
 ngo_user = User.create!(

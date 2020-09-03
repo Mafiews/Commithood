@@ -1,9 +1,16 @@
 <%= render 'shared/navbar' %>
 <div class="container-fluid">
-  <div class="ngo-page">
-
-    <h1><%= @ngo.name %></h1>
-
+<div class="ngo-page">
+  <div class="display-flex" id="ngo-description">
+    <div>
+      <% if @ngo.photo.attached? %>
+        <%= cl_image_tag @ngo.photo.key, class: "avatar-ngo", id: "avatar-ngo-description" %>
+      <% end %>
+    </div>
+    <div>
+      <h1><%= @ngo.name %></h1>
+      <p><%= @ngo.description %></p>
+    </div>
     <div class="follow-me">
       <% if user_signed_in?  %>
         <% if current_user.liked? @ngo %>
@@ -21,12 +28,9 @@
           <% end %>
       <% end %>
     </div>
+  </div>
 
-    <p><%= @ngo.description %></p>
 
-    <% if @ngo.photo.attached? %>
-      <%= cl_image_tag @ngo.photo.key, class: "avatar-ngo" %>
-    <% end %>
 
     <!-- Kally : Tabs -->
     <div class="row my-3">
