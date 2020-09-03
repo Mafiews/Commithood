@@ -207,8 +207,8 @@ puts "NGO #{ngo_11.name} created"
 
 event_1 = Event.create!(
   name: "Championnat de ramassage de déchets",
-  start_date: DateTime.new(2020,9,29,9),
-  end_date: DateTime.new(2020,9,29,12),
+  start_date: DateTime.new(2020,8,29,9),
+  end_date: DateTime.new(2020,8,29,12),
   description: "Le concept est simple et basé sur la confiance : ramassez par-ci par-là ce qui est abandonné un peu partout dans la nature, pesez vos trouvailles avant d'en faire bon usage (jeter à la poubelle ce qui doit être jeté, mettez au recyclage ce qui peut être recyclé, donnez ce qui peut être réparé, etc.
   Envoyez nous au plus tard le 30.09.2020 le cumule en kg de tout ce que vous avez ramassé dans la nature pendant le mois. Des lots sont à gagner pour celles et ceux qui auront ramassé le plus de déchets !",
   seats: 50,
