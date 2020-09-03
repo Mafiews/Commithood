@@ -207,8 +207,8 @@ puts "NGO #{ngo_11.name} created"
 
 event_1 = Event.create!(
   name: "Championnat de ramassage de déchets",
-  start_date: DateTime.new(2020,9,1,9),
-  end_date: DateTime.new(2020,9,30,18),
+  start_date: DateTime.new(2020,9,29,9),
+  end_date: DateTime.new(2020,9,29,12),
   description: "Le concept est simple et basé sur la confiance : ramassez par-ci par-là ce qui est abandonné un peu partout dans la nature, pesez vos trouvailles avant d'en faire bon usage (jeter à la poubelle ce qui doit être jeté, mettez au recyclage ce qui peut être recyclé, donnez ce qui peut être réparé, etc.
   Envoyez nous au plus tard le 30.09.2020 le cumule en kg de tout ce que vous avez ramassé dans la nature pendant le mois. Des lots sont à gagner pour celles et ceux qui auront ramassé le plus de déchets !",
   seats: 50,
@@ -442,7 +442,7 @@ Sandwiches et boissons vous seront fournis.",
  address: "58 Avenue Marc Sangnier, 75014 Paris",
  ngo_id: ngo_7.id
 )
-event_14.tag_list = "Isolement, Jeunesse, Sport"
+event_14.tag_list = "Sport, Isolement, Jeunesse"
 event_14.save
 img14 = URI.open('https://assodavs.files.wordpress.com/2015/02/img_0961.jpg?w=1076&h=808')
 event_14.photo.attach(io: img14, filename: "event#{event_14.id}.jpg", content_type: "image/png")
@@ -469,8 +469,8 @@ puts "Event #{event_15.name} created"
 
 event_16 = Event.create!(
  name: "Végétalisation participative",
- start_date: DateTime.new(2020,9,2,14),
- end_date: DateTime.new(2020,9,2,16),
+ start_date: DateTime.new(2020,9,27,14),
+ end_date: DateTime.new(2020,9,27,16),
  description: "Venez découvrir à Paris, les dispositifs de végétalisation participative. Atelier animé par un.e conseiller.ère environnement à destination des enfants et adolescents afin de leur faire découvrir le plaisir de travailler la terre et de cultiver son jardin !
 Nous cherchons à ce titre l'aide de 5 bénévoles pour encadrer le groupe pendant les conférences et ateliers.",
  seats: 5,
@@ -524,8 +524,8 @@ puts "Event #{event_18.name} created"
 
 event_19 = Event.create!(
  name: "Bénévolat logistique livraison",
- start_date: DateTime.new(2020,9,1,9),
- end_date: DateTime.new(2020,12,31,18),
+ start_date: DateTime.new(2020,11,9,9),
+ end_date: DateTime.new(2020,11,9,18),
  description: "Caméléon envoie régulièrement des cartons de 1m³ aux Philippines (environ tous les 2 mois).
  Nous recherchons un bénévole véhiculé, prêt à faire le lien entre le siège de l’association (15e arr.) et le lieu de destination (16e arr.).
  Et autres missions nécessitant un véhicule. La mission nécessite de pouvoir se rendre disponible une demi journée dans le mois.",
@@ -593,7 +593,7 @@ Nos pensionnaires sauront vous faire craquer et vous ne pourrez plus vous passer
  address: "11 rue de Lourmel 75015 Paris",
  ngo_id: ngo_11.id
 )
-event_22.tag_list = "Jeunesse, Santé, Sport, Formation"
+event_22.tag_list = "Bien-être animal, Environnement, Santé"
 event_22.save
 img22 = URI.open('https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/118547324_2748431005442701_6320002290883210070_n.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_ohc=vqVgVfi27ccAX_4DRVF&_nc_ht=scontent-cdt1-1.xx&oh=09aa9a47386ea4f906967ea9f74957f7&oe=5F744773')
 event_22.photo.attach(io: img22, filename: "event#{event_22.id}.jpg", content_type: "image/png")
