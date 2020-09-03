@@ -73,7 +73,7 @@
                     <% if user_signed_in?  %>
                       <% if current_user.liked? ngo %>
                         <%= link_to unfollow_ngo_path(ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
-                          <i class="fas fa-heart" id="unlike"></i>
+                          <i class="fas fa-heart" id="unlike-ngo"></i>
                         <% end %>
                       <% else %>
                         <%= link_to follow_ngo_path(ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
