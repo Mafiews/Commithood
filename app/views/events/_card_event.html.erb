@@ -13,7 +13,7 @@
               <%= cl_image_tag event.ngo.photo.key, class: "avatar-event-card" %>
             <% end %>
             <p><%= I18n.l(event.start_date, locale: :fr, format: :day_week) %></p>
-            <p class="event-day-highlight"><%= I18n.l(event.start_date, locale: :fr, format: :day) %></p>
+            <p id="event-day-highlight"><%= I18n.l(event.start_date, locale: :fr, format: :day) %></p>
             <p><%= I18n.l(event.start_date, locale: :fr, format: :month).upcase %></p>
             <p id="card-event-hour"><%= I18n.l(event.start_date, locale: :fr, format: :hours) %></p>
           </div>
@@ -27,9 +27,14 @@
             <p><i class="fas fa-user-circle"></i> <%= event.seats_left %> bénévoles souhaités</p>
             <!-- Day counter -->
             <% if event.start_date > DateTime.now %>
-              <p><i class="far fa-calendar-alt"></i> commence dans <%= ((event.start_date - DateTime.now) / 1.day).to_i %> jours</p>
+              <p><i class="far fa-calendar-alt"></i> commence dans <%= ((event.start_date - DateTime.now) / 1.day).to_i %></p>
+              <% if (event.start_date - DateTime.now) / 1.day).to_i > 1 %>
+                jours
+              <% else %>
+                jour
+              <% end %>
             <% elsif event.end_date > DateTime.now %>
-              <p><i class="far fa-calendar-alt"></i> termine dans <%= ((event.end_date - DateTime.now) / 1.day).to_i %> jours</p>
+              <p><i class="far fa-calendar-alt"></i> termine dans <%= ((event.end_date - DateTime.now) / 1.day).to_i %> <%= (((event.start_date - DateTime.now) / 1.day).to_i) > 1) ? "jours" : "jour" %></p>
             <% else %>
               <br>
             <% end %>

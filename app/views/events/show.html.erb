@@ -9,11 +9,33 @@
       <p> <%= @event.description %></p>
     </div>
     <div class="card-event col-4">
-      <h4>Organisé par <%= @event.ngo.name %></h4>
+      <p >Organisé par </p><h4><%= @event.ngo.name %></h4>
       <!-- <button class="btn">Suivre</button> -->
-      <h3 class="mt-4"></h3>
+      <h3 class="mt-2"></h3>
+          <div class="event-button my-3">
+            <% if @event.end_date < DateTime.now %>
+              <%= link_to event_path(@event) do %>
+                <button class="btn btn-secondary">Terminé</button>
+              <% end %>
+            <% elsif user_signed_in? == false %>
+              <%= link_to "Je participe!", event_participations_path(@event), method: :post, id: "register-link", class: "btn btn-success" %>
+            <% elsif current_user.participations.find_by(event_id: @event.id) %>
+              <%= link_to event_path(@event) do %>
+                <button class="btn btn-warning">Déjà inscrit</button>
+              <% end %>
+            <% elsif event.seats_left.zero? %>
+              <%= link_to event_path(@event) do %>
+                <button class="btn btn-danger my-2">Complet</button>
+              <% end %>
+            <% elsif current_user %>
+              <%= link_to event_participations_path(@event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
+                <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
+              <% end %>
+            <% end %>
+          </div>
         <ol style="list-style-type:none;" id="ol-details">
           <li><i class="fas fa-map-marker-alt"></i> <%= @event.address%></li>
+          <li><i class="fas fa-user-circle"></i><%= @event.seats_left %> bénévoles souhaités</li>
           <li><i class="far fa-calendar-alt"></i>
           <% if @event.start_date.to_date == @event.end_date.to_date %>
           <%= I18n.l(@event.start_date, locale: :fr) %> - <%= I18n.l @event.end_date, locale: :fr, format: :hours %>
@@ -21,18 +43,7 @@
           <%= I18n.l(@event.start_date, locale: :fr) %> - <%= I18n.l(@event.end_date, locale: :fr) %>
           <% end %>
           </li>
-          <li><i class="fas fa-user-circle"></i> Places disponibles : <%= @event.seats_left%></li>
         </ol>
-        <% if @event.seats_left.zero? %>
-          <button class="btn btn-secondary my-2">Complet</button>
-        <% elsif user_signed_in? == false %>
-          <%= link_to "Participer", event_participations_path(@event), method: :post, id: "register-link", class: "btn btn-success" %>
-        <% elsif current_user.participations.find_by(event_id: @event.id) %>
-          <button class="btn btn-warning my-2" style="color: white">Vous êtes inscrit</button>
-        <% elsif current_user %>
-          <button id="sweet-alert-register" class="btn btn-success my-2">Je participe !</button>
-          <%= link_to "", event_participations_path(@event), method: :post, id: "register-link", remote: true, class: "hidden" %>
-        <% end %>
     </div>
   </div>
 </div>

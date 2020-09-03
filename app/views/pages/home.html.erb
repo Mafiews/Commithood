@@ -27,7 +27,7 @@
 </div>
 
 <div class="container mt-2" id="inspiration" >
-  <h3 class="my-4">Un peu d'inspiration 💭💭💭</h3>
+  <h3 class="my-4">Un peu d'inspiration 💭</h3>
 </div>
 
     <!-- Matt : bootstrap carousel start -->
@@ -43,14 +43,13 @@
         <% j = 0  %>
         <% Event.all.each do |event| %>
           <div class="carousel-item <%= j == 0 ? 'active' : ''%>">
-            <div class="card-event-dashboard" id="event-home-<%= event.id %>" style="margin: auto; height: 650px; width: 900px;">
+            <div class="card-event-carrousel" id="event-home-<%= event.id %>">
               <div class="card-event-cover event-cover-carousel">
                 <%= cl_image_tag event.photo.key, alt: "event photo", class:"card-event-img",crop: :fill %>
               </div>
 
-              <div class="card-event-infos-dashboard card-event-info-home">
-
-                <div class="d-flex align-self-stretch content-info-home">
+              <div class="card-event-info-home">
+                <div class="d-flex">
 
                   <!-- Date column start -->
                   <div class="card-event-date col-2 text-center">
@@ -65,9 +64,8 @@
                   <!-- Date column end -->
 
                   <!-- Infos column start -->
-                  <div class="card-event-details col-sm-7">
+                  <div class="card-event-details col-sm-8">
                     <%= link_to event.ngo.name, ngo_path(event.ngo), id: "card-event-ngo" %>
-        <!--             <p id="card-event-ngo"><%= event.ngo.name %></p> -->
                     <h2><%= event.name %></h2>
                     <p><i class="fas fa-map-marker-alt"></i> <%= event.address %></p>
                     <p><i class="fas fa-user-circle"></i> <%= event.seats_left %> bénévoles souhaités</p>
@@ -79,37 +77,35 @@
                     <% else %>
                       <br>
                     <% end %>
-                    <br>
-                    <%= event.description %>
+                    <p class="home-card-description"><%= event.description %></p>
                   </div>
                   <!-- Infos column end -->
 
-                  <!-- Button start -->
-                  <div id="card-btn-home">
-                    <%= render "shared/event_buttons", event: event %>
-                  </div>
-                  <!-- Button end -->
-
-                  <!-- Bookmark start -->
-                  <div class="bookmark-like-red">
-                    <% if user_signed_in? %>
-                      <% if current_user.liked? event %>
-                        <%= link_to unlike_home_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
-                          <i class="fas fa-bookmark" id="unlike"></i>
-                        <% end %>
-                      <% else %>
-                        <%= link_to like_home_event_path(event), class: "interested", remote: true, method: :put do %>
-                          <i class="far fa-bookmark" id="like-event"></i>
-                          <div class="infobulle" style="display: none;">
-                            <div class="infobulle-texte" id="Intéressé" >
-                              Intéressé(e)
+                  <div class="d-flex text-right col-sm-3">
+                    <div>
+                      <%= render "shared/event_buttons", event: event %>
+                    </div>
+                    <!-- Bookmark -->
+                    <div class="bookmark-like-red mb-auto">
+                      <% if user_signed_in? %>
+                        <% if current_user.liked? event %>
+                          <%= link_to unlike_home_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
+                            <i class="fas fa-bookmark" id="unlike"></i>
+                          <% end %>
+                        <% else %>
+                          <%= link_to like_home_event_path(event), class: "interested", remote: true, method: :put do %>
+                            <i class="far fa-bookmark" id="like-event"></i>
+                            <div class="infobulle" style="display: none;">
+                              <div class="infobulle-texte" id="Intéressé" >
+                                Intéressé(e)
+                              </div>
                             </div>
-                          </div>
-                        <% end %>
-                      <% end  %>
-                    <% end %>
+                          <% end %>
+                        <% end  %>
+                      <% end %>
+                    </div>
+                    <!-- Button -->
                   </div>
-                  <!-- Bookmark end -->
 
                 </div>
               </div>

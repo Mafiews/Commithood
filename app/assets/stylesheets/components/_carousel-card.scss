@@ -1,12 +1,93 @@
 .carousel-card-home {
   height: 700px;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  .card-event-carrousel {
+    margin: auto;
+    height: 600px;
+    width: 875px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    padding: 0;
+  }
+  .card-event-info-home {
+    flex-grow: 1;
+    > div {
+      height: 500px;
+    }
+  }
+  .card-event-cover > img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .btn-warning {
+    color: white !important;
+  }
+  .card-event-date {
+  bottom: 22px;
+  font-weight: bold;
+  font-size: 20px;
+    p {
+      margin: 0;
+    }
+    .event-day-highlight {
+      font-size: 30px;
+      margin: -5px 0 -5px 0;
+    }
+    #card-event-hour {
+      font-size: 16px;
+      opacity: 0.6;
+    }
+
+  }
+  .card-event-details {
+    margin-top: 15px;
+    padding: 0;
+    p {
+      margin-bottom: 5px;
+      .fas, .far {
+        color: $dark-green;
+        margin: 0 5px;
+      }
+    }
+    #card-event-ngo {
+      &:hover {
+        color: $orange;
+        text-decoration: none;
+      }
+    }
+  }
+  .bookmark-like-red {
+    position: inherit !important;
+    left: 0 !important;
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  h2 {
+    font-size: 24px;
+    color: $dark-green;
+    margin: 15px 0 10px;
+  }
+  p {
+    font-size: 15px;
+  }
+  .home-card-description {
+    width: 110%;
+    margin-top: 15px;
+    overflow-y: auto;
+  }
+  .event-button {
+    margin: 16px 20px 0 -40px;
+  }
 }
 
-.card-event-infos-dashboard.card-event-info-home {
-  position: relative;
 
-}
+// .card-event-infos-dashboard.card-event-info-home {
+//   position: relative;
+
+// }
 
 .card-btn-home {
   position: absolute;
@@ -20,13 +101,10 @@
   top: -10px;
 }
 
-.content-info-home {
-  margin-top: 30px;
-}
+// .content-info-home {
+//   margin-top: 30px;
+// }
 
-.avatar-home {
-  bottom: 30px !important;
-}
 
 .carousel-control-prev-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23285C53' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
