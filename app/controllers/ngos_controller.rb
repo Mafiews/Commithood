@@ -20,11 +20,17 @@ class NgosController < ApplicationController
   def follow
     set_ngo
     @ngo.liked_by current_user
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
 
   def unfollow
     set_ngo
     @ngo.unliked_by current_user
+     respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
 
   private
