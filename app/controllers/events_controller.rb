@@ -106,25 +106,25 @@ class EventsController < ApplicationController
   def like_home
     set_event
     @event.liked_by current_user
-    redirect_to root_path(anchor: "event-recos")
+    redirect_to root_path(anchor: "event-home-#{@event.id}")
   end
 
   def unlike_home
     set_event
     @event.unliked_by current_user
-    redirect_to root_path(anchor: "event-recos")
+    redirect_to root_path(anchor: "event-home-#{@event.id}")
   end
 
   def like_dashboard
     set_event
     @event.liked_by current_user
-    redirect_to dashboard_path
+    redirect_to dashboard_path(anchor: "event-#{@event.id}")
   end
 
   def unlike_dashboard
     set_event
     @event.unliked_by current_user
-    redirect_to dashboard_path
+    redirect_to dashboard_path(anchor: "event-#{@event.id}")
   end
 
   private

@@ -43,7 +43,7 @@
         <% j = 0  %>
         <% Event.all.each do |event| %>
           <div class="carousel-item <%= j == 0 ? 'active' : ''%>">
-            <div class="card-event-dashboard" style="margin: auto; height: 650px; width: 900px;">
+            <div class="card-event-dashboard" id="event-home-<%= event.id %>" style="margin: auto; height: 650px; width: 900px;">
               <div class="card-event-cover event-cover-carousel">
                 <%= cl_image_tag event.photo.key, alt: "event photo", class:"card-event-img",crop: :fill %>
               </div>
@@ -85,39 +85,48 @@
                   <!-- Infos column end -->
 
                   <!-- Button start -->
-                  <% if event.end_date < DateTime.now %>
-                    <%= link_to event_path(event) do %>
-                      <button class="btn btn-secondary card-btn-home">Terminé</button>
+                  <div class="event-button">
+                    <% if event.end_date < DateTime.now %>
+                      <%= link_to event_path(event) do %>
+                        <button class="btn btn-secondary card-btn-home">Terminé</button>
+                      <% end %>
+                    <% elsif user_signed_in? == false %>
+                      <%= link_to "Je participe !", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
+                    <% elsif current_user.participations.find_by(event_id: event.id) %>
+                      <%= link_to event_path(event) do %>
+                        <button class="btn btn-warning card-btn-home">Déjà inscrit</button>
+                      <% end %>
+                    <% elsif event.seats_left.zero? %>
+                      <%= link_to event_path(event) do %>
+                        <button class="btn btn-danger my-2 card-btn-home">Complet</button>
+                      <% end %>
+                    <% elsif current_user %>
+                      <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
+                        <button id="sweet-alert-register" class="btn btn-success card-btn-home">Je participe!</button>
+                      <% end %>
                     <% end %>
-                  <% elsif user_signed_in? == false %>
-                    <%= link_to "Je participe !", event_participations_path(event), method: :post, id: "register-link", class: "btn btn-success card-btn-home" %>
-                  <% elsif current_user.participations.find_by(event_id: event.id) %>
-                    <%= link_to event_path(event) do %>
-                      <button class="btn btn-warning card-btn-home">Déjà inscrit</button>
-                    <% end %>
-                  <% elsif event.seats_left.zero? %>
-                    <%= link_to event_path(event) do %>
-                      <button class="btn btn-danger my-2 card-btn-home">Complet</button>
-                    <% end %>
-                  <% elsif current_user %>
-                    <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
-                      <button id="sweet-alert-register" class="btn btn-success card-btn-home">Je participe !</button>
-                    <% end %>
-                  <% end %>
+                  </div>
                   <!-- Button end -->
 
                   <!-- Bookmark start -->
-                  <% if user_signed_in? %>
-                    <% if current_user.liked? event %>
-                      <%= link_to unlike_home_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
-                        <i class="fas fa-bookmark" id="unlike"></i>
-                      <% end %>
-                    <% else %>
-                      <%= link_to like_home_event_path(event), class: "interested bookmark-like-red", method: :put, remote: true do %>
-                        <i class="far fa-bookmark" id="like-event"></i>
-                      <% end %>
-                    <% end  %>
-                  <% end %>
+                  <div class="bookmark-like-red">
+                    <% if user_signed_in? %>
+                      <% if current_user.liked? event %>
+                        <%= link_to unlike_home_event_path(event), class:"unlike-event bookmark-like-red", method: :put, remote: true do %>
+                          <i class="fas fa-bookmark" id="unlike"></i>
+                        <% end %>
+                      <% else %>
+                        <%= link_to like_home_event_path(event), class: "interested", remote: true, method: :put do %>
+                          <i class="far fa-bookmark" id="like-event"></i>
+                          <div class="infobulle" style="display: none;">
+                            <div class="infobulle-texte" id="Intéressé" >
+                              Intéressé(e)
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end  %>
+                    <% end %>
+                  </div>
                   <!-- Bookmark end -->
 
                 </div>

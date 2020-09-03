@@ -58,22 +58,22 @@
         margin-right: 5px;
       }
     }
-    a {
+    #card-event-ngo {
       &:hover {
         color: $orange;
         text-decoration: none;
       }
     }
-    .btn {
+    .event-button {
       position: relative;
-      margin-top: 150% !important;
-      margin-left: -10%;
+      bottom: -65%;
+      right: 10%;
       color: white;
       width: 110px;
     }
     .bookmark-like-red {
       position: relative;
-      right: 5%;
+      left: 45%;
     }
   }
 }
