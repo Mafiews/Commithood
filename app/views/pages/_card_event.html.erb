@@ -10,7 +10,7 @@
           <!-- Date column -->
           <div class="card-event-date col-2 text-center">
             <% if event.ngo.photo.attached? %>
-              <%= cl_image_tag event.ngo.photo.key, class: "avatar-event-card" %>
+              <%= cl_image_tag event.ngo.photo.key, class: "avatar-event avatar-event-card" %>
             <% end %>
             <p><%= I18n.l(event.start_date, locale: :fr, format: :day_week) %></p>
             <p class="event-day-highlight"><%= I18n.l(event.start_date, locale: :fr, format: :day) %></p>
