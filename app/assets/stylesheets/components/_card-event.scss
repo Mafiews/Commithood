@@ -3,8 +3,14 @@
   background: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.05);
   padding: 0;
-  margin: 20px 0px 20px 20px;
-  width: 31%;
+  margin: 15px 0px 15px 15px;
+  width: 390px;
+
+  // // //
+  display: flex;
+  flex-direction: column;
+
+
   .card-event-cover {
     img {
       height: 210px;
@@ -28,6 +34,13 @@
     }
   .card-event-infos-dashboard {
     margin: 10px 0 15px 0;
+
+    // // //
+    flex-grow: 1;
+    > div {
+      height: 100%;
+    }
+
     #card-event-hour, #card-event-ngo {
       opacity: 0.6;
       font-size: 14px;
@@ -41,7 +54,7 @@
     }
     p {
       width: 140%;
-      font-size: 16px;
+      font-size: 15px;
       margin-bottom: 4px;
       .fas, .far {
         color: $dark-green;
@@ -61,11 +74,17 @@
   }
 }
 
-
-.card-event-info-home .event-button {
+.card-event-dashboard {
+  .event-button {
   position: relative;
   bottom: -65%;
-  right: 10%;
+  right: 48%;
+  color: white;
+  width: 110px;
+  }
+}
+
+.btn-dashboard > .event-button {
   color: white;
   width: 110px;
 }
