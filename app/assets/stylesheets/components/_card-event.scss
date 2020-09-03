@@ -64,16 +64,22 @@
         text-decoration: none;
       }
     }
-    .event-button {
-      position: relative;
-      bottom: -65%;
-      right: 10%;
-      color: white;
-      width: 110px;
-    }
     .bookmark-like-red {
       position: relative;
       left: 45%;
     }
   }
+}
+
+.event-button {
+  position: relative;
+  bottom: -65%;
+  right: 10%;
+  color: white;
+  width: 110px;
+}
+
+.card-event-info-home > .bookmark-like-red {
+  position: relative;
+  left: 8%;
 }

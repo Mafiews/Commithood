@@ -111,7 +111,7 @@
                     <p id="card-event-hour"><%= I18n.l(event.start_date, locale: :fr, format: :hours) %></p>
                   </strong>
                 </div>
-                <div>
+                <div class="event-button">
                   <% if event.end_date < DateTime.now %>
                     <%= link_to event_path(event) do %>
                       <button class="btn btn-secondary">Terminé</button>
