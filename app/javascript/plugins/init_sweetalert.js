@@ -25,9 +25,7 @@ const initSweetalert = (selector, options = {}, callback = () => {}) => {
 
 const sweetAlertEverywhere = () => {
   const allBtns = document.querySelectorAll('#sweet-alert-register')
-console.log(allBtns)
   allBtns.forEach((btn) => {
-    console.log(btn)
     // initSweetalert(btn, {
     //   title: "Participation confirmée",
     //   text: "BA du jour accomplie !",
