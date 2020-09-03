@@ -20,15 +20,13 @@ class NgosController < ApplicationController
   def follow
     set_ngo
     @ngo.liked_by current_user
-    respond_to do |format|
-      format.js {render inline: "location.reload();" }
-    end
+     redirect_to ngo_path(anchor: "#{@ngo.id}")
   end
 
   def unfollow
     set_ngo
     @ngo.unliked_by current_user
-     respond_to do |format|
+    respond_to do |format|
       format.js {render inline: "location.reload();" }
     end
   end
