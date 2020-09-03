@@ -18,16 +18,7 @@
   .card-event-date {
     bottom: 22px;
     font-weight: bold;
-    .avatar-event-card {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-      border: white 1px solid;
-      position: relative;
-      bottom: 10px;
-      left: 7px;
-    }
+  }
     > p {
       margin-bottom: 0px;
     }
@@ -35,7 +26,6 @@
       font-size: 30px;
       margin: -8px 0 -8px 0;
     }
-  }
   .card-event-infos-dashboard {
     margin: 10px 0 15px 0;
     #card-event-hour, #card-event-ngo {
@@ -71,7 +61,8 @@
   }
 }
 
-.event-button {
+
+.card-event-info-home .event-button {
   position: relative;
   bottom: -65%;
   right: 10%;
@@ -79,7 +70,7 @@
   width: 110px;
 }
 
-.card-event-info-home > .bookmark-like-red {
+.card-event-info-home .bookmark-like-red {
   position: relative;
   left: 8%;
 }

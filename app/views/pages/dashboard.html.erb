@@ -67,7 +67,7 @@
                   <%= cl_image_tag ngo.photo.key, class: "avatar-ngo" %>
                 <% end %>
                 <div class="m-3">
-                  <p><%= ngo.name %></p>
+                  <h3><%= ngo.name %></h3>
                   <%= link_to "Voir les événéments", ngo_path(ngo)  %>
                   <div class="follow-me">
                     <% if user_signed_in?  %>

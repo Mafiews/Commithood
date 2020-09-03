@@ -128,14 +128,47 @@
                     <% end %>
                   <% elsif current_user %>
                     <%= link_to event_participations_path(event), method: :post, id: "register-link", remote: true, class: "hidden" do %>
-                      <button id="sweet-alert-register" class="btn btn-success">Je participe !</button>
+                      <button id="sweet-alert-register" class="btn btn-success">Je participe!</button>
                     <% end %>
                   <% end %>
                 </div>
 
               </div>
             </div>
-            <p><%= event.description %></p>
+              <p class="mb-3"><%= event.description %></p>
+              <div class="dropdown-divider my-4"></div>
+              <div class="card-window-ngo">
+                <div class="d-flex align-items-center">
+                  <% if event.ngo.photo.attached? %>
+                    <%= cl_image_tag event.ngo.photo.key, class: "avatar-event" %>
+                  <% end %>
+                  <div class="ml-3">
+                    <h3><%= event.ngo.name %></h3>
+                    <div class="follow-me">
+                      <% if user_signed_in?  %>
+                        <% if current_user.liked? event.ngo %>
+                          <%= link_to unfollow_ngo_path(event.ngo.id), class: "unfollow-ngo", remote: :true, method: :put do %>
+                            <i class="fas fa-heart" id="unlike"></i>
+                          <% end %>
+                        <% else %>
+                          <%= link_to follow_ngo_path(event.ngo.id), class: "follow-ngo", remote: :true, method: :put do %>
+                            <i class="far fa-heart" id="like-ngo"></i>
+                          <% end %>
+                        <% end  %>
+                      <% else %>
+                          <%= link_to new_user_session_path, class: "follow-ngo" do %>
+                            <i class="far fa-heart" id="like-ngo"></i>
+                          <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p class="my-2"><%= event.ngo.description %></p>
+                  <%= link_to "Voir les événéments", ngo_path(event.ngo)  %>
+                </div>
+              </div>
+
           </div>
         </div>
       <% end %>
