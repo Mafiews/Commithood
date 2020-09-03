@@ -94,13 +94,17 @@ class EventsController < ApplicationController
   def like
     set_event
     @event.liked_by current_user
-    redirect_to events_path(anchor: "#{@event.id}")
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
 
   def unlike
     set_event
     @event.unliked_by current_user
-    redirect_to events_path(anchor: "#{@event.id}")
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
 
   def like_home
