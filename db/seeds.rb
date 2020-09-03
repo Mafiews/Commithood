@@ -469,8 +469,8 @@ puts "Event #{event_15.name} created"
 
 event_16 = Event.create!(
  name: "Végétalisation participative",
- start_date: DateTime.new(2020,9,4,14),
- end_date: DateTime.new(2020,9,4,16),
+ start_date: DateTime.new(2020,9,2,14),
+ end_date: DateTime.new(2020,9,2,16),
  description: "Venez découvrir à Paris, les dispositifs de végétalisation participative. Atelier animé par un.e conseiller.ère environnement à destination des enfants et adolescents afin de leur faire découvrir le plaisir de travailler la terre et de cultiver son jardin !
 Nous cherchons à ce titre l'aide de 5 bénévoles pour encadrer le groupe pendant les conférences et ateliers.",
  seats: 5,
