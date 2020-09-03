@@ -1,8 +1,9 @@
-.follow-ngo > .far {
-
-  color: #d54062;
+.fa-heart::before{
+    color: #d54062 !important;
 }
 
-.unfollow-ngo > .fas {
+.unfollow-ngo{
+  #unlike-ngo {
   color:  #d54062;
+  }
 }
