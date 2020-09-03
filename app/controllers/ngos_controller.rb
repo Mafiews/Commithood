@@ -20,11 +20,13 @@ class NgosController < ApplicationController
   def follow
     set_ngo
     @ngo.liked_by current_user
+     redirect_to ngo_path(anchor: "#{@ngo.id}")
   end
 
   def unfollow
     set_ngo
     @ngo.unliked_by current_user
+    redirect_to ngo_path(anchor: "#{@ngo.id}")
   end
 
   private
