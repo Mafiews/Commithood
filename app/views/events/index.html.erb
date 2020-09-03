@@ -2,41 +2,44 @@
 <%= render 'shared/navbar' %>
 <div class="justify-content-center">
 
-  <!-- yizhu: add tabs -->
-  <!-- to be continue... -->
   <!-- yizhu: map section with cards -->
 
   <div class="d-flex map-cards">
 
-    <!-- hide searchbar button -->
-    <div id="button-menu" class="float-left">
-      <i class="fas fa-caret-square-left" style="font-size: 40px"></i>
-    </div>
-    <!-- end of searchbar button -->
+    <!-- add button to attach the search bar -->
+    <div class="search-bar-with-button">
+            <!-- hide searchbar button -->
+      <div class="button-menu">
+        <i class="fas fa-caret-square-left" style="font-size: 40px"></i>
+      </div>
+      <!-- end of searchbar button -->
 
-    <!-- add result filter and text search function -->
-    <div class="search-bar-index">
-      <%= form_tag events_path, method: "get", remote:true do %>
-        <%= text_field_tag :address, params[:address].present? ? params[:address] : '', required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
-        <%= submit_tag "Rechercher", class: "btn btn-success text-white mt-2" %>
-        <div class="search-select-index mt-3">
-          <h5>Choisissez vos Thèmes </h5>
-          <div class="cause-list">
-            <ul>
-              <% Cause::CAUSES.each do |cause| %>
-                <li>
-                  <label class="cause-select <%= cause.parameterize.split('-').first %> <%= @causes.include?(cause) ? "active" : "" %>">
-                    <%= check_box_tag "user_cause_#{cause.downcase}", "#{cause}", params["user_cause_#{cause.downcase}"] == cause, id: "user_cause", style:'visibility: hidden'%>
-                    <%= image_tag "#{cause == "Tous les thèmes" ? "logo" : cause.parameterize}.png", size: "20x20", alt: "alttext" %>  <%= cause %> (<%= cause == "Tous les thèmes" ? Event.all.size : Event.tagged_with("#{cause}").count %>)
-                  </label>
-                </li>
-              <% end %>
-            </ul>
+      <!-- add result filter and text search function -->
+      <div class="search-bar-index">
+        <%= form_tag events_path, method: "get" do %>
+          <%= text_field_tag :address, params[:address].present? ? params[:address] : '', required: false, id: "event-address", label: false, placeholder: "Votre adresse" %>
+          <%= submit_tag "Rechercher", class: "btn btn-success text-white mt-2" %>
+          <div class="search-select-index mt-3">
+            <h5>Choisissez vos Thèmes </h5>
+            <div class="cause-list">
+              <ul>
+                <% Cause::CAUSES.each do |cause| %>
+                  <li>
+                    <label class="cause-select <%= cause.parameterize.split('-').first %> <%= @causes.include?(cause) ? "active" : "" %>">
+                      <%= check_box_tag "user_cause_#{cause.downcase}", "#{cause}", params["user_cause_#{cause.downcase}"] == cause, id: "user_cause", style:'visibility: hidden'%>
+                      <%= image_tag "#{cause == "Tous les thèmes" ? "logo" : cause.parameterize}.png", size: "20x20", alt: "alttext" %>  <%= cause %> (<%= cause == "Tous les thèmes" ? Event.all.size : Event.tagged_with("#{cause}").count %>)
+                    </label>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <!-- result filter end -->
+
     </div>
-    <!-- result filter end -->
+    <!-- end of button with menue bar -->
 
 
     <!-- section of map, 100% of the larger -->
