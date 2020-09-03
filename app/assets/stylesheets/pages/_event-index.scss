@@ -3,8 +3,6 @@ background-color: white;
 // position: absolute;
 transition: all 1s ease-in-out;
 height:100%;
-padding-left: 10px;
-box-shadow: 0 0 5px rgba(0,0,0,0.1);
   ul{
   list-style: none;
   margin-left:5px;
@@ -12,8 +10,13 @@ box-shadow: 0 0 5px rgba(0,0,0,0.1);
   }
 }
 
+#button-menu {
+background-color: white;
+color:$gray;
+}
+
 .inactive {
-  position: absolute;
+  width:0%;
 }
 
 .card-inactive {
