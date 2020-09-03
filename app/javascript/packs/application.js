@@ -40,6 +40,7 @@ import { initEventinfo} from '../plugins/init_eventinfo';
 import { initSearchbarIndex } from '../components/init_searchbar_index';
 // import { initSlick} from '../plugins/init_slick';
 import { initBookmark} from '../components/init_bookmark';
+import {initSearchbarIndexHide} from '../components/init_searchbar_index_hide';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -50,6 +51,7 @@ document.addEventListener('turbolinks:load', () => {
   initSearchbarIndex();
   initMapbox();
   initEventinfo();
+  initSearchbarIndexHide();
   // initSlick();
   initSweetalert('#sweet-alert-register', {
     title: "Participation confirmée",

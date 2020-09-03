@@ -7,6 +7,13 @@
   <!-- yizhu: map section with cards -->
 
   <div class="d-flex map-cards">
+
+    <!-- hide searchbar button -->
+    <div id="button-menu" class="float-left">
+      <i class="fas fa-caret-square-left" style="font-size: 40px"></i>
+    </div>
+    <!-- end of searchbar button -->
+
     <!-- add result filter and text search function -->
     <div class="search-bar-index">
       <%= form_tag events_path, method: "get", remote:true do %>
@@ -30,6 +37,7 @@
       <% end %>
     </div>
     <!-- result filter end -->
+
 
     <!-- section of map, 100% of the larger -->
     <div id="map" class=""
