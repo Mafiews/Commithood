@@ -71,9 +71,21 @@
                     <p><i class="fas fa-user-circle"></i> <%= event.seats_left %> bénévoles souhaités</p>
                     <!-- Day counter -->
                     <% if event.start_date > DateTime.now %>
-                      <p><i class="far fa-calendar-alt"></i> commence dans <%= ((event.start_date - DateTime.now) / 1.day).to_i %> jours</p>
+                      <p><i class="far fa-calendar-alt"></i> commence dans <%= ((event.start_date - DateTime.now) / 1.day).to_i %>
+                        <% if ((event.start_date - DateTime.now) / 1.day).to_i > 1 %>
+                          jours
+                        <% else %>
+                          jour
+                        <% end %>
+                      </p>
                     <% elsif event.end_date > DateTime.now %>
-                      <p><i class="far fa-calendar-alt"></i> termine dans <%= ((event.end_date - DateTime.now) / 1.day).to_i %> jours</p>
+                      <p><i class="far fa-calendar-alt"></i> termine dans <%= ((event.end_date - DateTime.now) / 1.day).to_i %>
+                        <% if ((event.start_date - DateTime.now) / 1.day).to_i > 1 %>
+                          jours
+                        <% else %>
+                          jour
+                        <% end %>
+                      </p>
                     <% else %>
                       <br>
                     <% end %>
