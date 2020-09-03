@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Commit'hood</title>
+    <title><%= "Commit'hood | Engagez-vous à deux pas de chez vous !" %></title>
+    <meta name="description" content="<%= "Engagez-vous pour (re)faire de votre quartier un réel espace de vie commune où il fait bon vivre. Commit'hood est la première plateforme qui vous permet de trouver l'ensemble des évènements associatifs proche de vous." %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= "Commit'hood | Engagez-vous à deux pas de chez vous !" %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= "www.commithood.com" %>" />
+    <meta property="og:image" content="<%= "https://res.cloudinary.com/kally-b/image/upload/v1598609781/Logo_ihoxha.png" %>" />
+    <meta property="og:description" content="<%= "Engagez-vous pour (re)faire de votre quartier un réel espace de vie commune où il fait bon vivre. Commit'hood est la première plateforme qui vous permet de trouver l'ensemble des évènements associatifs proche de vous." %>" />
+    <meta property="og:site_name" content="<%= "Commit'hood" %>" />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= "Commit'hood | Engagez-vous à deux pas de chez vous !" %>">
+    <meta name="twitter:description" content="<%= "Engagez-vous pour (re)faire de votre quartier un réel espace de vie commune où il fait bon vivre. Commit'hood est la première plateforme qui vous permet de trouver l'ensemble des évènements associatifs proche de vous." %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= "https://res.cloudinary.com/kally-b/image/upload/v1598609781/Logo_ihoxha.png" %>">
+
     <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/kally-b/image/upload/v1598609781/Logo_ihoxha.png"/>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,12 +26,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-
-    <!-- Matt - code for carousel -->
-    <!-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/> -->
-    <!-- <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/> -->
   </head>
 
   <body>
@@ -23,11 +35,7 @@
 
     <%= yield %>
 
-    <!-- Matt - code for carousel -->
-<!--     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="slick/slick.min.js"></script> -->
+
 
     <!-- yizhu:footer added -->
     <%= render 'shared/footer' %>
