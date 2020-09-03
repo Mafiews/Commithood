@@ -28,9 +28,9 @@
     > p {
       margin-bottom: 0px;
     }
-    .event-day-highlight {
+    #event-day-highlight {
       font-size: 30px;
-      margin: -8px 0 -8px 0;
+      margin: -13px 0 -5px 0;
     }
   .card-event-infos-dashboard {
     margin: 10px 0 15px 0;
@@ -68,8 +68,7 @@
       }
     }
     .bookmark-like-red {
-      position: relative;
-      left: 45%;
+      text-align: right;
     }
   }
 }

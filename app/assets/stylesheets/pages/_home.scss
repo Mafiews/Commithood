@@ -60,37 +60,9 @@
 
 // card design in the following:
 
-.card-event-home{
-  img {
-    position: relative;
-  }
-}
-.card-text {
-  position:relative;
-}
-
 .btn-green {
   position:absolute;
   bottom: -10px;right:10px;
-}
-
-.card-event-home {
-  border-radius: 5px;
-  border:none;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-.card-date {
-  font-size:12px;
-  opacity: 0.8;
-  bottom: -5px; left: 15px;
-}
-
-.card-body {
-  .card-address {
-  font-size: 14px !important;
-  opacity: 0.9;
-  }
 }
 
 #inspiration {

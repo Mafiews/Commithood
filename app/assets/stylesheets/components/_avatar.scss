@@ -31,9 +31,18 @@
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
-  .avatar-event-card {
+}
+
+.avatar-event-card {
   position: relative;
   bottom: 10px;
-  left: 7px;
-  }
+  right: 5px;
+}
+
+.avatar-home {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 20px;
 }
