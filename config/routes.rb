@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'pages#dashboard'
-  resources :ngos, only: [:show] do
+  resources :ngos, only: [:show, :new, :create] do
     member do
       put 'follow', to: 'ngos#follow'
       put 'unfollow', to: 'ngos#unfollow'
